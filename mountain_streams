@@ -1,0 +1,32 @@
+def stream_mountain():
+    
+    initial_streams = int(input("Select the number of streams:"))
+    streams = list(range(1, initial_streams - 1))
+
+    while True:
+
+        line = int(input("Do we 99 (split stream), 88 (merge stream) or 77? (reach the end of the mountain)"))
+
+        if line == 77:
+            break
+        elif line == 88:
+            number_stream = int(input("Select the two streams to be merged together:"))
+            streams[number_stream - 1] += streams.pop(number_stream)
+        elif line == 99:
+            number_stream, percent = int(input("Select the stream to be split:")), int(input("Enter the percentage of each of the two new streams:")) 
+            current_value = streams.pop(number_stream - 1)
+            streams.insert(number_stream - 1, current_value * percent / 100)
+            streams.insert(number_stream, current_value * (100 - percent) / 100)
+
+    return ''.join(str(int(i)) for i in streams)
+
+stream_mountain()
+
+    
+
+    
+
+
+
+
+
