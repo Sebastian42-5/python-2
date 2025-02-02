@@ -22,4 +22,18 @@ def to_do_list():
             for i in range(n_tasks):
                 task = input("Enter the task:")
                 tasks.append(task)
+
+        elif choice == 2:
+            print("Here are your tasks: ")
+            print(tasks)
+
+        elif choice == 3:
+            print(tasks)
+            modify_task = int(input("Enter the number of the task to modify: ")) - 1
+
+
+        elif choice == 4:
+
+        elif choice == 5:
+            break
                 
