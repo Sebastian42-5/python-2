@@ -22,6 +22,7 @@ def to_do_list():
             for i in range(n_tasks):
                 task = input("Enter the task:")
                 tasks.append(task)
+                tasks.append(False)
 
         elif choice == 2:
             print("Here are your tasks: ")
@@ -33,7 +34,10 @@ def to_do_list():
 
 
         elif choice == 4:
+            print(tasks)
+            done_task = int(input('Select the number of the task to mark as done')) - 1
+
 
         elif choice == 5:
-            break
+            return False
                 
