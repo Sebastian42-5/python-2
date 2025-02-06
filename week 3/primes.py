@@ -16,6 +16,20 @@ prime_numbers = [num for num in number_list if isPrime(num)]
 print(prime_numbers)
 
 
+# print(isPrime(int(input('Enter a number: '))))
+
+# primes = []
+
+# n = 2
+
+# while len(primes) < 100:
+    # if isprimes(n):
+    #   primes.append(n)
+    # n += 1
+    # print(primes)
+
+
+
 
 
     
