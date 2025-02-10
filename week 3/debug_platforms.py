@@ -4,7 +4,7 @@ def covers(platform, horizontal_pos):
     :param horizonal_pos: an integer
     :return : True if platform covers horizontal_post; False otherwise. 
     '''
-    return platform[1] < horizontal_pos and platform[0] == horizontal_pos
+    return platform[1] < horizontal_pos < platform[2] and platform[0] == horizontal_pos
 
 
 def pillar_from(platforms, height, horizontal_pos):
@@ -16,7 +16,7 @@ def pillar_from(platforms, height, horizontal_pos):
     '''
     for platform in platforms:
         bottom = 0              
-        if (int(platform[0]) < height and covers(platform, horizontal_pos)):
+        if platform[0] < height and covers(platform, horizontal_pos):
             bottom += platform[1]
     return int(height) - bottom
 
@@ -28,7 +28,6 @@ platforms = []
 # read input from user as lists of integers
 for i in range(n):
     platform = (input(f'Enter platform {i + 1}: ')).split()
-    platforms.append(platform)
     for i in range(len(platform)):
         platform[i] = int(platform[i])
     platforms.append(platform)
