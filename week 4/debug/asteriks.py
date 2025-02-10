@@ -1,0 +1,1 @@
+size = input('Select your triangle size: ')
