@@ -32,22 +32,23 @@ Sample Input-2
 Sample Output-2
 1 {4}
 '''
-# import math
+import math
 num_routes = int(input('enter number of routes: '))
 diameters_lst = []
-min_diam = 70000
-# min_diam = math.inf
+min_diam = math.inf
 
 for j in range(num_routes):     
     row = [j + 1] + input(f'enter description of route {j+1}: ').split()  
     for i in range(len(row)):  
         row[i] = int(row[i])
     id = row[0]     
-    diam = row[1:]     
-    current_diam = min(diam)   
+    diameters = row[2:]     
+    current_diam = min(diameters)   
 
     if current_diam < min_diam:
         min_diam = current_diam
         diameters_lst = [id]
+    elif current_diam == min_diam:
+        diameters_lst.append(id)
 
-print(diameters_lst, row)
+print(min(row), diameters_lst)

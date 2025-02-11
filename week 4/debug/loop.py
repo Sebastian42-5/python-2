@@ -11,3 +11,5 @@ def numLoop():
     return 30
 
 numLoop()
+
+# This is an infinite loop, because x never gets reassigned, so x is never -1. That means that the while loop will keep checking if -5 is -1, since -5 > -7. 
