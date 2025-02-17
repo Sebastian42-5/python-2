@@ -41,5 +41,4 @@ def to_do_list():
 
         elif choice == 5:
             break
-
 to_do_list()
