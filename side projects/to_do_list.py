@@ -2,7 +2,6 @@ def to_do_list():
     tasks = []
     
     while True:
-        name = input("Enter your name:")
 
         print("We")
         print("\n --TO DO LIST--")
@@ -13,14 +12,14 @@ def to_do_list():
         print("5- Exit")
     
 
-        choice = input("Enter your choice:")
+        choice = input("Enter your choice: ")
 
         if choice == 1:
             print()
             n_tasks = input("\n How many tasks do you want to add?")
 
             for i in range(n_tasks):
-                task = input("Enter the task:")
+                task = input("Enter the task: ")
                 tasks.append(task)
                 tasks.append(False)
 
@@ -32,6 +31,8 @@ def to_do_list():
             print(tasks)
             modify_task = int(input("Enter the number of the task to modify: ")) - 1
 
+            tasks[modify_task] = input("Enter the name of the task you want to modify: ")
+
 
         elif choice == 4:
             print(tasks)
@@ -39,5 +40,5 @@ def to_do_list():
 
 
         elif choice == 5:
-            return False
-                
+            break
+to_do_list()
