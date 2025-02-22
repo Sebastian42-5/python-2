@@ -1,2 +1,6 @@
 def free_shirts(N, M, D):
-    pass
+    laun = 0
+
+    dirty = 0 
+
+    
