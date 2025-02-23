@@ -15,18 +15,22 @@ filter and map and zip are just like enumerate, it creates an object in the memo
 in a list
 """
 
-'''filter takes only functions that returns boolean
+'''filter takes only functions that returns boolean !!! 
 it applies the bool function to multiplles and return an object for which each element in the multiples 
 return true when inputed to isOdd '''
+
 odd_filter = filter(isOdd, multiples)
 
 """ maps apply function isOdd to multiples"""
 squared_multiples = map(isOdd, multiples) 
 
+# in this case, you can do list(map(isOdd, multiples))
+
 '''maps apply function square to multiples''' 
 squared_multiples = map(square, multiples) 
 
 # 2 dimentional lists
+
 list_2d = [list(range(5)), list(range(5, 20, 3)), list(range(-4, -12, -2))]
 
 total = 0
@@ -53,9 +57,10 @@ charater = chr(155) # retuns the character at position 155
 the same is conversely true for tuples, we can't modify a tuple every where it is"""
 
 
-# augmentef assignment 
+# augmented assignment 
 """Normally, we can't add a list with a tuple but using augmented assignement 
 we automatically cast..."""
+
 lst = []
 lst += (1, 2, 3)
 
@@ -70,6 +75,7 @@ print(tup, put)
 
 
 # lists and pointer
+
 """when point to a value of a list,
 if we change the value of an element in the list, since there is a pointer to it,
 all the variables pointing to list will eventually get that element changed """
