@@ -30,7 +30,7 @@ def print_pascal(matrix):
         print()
     
 
-print_pascal(pascal_triangle(5))
+# print_pascal(pascal_triangle(5))
 
 
 # matrix[row][k]
@@ -38,7 +38,22 @@ print_pascal(pascal_triangle(5))
 
 
 def pascal_triangle_2(n):
-    pass
+    matrix = []
 
+    for row in range(n):
+        sub_lst = [1]
+
+        if row > 0:
+            last_row = matrix[-1]
+            for k in range(row - 1):
+                sub_lst.append(last_row[k] + last_row[k + 1])
+            sub_lst.append(1)
+
+        matrix.append(sub_lst)
+
+    return ''.join(map()
+
+
+# print_pascal(pascal_triangle_2(7))
 
 # printing it all for each row you don't store it in a table, so the store space would be constant 
