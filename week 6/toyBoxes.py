@@ -72,7 +72,31 @@ def allBoxesOK(lst_boxes):
         if box != sorted(box):
             return False
     return True 
+
+
+
+def boxIntervals(lst_boxes):
+    intervals = []
+
+    for box in lst_boxes:
+        intervals.append([box[0], box[-1]])
+
+    return intervals
+
+
+def allIntervalsOK(lst_intervals):
+
+    prev_max_height = lst_intervals[0][1]
+
+    for box in range(1, len(lst_intervals)):
+        current_min_height = lst_intervals[box][0]
         
+        if current_min_height < prev_max_height:
+            return False
+        else:
+            prev_max_height = lst_intervals[box][1]
+
+    return True
 
 
 # TODO : read input 
@@ -91,16 +115,24 @@ if not allBoxesOK(boxes):
 else:
     # TODO : Obtain a new list of boxes with only the left and right heights (intervals)
 
-    
+    intervals = boxIntervals(boxes)
 
     # TODO : sort the boxes (the intervals)
 
+    intervals.sort()
+
+    print(intervals)
+
     # TODO : determine whether the boxes are organized or not 
 
+    if allIntervalsOK(intervals):
+        print('YES!')
+
+    else:
+        print('NO!')
+
+
 # TODO : output the result
-
-
-
 
 
 
