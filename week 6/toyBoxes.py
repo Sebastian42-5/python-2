@@ -51,32 +51,56 @@ will define a function
 '''
 
 
-
-
 # MAIN PROGRAM
+
+def readBoxes(n):
+    lst_boxes = []
+
+    for i in range(n):
+        box = input(': ').split()
+        box.pop(0)
+        for i in range(len(box)):
+            box[i] = int(box[i])
+        lst_boxes.append(box)
+
+    return lst_boxes
+
+
+
+def allBoxesOK(lst_boxes):
+    for box in lst_boxes:
+        if box != sorted(box):
+            return False
+    return True 
+        
+
 
 # TODO : read input 
 
+
+n = int(input('Number of boxes: '))
+
+boxes = readBoxes(n)
+
+
 # TODO : check if all the boxes are okay 
 
-# TODO : Obtain a new list of boxes with only the left and right heights (intervals)
+if not allBoxesOK(boxes):
+    print('NO!')
 
-# TODO : sort the boxes (the intervals)
+else:
+    # TODO : Obtain a new list of boxes with only the left and right heights (intervals)
 
-# TODO : determine whether the boxes are organized or not 
+    
+
+    # TODO : sort the boxes (the intervals)
+
+    # TODO : determine whether the boxes are organized or not 
 
 # TODO : output the result
 
 
 
-# boxes = []
-
-# number_of_boxes = int(input('Enter the number of boxes: '))
-
-# for i in range(number_of_boxes):
-#     toys = int(input(f'How many toys are in box {i + 1}: '))
-#     for k in range(toys):
-#         height = int(input(f'Enter the height of toy {k + 1}: '))
 
 
 
@@ -84,11 +108,10 @@ will define a function
 #     pass
 
 
+# number_of_boxes = int(input('Enter the number of boxes: '))
 
-
-
-
-
-
-
+# for i in range(number_of_boxes):
+#     toys = input(f'How many toys are in box {i + 1}: ').split()
+#     for k in range(toys):
+#         height = int(input(f'Enter the height of toy {k + 1}: '))
 
