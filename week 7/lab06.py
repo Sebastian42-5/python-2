@@ -10,50 +10,50 @@ O(n^2) space.
 Question 2: ToyBoxes
 '''
 
-# def readBoxes(n):
-#     lst_boxes = []
+def readBoxes(n):
+    lst_boxes = []
 
-#     for i in range(n):
-#         box = input(': ').split()
-#         box.pop(0)
-#         for i in range(len(box)):
-#             box[i] = int(box[i])
-#         lst_boxes.append(box)
+    for i in range(n):
+        box = input(': ').split()
+        box.pop(0)
+        for i in range(len(box)):
+            box[i] = int(box[i])
+        lst_boxes.append(box)
 
-#     return lst_boxes
-
-
-
-# def allBoxesOK(lst_boxes):
-#     for box in lst_boxes:
-#         if box != sorted(box):
-#             return False
-#     return True 
+    return lst_boxes
 
 
 
-# def boxIntervals(lst_boxes):
-#     intervals = []
-
-#     for box in lst_boxes:
-#         intervals.append([box[0], box[-1]])
-
-#     return intervals
+def allBoxesOK(lst_boxes):
+    for box in lst_boxes:
+        if box != sorted(box):
+            return False
+    return True 
 
 
-# def allIntervalsOK(lst_intervals):
 
-#     prev_max_height = lst_intervals[0][1]
+def boxIntervals(lst_boxes):
+    intervals = []
 
-#     for box in range(1, len(lst_intervals)):
-#         current_min_height = lst_intervals[box][0]
+    for box in lst_boxes:
+        intervals.append([box[0], box[-1]])
+
+    return intervals
+
+
+def allIntervalsOK(lst_intervals):
+
+    prev_max_height = lst_intervals[0][1]
+
+    for box in range(1, len(lst_intervals)):
+        current_min_height = lst_intervals[box][0]
         
-#         if current_min_height < prev_max_height:
-#             return False
-#         else:
-#             prev_max_height = lst_intervals[box][1]
+        if current_min_height < prev_max_height:
+            return False
+        else:
+            prev_max_height = lst_intervals[box][1]
 
-#     return True
+    return True
 
 
 # # TODO : read input 
@@ -191,10 +191,6 @@ print(check_13(days_lst))
 
 
 
-    
-
-
-
 
 
 '''
@@ -231,9 +227,18 @@ right or down.
     => output: 3
     '''
 
-def matrixPaths(n):
-    pass
+# def matrixPaths(matrix):
 
+#     row = len(matrix)
+#     column = len(matrix[0])
+
+#     start = matrix[0][0]
+
+#     end = matrix[-1][-1]
+
+#     for i in range(row):
+#         for j in range(column):
+    
 
 
 '''
@@ -242,5 +247,4 @@ Update Pascal's Triangle code so that your algorithm uses only O(1) space.
 '''
 
 # I finished this question
-
 
