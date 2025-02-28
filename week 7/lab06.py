@@ -10,83 +10,83 @@ O(n^2) space.
 Question 2: ToyBoxes
 '''
 
-def readBoxes(n):
-    lst_boxes = []
+# def readBoxes(n):
+#     lst_boxes = []
 
-    for i in range(n):
-        box = input(': ').split()
-        box.pop(0)
-        for i in range(len(box)):
-            box[i] = int(box[i])
-        lst_boxes.append(box)
+#     for i in range(n):
+#         box = input(': ').split()
+#         box.pop(0)
+#         for i in range(len(box)):
+#             box[i] = int(box[i])
+#         lst_boxes.append(box)
 
-    return lst_boxes
-
-
-
-def allBoxesOK(lst_boxes):
-    for box in lst_boxes:
-        if box != sorted(box):
-            return False
-    return True 
+#     return lst_boxes
 
 
 
-def boxIntervals(lst_boxes):
-    intervals = []
-
-    for box in lst_boxes:
-        intervals.append([box[0], box[-1]])
-
-    return intervals
+# def allBoxesOK(lst_boxes):
+#     for box in lst_boxes:
+#         if box != sorted(box):
+#             return False
+#     return True 
 
 
-def allIntervalsOK(lst_intervals):
 
-    prev_max_height = lst_intervals[0][1]
+# def boxIntervals(lst_boxes):
+#     intervals = []
 
-    for box in range(1, len(lst_intervals)):
-        current_min_height = lst_intervals[box][0]
+#     for box in lst_boxes:
+#         intervals.append([box[0], box[-1]])
+
+#     return intervals
+
+
+# def allIntervalsOK(lst_intervals):
+
+#     prev_max_height = lst_intervals[0][1]
+
+#     for box in range(1, len(lst_intervals)):
+#         current_min_height = lst_intervals[box][0]
         
-        if current_min_height < prev_max_height:
-            return False
-        else:
-            prev_max_height = lst_intervals[box][1]
+#         if current_min_height < prev_max_height:
+#             return False
+#         else:
+#             prev_max_height = lst_intervals[box][1]
 
-    return True
-
-
-# TODO : read input 
+#     return True
 
 
-n = int(input('Number of boxes: '))
-
-boxes = readBoxes(n)
+# # TODO : read input 
 
 
-# TODO : check if all the boxes are okay 
+# n = int(input('Number of boxes: '))
 
-if not allBoxesOK(boxes):
-    print('NO!')
+# boxes = readBoxes(n)
 
-else:
-    # TODO : Obtain a new list of boxes with only the left and right heights (intervals)
 
-    intervals = boxIntervals(boxes)
+# # TODO : check if all the boxes are okay 
 
-    # TODO : sort the boxes (the intervals)
+# if not allBoxesOK(boxes):
+#     print('NO!')
 
-    intervals.sort()
+# else:
+#     # TODO : Obtain a new list of boxes with only the left and right heights (intervals)
 
-    print(intervals)
+#     intervals = boxIntervals(boxes)
 
-    # TODO : determine whether the boxes are organized or not 
+#     # TODO : sort the boxes (the intervals)
 
-    if allIntervalsOK(intervals):
-        print('YES!')
+#     intervals.sort()
 
-    else:
-        print('NO!')
+#     print(intervals)
+
+#     # TODO : determine whether the boxes are organized or not 
+
+#     if allIntervalsOK(intervals):
+#         print('YES!')
+
+#     else:
+#         print('NO!')
 
 # This one is done (go to toyBoxes)
 
@@ -144,16 +144,51 @@ This totals to 1 baker's dozen.
 '''
 
 def bakerDays(D):
-      days_lst = []
+    days_lst = []
 
-      pass
+    for i in range(D):
+        day = input(": ").split()
+        for i in range(len(day)):
+            day[i] = int(day[i])
+        days_lst.append(day)
+    return days_lst
+
+
+def check_13(days_lst):
+    franchise_list = []
+
+    baker_count = 0
+
+    franchise = len(days_lst[0])
+    each_day = len(days_lst)
+
+    for day in days_lst:
+        if sum(day) == 13:
+            baker_count += 1
+        for i in range(franchise):
+            franchise_list.append(days_lst[i][0])
+        franchise_sum = sum(franchise_list)
+        if franchise_sum == 13:
+            baker_count += 1
+    
+    return baker_count
+        
+
     
 
-franchises_and_days = int(input('Enter the franchise and the number of days of info: ')).split()
+franchises_and_days = input('Enter the franchise and the number of days of info: ').split()
 
-F = franchises_and_days[0]
+F = int(franchises_and_days[0])
 
-D = franchises_and_days[1]
+
+D = int(franchises_and_days[1])
+
+
+days_lst = bakerDays(D)
+
+print(check_13(days_lst))
+
+
 
 
     
@@ -162,39 +197,39 @@ D = franchises_and_days[1]
 
 
 
-      '''
-      Question 4: Unique Paths
-      Given a m by n matrix, you are to determine and print the 
-      number of unique paths starting at the top left corner and
-      ending at the bottom right corner of the matrix.  The only
-      possible moves that can be made are either a move to the
-      right or down. 
+'''
+Question 4: Unique Paths
+Given a m by n matrix, you are to determine and print the 
+number of unique paths starting at the top left corner and
+ending at the bottom right corner of the matrix.  The only
+possible moves that can be made are either a move to the
+right or down. 
 
-      Example-1: 
+    Example-1: 
 
-            0  1
-      [0   [x, x],
-      1   [x, x]  ]
+        0  1
+    [0   [x, x],
+    1   [x, x]  ]
 
-      path 1: (0, 0) --> (0, 1) --> (1, 1)
-      path 2: (0, 0) --> (1, 0) --> (1, 1)
+    path 1: (0, 0) --> (0, 1) --> (1, 1)
+    path 2: (0, 0) --> (1, 0) --> (1, 1)
 
-      => output: 2
+    => output: 2
 
 
-      Example-2: 
+    Example-2: 
 
-            0  1  2
-      [0   [x, x, x],
-      1   [x, x, x],
-      2   [x, x, x]  ]
+        0  1  2
+    [0   [x, x, x],
+    1   [x, x, x],
+    2   [x, x, x]  ]
 
-      path 1: (0, 0) --> (0, 1) --> (0, 2) --> (1, 2)
-      path 2: (0, 0) --> (0, 1) --> (1, 1) --> (1, 2)
-      path 3: (0, 0) --> (1, 0) --> (1, 1) --> (1, 2)
+    path 1: (0, 0) --> (0, 1) --> (0, 2) --> (1, 2)
+    path 2: (0, 0) --> (0, 1) --> (1, 1) --> (1, 2)
+    path 3: (0, 0) --> (1, 0) --> (1, 1) --> (1, 2)
 
-      => output: 3
-      '''
+    => output: 3
+    '''
 
 def matrixPaths(n):
     pass
