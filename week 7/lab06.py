@@ -175,17 +175,17 @@ def check_13(days_lst, F, D):
 
     
 
-franchises_and_days = input('Enter the number of franchises and the number of days: ').split()
+# franchises_and_days = input('Enter the number of franchises and the number of days: ').split()
 
-F = int(franchises_and_days[0])
-
-
-D = int(franchises_and_days[1])
+# F = int(franchises_and_days[0])
 
 
-days_lst = bakerDays(D)
+# D = int(franchises_and_days[1])
 
-print(check_13(days_lst, F, D))
+
+# days_lst = bakerDays(D)
+
+# # print(check_13(days_lst, F, D))
 
 
 
@@ -237,8 +237,19 @@ right or down.
 
 #     for i in range(row):
 #         for j in range(column):
-    
 
+
+def uniquePaths(m, n):
+    
+    matrix = [[1] * n for _ in range(m)]
+
+    for i in range(1, m):
+        for j in range(1, n):
+            matrix[i][j] = matrix[i - 1][j] + matrix[i][j - 1]
+    return matrix[-1][-1]
+
+
+print(uniquePaths(2, 2))
 
 '''
 Question 5: 
