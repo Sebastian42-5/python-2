@@ -154,29 +154,28 @@ def bakerDays(D):
     return days_lst
 
 
-def check_13(days_lst):
+def check_13(days_lst, F, D):
     franchise_list = []
 
     baker_count = 0
 
-    franchise = len(days_lst[0])
-    each_day = len(days_lst)
-
     for day in days_lst:
-        if sum(day) == 13:
-            baker_count += 1
-        for i in range(franchise):
-            franchise_list.append(days_lst[i][0])
+        if sum(day) % 13 == 0:
+            baker_count += sum(day) // 13
+
+    for i in range(F):
+        for j in range(D):
+            franchise_list.append(days_lst[j][i])
         franchise_sum = sum(franchise_list)
-        if franchise_sum == 13:
-            baker_count += 1
+        if franchise_sum % 13 == 0:
+            baker_count += sum(day) // 13
     
     return baker_count
         
 
     
 
-franchises_and_days = input('Enter the franchise and the number of days of info: ').split()
+franchises_and_days = input('Enter the number of franchises and the number of days: ').split()
 
 F = int(franchises_and_days[0])
 
@@ -186,7 +185,7 @@ D = int(franchises_and_days[1])
 
 days_lst = bakerDays(D)
 
-print(check_13(days_lst))
+print(check_13(days_lst, F, D))
 
 
 
