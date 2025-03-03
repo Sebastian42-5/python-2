@@ -56,37 +56,37 @@ def allIntervalsOK(lst_intervals):
     return True
 
 
-# TODO : read input 
+# # TODO : read input 
 
 
-n = int(input('Number of boxes: '))
+# n = int(input('Number of boxes: '))
 
-boxes = readBoxes(n)
+# boxes = readBoxes(n)
 
 
-# TODO : check if all the boxes are okay 
+# # TODO : check if all the boxes are okay 
 
-if not allBoxesOK(boxes):
-    print('NO!')
+# if not allBoxesOK(boxes):
+#     print('NO!')
 
-else:
-    # TODO : Obtain a new list of boxes with only the left and right heights (intervals)
+# else:
+#     # TODO : Obtain a new list of boxes with only the left and right heights (intervals)
 
-    intervals = boxIntervals(boxes)
+#     intervals = boxIntervals(boxes)
 
-    # TODO : sort the boxes (the intervals)
+#     # TODO : sort the boxes (the intervals)
 
-    intervals.sort()
+#     intervals.sort()
 
-    print(intervals)
+#     print(intervals)
 
-    # TODO : determine whether the boxes are organized or not 
+#     # TODO : determine whether the boxes are organized or not 
 
-    if allIntervalsOK(intervals):
-        print('YES!')
+#     if allIntervalsOK(intervals):
+#         print('YES!')
 
-    else:
-        print('NO!')
+#     else:
+#         print('NO!')
 
 # This one is done (go to toyBoxes)
 
@@ -144,62 +144,112 @@ This totals to 1 baker's dozen.
 '''
 
 def bakerDays(D):
-      days_lst = []
+    days_lst = []
 
-      pass
+    for i in range(D):
+        day = input(": ").split()
+        for i in range(len(day)):
+            day[i] = int(day[i])
+        days_lst.append(day)
+    return days_lst
+
+
+def check_13(days_lst, F, D):
+    franchise_list = []
+
+    baker_count = 0
+
+    for day in days_lst:
+        if sum(day) % 13 == 0:
+            baker_count += sum(day) // 13
+
+    for i in range(F):
+        for j in range(D):
+            franchise_list.append(days_lst[j][i])
+        franchise_sum = sum(franchise_list)
+        if franchise_sum % 13 == 0:
+            baker_count += sum(day) // 13
+    
+    return baker_count
+        
+
     
 
-franchises_and_days = int(input('Enter the franchise and the number of days of info: ')).split()
+# franchises_and_days = input('Enter the number of franchises and the number of days: ').split()
 
-F = franchises_and_days[0]
-
-D = franchises_and_days[1]
+# F = int(franchises_and_days[0])
 
 
+# D = int(franchises_and_days[1])
+
+
+# days_lst = bakerDays(D)
+
+# # print(check_13(days_lst, F, D))
+
+
+
+
+
+
+'''
+Question 4: Unique Paths
+Given a m by n matrix, you are to determine and print the 
+number of unique paths starting at the top left corner and
+ending at the bottom right corner of the matrix.  The only
+possible moves that can be made are either a move to the
+right or down. 
+
+    Example-1: 
+
+        0  1
+    [0   [x, x],
+    1   [x, x]  ]
+
+    path 1: (0, 0) --> (0, 1) --> (1, 1)
+    path 2: (0, 0) --> (1, 0) --> (1, 1)
+
+    => output: 2
+
+
+    Example-2: 
+
+        0  1  2
+    [0   [x, x, x],
+    1   [x, x, x],
+    2   [x, x, x]  ]
+
+    path 1: (0, 0) --> (0, 1) --> (0, 2) --> (1, 2)
+    path 2: (0, 0) --> (0, 1) --> (1, 1) --> (1, 2)
+    path 3: (0, 0) --> (1, 0) --> (1, 1) --> (1, 2)
+
+    => output: 3
+    '''
+
+# def matrixPaths(matrix):
+
+#     row = len(matrix)
+#     column = len(matrix[0])
+
+#     start = matrix[0][0]
+
+#     end = matrix[-1][-1]
+
+#     for i in range(row):
+#         for j in range(column):
+
+
+def uniquePaths(m, n):
     
+    matrix = [[1] * n for _ in range(m)]
+
+    for i in range(1, m):
+        for j in range(1, n):
+            matrix[i][j] = matrix[i - 1][j] + matrix[i][j - 1]
+    return matrix[-1][-1]
 
 
-
-
-
-      '''
-      Question 4: Unique Paths
-      Given a m by n matrix, you are to determine and print the 
-      number of unique paths starting at the top left corner and
-      ending at the bottom right corner of the matrix.  The only
-      possible moves that can be made are either a move to the
-      right or down. 
-
-      Example-1: 
-
-            0  1
-      [0   [x, x],
-      1   [x, x]  ]
-
-      path 1: (0, 0) --> (0, 1) --> (1, 1)
-      path 2: (0, 0) --> (1, 0) --> (1, 1)
-
-      => output: 2
-
-
-      Example-2: 
-
-            0  1  2
-      [0   [x, x, x],
-      1   [x, x, x],
-      2   [x, x, x]  ]
-
-      path 1: (0, 0) --> (0, 1) --> (0, 2) --> (1, 2)
-      path 2: (0, 0) --> (0, 1) --> (1, 1) --> (1, 2)
-      path 3: (0, 0) --> (1, 0) --> (1, 1) --> (1, 2)
-
-      => output: 3
-      '''
-
-def matrixPaths(n):
-    pass
-
-
+print(uniquePaths(2, 2))
 
 '''
 Question 5: 
@@ -207,5 +257,4 @@ Update Pascal's Triangle code so that your algorithm uses only O(1) space.
 '''
 
 # I finished this question
-
 
