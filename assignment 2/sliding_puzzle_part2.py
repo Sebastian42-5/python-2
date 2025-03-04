@@ -1,3 +1,6 @@
+# part 1 of the assignment 2:
+
+
 import random
 import sys 
 
@@ -41,7 +44,7 @@ def getNewPuzzle(n):
     lines = tileLables(n)
     random.shuffle(lines)
     for i in range(n):
-        line = lines[i * n: (i + 1) * n]
+        line = lines[ i * n: (i + 1) * n]
         puzzle.append(line)
     puzzle = displayBoard(puzzle)
     
@@ -80,10 +83,9 @@ def nextMove(puzzle):
     if empty_column < columns - 1:
         valid_moves.append(move_lst[3]) # you can move right
 
-    move = ' '
 
     while move not in valid_moves: 
-        move = input(f'Enter WASD (or QUIT): {'/'.join(valid_moves)}')
+        move = input(f'Enter WASD (or QUIT): ({i}) ' for i in valid_moves)
         if move not in valid_moves:
             print('You have an invalid input. Try again')
 
@@ -94,16 +96,26 @@ def nextMove(puzzle):
     return move 
 
 
-    
 
-    
-    
+# part 2 of the assignment 2:
 
 
-
-
-
+def makeMove(puzzle, move):
+    move_count = 0
+    next_move = nextMove(puzzle)
 
 
 
+print('Welcome to the tile puzzle. You have to make it so that the numbers are sorted, moiving the tiles in respect to the empty space in the n by n puzzle!')
+
+n = int(input('Enter the desired dimensions of your square tile puzzle: '))
+
+def puzzleWin(puzzle):
+
+    for row in puzzle:
+        if row == sorted(row):
+            return True 
+    return False
+
+# if puzzleWin(puzzle):
 
