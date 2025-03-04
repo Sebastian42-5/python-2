@@ -103,7 +103,21 @@ def nextMove(puzzle):
 
 def makeMove(puzzle, move):
     move_count = 0
-    next_move = nextMove(puzzle)
+    move = nextMove(puzzle)
+
+    empty_row, empty_column = findEmptyTile(puzzle) 
+
+    if move == 'W':
+        puzzle[empty_row][empty_column] == 0
+    
+    elif move == 'A':
+        puzzle[empty_row][empty_column] == 0
+
+    elif move == 'S':
+        puzzle[empty_row][empty_column] == 0
+
+    elif move == 'D':
+        puzzle[empty_row][empty_column] == 0
 
 
 
