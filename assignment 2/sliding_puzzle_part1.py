@@ -8,53 +8,8 @@ def tileLables(n):
 
     return str_lst
 
+# display board function provided 
 
-def getNewPuzzle(n):
-    puzzle = []
-    line = []
-    lines = tileLables(n)
-    random.shuffle(lines)
-    for _ in range(n):
-        for i in range(3):
-            line.append(lines[i])
-        puzzle.append(line)
-    puzzle = displayBoard(puzzle)
-    
-    return puzzle
-
-print(getNewPuzzle(3))
-
-
-def findEmptyTile(puzzle):
-    rows = len(puzzle)
-    columns = len(puzzle[0])
-
-    for i in range(rows):
-        for j in range(columns):
-            if puzzle[i][j] == '  ':
-                empty_coord = (i, j)
-    return empty_coord
-
-
-def nextMove(puzzle):
-    move = input('Enter your move: ')
-
-    if move == 'W':
-    
-    elif move == 'A':
-
-    elif move == 'S':
-    
-    elif move == 'D':
-
-    
-    
-
-
-
-
-
-# display board function provided
 
 def displayBoard(board_lst):
     n = len(board_lst)
@@ -78,6 +33,49 @@ def displayBoard(board_lst):
     print(draw_board.format(*labels))
         
         
+
+def getNewPuzzle(n):
+    puzzle = []
+    lines = tileLables(n)
+    random.shuffle(lines)
+    for i in range(n):
+        line = lines[ i * n: (i + 1) * n]
+        puzzle.append(line)
+    puzzle = displayBoard(puzzle)
+    
+    return puzzle
+
+print(getNewPuzzle(3))
+
+
+def findEmptyTile(puzzle):
+    rows = len(puzzle)
+    columns = len(puzzle[0])
+
+    for i in range(rows):
+        for j in range(columns):
+            if puzzle[i][j] == '  ':
+                empty_coord = (i, j)
+    return empty_coord
+
+
+# def nextMove(puzzle):
+#     move = input('Enter your move: ')
+
+#     if move == 'W':
+    
+#     elif move == 'A':
+
+#     elif move == 'S':
+    
+#     elif move == 'D':
+
+    
+    
+
+
+
+
 
 
 
