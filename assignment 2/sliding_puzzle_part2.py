@@ -45,7 +45,6 @@ def getNewPuzzle(n):
     for i in range(n):
         line = lines[i * n: (i + 1) * n]
         puzzle.append(line)
-    puzzle = displayBoard(puzzle)
     
     return puzzle
 
@@ -71,21 +70,21 @@ def nextMove(puzzle):
 
     empty_row, empty_column = findEmptyTile(puzzle)
 
-    valid_moves = []
+    valid_moves = ['quit']
 
     if empty_row > 0: 
-        valid_moves.append(move_lst[0])  # you can move up
+        valid_moves.append('S')  # you can move up
     if empty_row < rows - 1: 
-        valid_moves.append(move_lst[2]) # you can move down
+        valid_moves.append('W') # you can move down
     if empty_column > 0: 
-        valid_moves.append(move_lst[1]) # you can move left
+        valid_moves.append('D') # you can move left
     if empty_column < columns - 1:
-        valid_moves.append(move_lst[3]) # you can move right
+        valid_moves.append('A') # you can move right
 
     move = ' '
 
     while move not in valid_moves: 
-        move = input(f'Enter WASD (or QUIT): {'/'.join(valid_moves)}')
+        move = input(f'Enter WASD (or QUIT) {'/'.join(valid_moves)}: ')
         if move not in valid_moves:
             print('You have an invalid input. Try again')
 
@@ -94,8 +93,6 @@ def nextMove(puzzle):
 
 
     return move 
-
-
 
 
 # part 2 of the assignment 2:
@@ -109,18 +106,18 @@ def makeMove(puzzle, move):
     empty_row, empty_column = findEmptyTile(puzzle) 
 
     if move == 'W':
-        puzzle[empty_row][empty_column], puzzle[empty_row - 1][empty_column] = puzzle[empty_row - 1][empty_column], puzzle[empty_row][empty_column]
+        puzzle[empty_row][empty_column], puzzle[empty_row + 1][empty_column] = puzzle[empty_row + 1][empty_column], puzzle[empty_row][empty_column]
     
     elif move == 'A':
-        puzzle[empty_row][empty_column], puzzle[empty_row][empty_column - 1] = puzzle[empty_row][empty_column - 1], puzzle[empty_row][empty_column]
+        puzzle[empty_row][empty_column], puzzle[empty_row][empty_column + 1] = puzzle[empty_row][empty_column + 1], puzzle[empty_row][empty_column]
         
 
     elif move == 'S':
-        puzzle[empty_row][empty_column], puzzle[empty_row + 1][empty_column] = puzzle[empty_row + 1][empty_column], puzzle[empty_row][empty_column]
+        puzzle[empty_row][empty_column], puzzle[empty_row - 1][empty_column] = puzzle[empty_row - 1][empty_column], puzzle[empty_row][empty_column]
         
 
     elif move == 'D':
-        puzzle[empty_row][empty_column], puzzle[empty_row][empty_column + 1] = puzzle[empty_row - 1][empty_column], puzzle[empty_row][empty_column]
+        puzzle[empty_row][empty_column], puzzle[empty_row][empty_column - 1] = puzzle[empty_row - 1][empty_column], puzzle[empty_row][empty_column]
        
     return None
 
@@ -143,22 +140,22 @@ n = int(input('Enter the desired dimensions of your square tile puzzle: '))
 
 move_count = 0
 
-while not puzzleWin:
+puzzle = getNewPuzzle(n) 
 
-    puzzle = getNewPuzzle(n)
 
-    print(puzzle)
+while not puzzleWin(puzzle):
+
+    displayBoard(puzzle)
 
     move = nextMove(puzzle)
 
     makeMove(puzzle, move)
-
-    print(puzzle)
     
     move_count += 1
 
     if (n == 9 and move_count >= 31) or (n == 15 and move_count >= 80):
         print('Best of luck next time! ')
+        
 
     if puzzleWin:
         print('Congratulations! You have completed the puzzle! ')
