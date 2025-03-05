@@ -1,10 +1,11 @@
 Topics for test:
 
-pandas numpy matplotlib
+
+pandas + numpy + matplotlib
 
 debugging and error messages
 
-nested loops (two dimensional list and complexity)
+nested loops (two dimensional lists and complexity)
 
 tuples
 
@@ -12,6 +13,7 @@ time space complexity
 
 dictionaries 
 
-we need to come up with 
+we need to come up with two mock questions and submit them by Friday 
+
 
 
