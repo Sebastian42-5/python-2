@@ -1,6 +1,8 @@
 import random
 import sys 
 
+# 1. 
+
 def tileLables(n):
     str_lst = []
     for i in range(1, n**2):
@@ -34,7 +36,7 @@ def displayBoard(board_lst):
     draw_board += horizontal_div
     print(draw_board.format(*labels))
         
-        
+# 2.
 
 def getNewPuzzle(n):
     puzzle = []
@@ -49,6 +51,7 @@ def getNewPuzzle(n):
 
 print(getNewPuzzle(3))
 
+# 3.
 
 def findEmptyTile(puzzle):
     rows = len(puzzle)
@@ -60,6 +63,7 @@ def findEmptyTile(puzzle):
                 empty_coord = (i, j)
     return empty_coord
 
+# 4.
 
 def nextMove(puzzle):
     move_lst = ['W', 'A', 'S', 'D', 'quit']

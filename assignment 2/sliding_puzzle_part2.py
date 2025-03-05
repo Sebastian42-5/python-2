@@ -101,29 +101,31 @@ def nextMove(puzzle):
 # part 2 of the assignment 2:
 
 
+# 5.
+
 def makeMove(puzzle, move):
-    move_count = 0
     move = nextMove(puzzle)
 
     empty_row, empty_column = findEmptyTile(puzzle) 
 
     if move == 'W':
-        puzzle[empty_row][empty_column] == 0
+        puzzle[empty_row][empty_column], puzzle[empty_row - 1][empty_column] = puzzle[empty_row - 1][empty_column], puzzle[empty_row][empty_column]
     
     elif move == 'A':
-        puzzle[empty_row][empty_column] == 0
+        puzzle[empty_row][empty_column], puzzle[empty_row][empty_column - 1] = puzzle[empty_row][empty_column - 1], puzzle[empty_row][empty_column]
+        
 
     elif move == 'S':
-        puzzle[empty_row][empty_column] == 0
+        puzzle[empty_row][empty_column], puzzle[empty_row + 1][empty_column] = puzzle[empty_row + 1][empty_column], puzzle[empty_row][empty_column]
+        
 
     elif move == 'D':
-        puzzle[empty_row][empty_column] == 0
+        puzzle[empty_row][empty_column], puzzle[empty_row][empty_column + 1] = puzzle[empty_row - 1][empty_column], puzzle[empty_row][empty_column]
+       
+    return None
 
 
-
-print('Welcome to the tile puzzle. You have to make it so that the numbers are sorted, moiving the tiles in respect to the empty space in the n by n puzzle!')
-
-n = int(input('Enter the desired dimensions of your square tile puzzle: '))
+# helping function to determine if the player won or not:
 
 def puzzleWin(puzzle):
 
@@ -132,5 +134,36 @@ def puzzleWin(puzzle):
             return True 
     return False
 
-# if puzzleWin(puzzle):
+# Main program 6.
+
+
+print('Welcome to the tile puzzle. You have to make it so that the numbers are sorted, moiving the tiles in respect to the empty space in the n by n puzzle!')
+
+n = int(input('Enter the desired dimensions of your square tile puzzle: '))
+
+move_count = 0
+
+while not puzzleWin:
+
+    puzzle = getNewPuzzle(n)
+
+    print(puzzle)
+
+    move = nextMove(puzzle)
+
+    makeMove(puzzle, move)
+
+    print(puzzle)
+    
+    move_count += 1
+
+    if (n == 9 and move_count >= 31) or (n == 15 and move_count >= 80):
+        print('Best of luck next time! ')
+
+    if puzzleWin:
+        print('Congratulations! You have completed the puzzle! ')
+
+
+
+
 
