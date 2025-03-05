@@ -49,7 +49,7 @@ def getNewPuzzle(n):
     
     return puzzle
 
-print(getNewPuzzle(3))
+# print(getNewPuzzle(3))
 
 
 def findEmptyTile(puzzle):
