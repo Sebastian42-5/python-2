@@ -101,7 +101,6 @@ def nextMove(puzzle):
 # 5.
 
 def makeMove(puzzle, move):
-    move = nextMove(puzzle)
 
     empty_row, empty_column = findEmptyTile(puzzle) 
 
@@ -117,7 +116,7 @@ def makeMove(puzzle, move):
         
 
     elif move == 'D':
-        puzzle[empty_row][empty_column], puzzle[empty_row][empty_column - 1] = puzzle[empty_row - 1][empty_column], puzzle[empty_row][empty_column]
+        puzzle[empty_row][empty_column], puzzle[empty_row][empty_column - 1] = puzzle[empty_row][empty_column - 1], puzzle[empty_row][empty_column]
        
     return None
 
@@ -126,10 +125,14 @@ def makeMove(puzzle, move):
 
 def puzzleWin(puzzle):
 
-    for row in puzzle:
-        if row == sorted(row):
-            return True 
-    return False
+    n = len(puzzle)
+
+    correct_order = [str(i) for i in range(1, n**2)] + ['  ']
+
+    flat_puzzle = [tile for row in puzzle for tile in row]
+        
+    return flat_puzzle == correct_order
+
 
 # Main program 6.
 
@@ -140,10 +143,13 @@ n = int(input('Enter the desired dimensions of your square tile puzzle: '))
 
 move_count = 0
 
+game_over = False
+
+
 puzzle = getNewPuzzle(n) 
 
 
-while not puzzleWin(puzzle):
+while not game_over:
 
     displayBoard(puzzle)
 
@@ -153,13 +159,16 @@ while not puzzleWin(puzzle):
     
     move_count += 1
 
-    if (n == 9 and move_count >= 31) or (n == 15 and move_count >= 80):
+    if puzzleWin(puzzle):
+        print('Congratulations! You have completed the puzzle! ')
+        game_over = True
+
+    elif (n == 9 and move_count >= 31) or (n == 15 and move_count >= 80):
         print('Best of luck next time! ')
+        game_over = True
         
 
-    if puzzleWin:
-        print('Congratulations! You have completed the puzzle! ')
-
+    
 
 
 
