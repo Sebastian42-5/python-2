@@ -1,0 +1,15 @@
+Topics for test:
+
+pandas numpy matplotlib
+
+debugging and error messages
+
+nested loops (two dimensional list and complexity)
+
+tuples
+
+time space complexity 
+
+dictionaries 
+
+
