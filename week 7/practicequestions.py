@@ -36,9 +36,13 @@
 # topic 2: Failed cooking book
 
 ''' 
-You want to cook a matcha cheesecake for your mother. However, the cooking book has all of the steps completely reversed and numbered +2 instead of normally.
+You want to cook a matcha cheesecake for your mom. However, the cooking book has all of the steps completely reversed and numbered +2.
 
 Fix the cookbook (which is actually a dictionary where the keys are the steps and the values are the step numbers) so you can cook the cheesecake!
+
+You also want a list with the steps for better readability. Dictionaires confused you...
+
+Hurry! Your mom us coming soon!
 
 '''
 
@@ -51,7 +55,7 @@ def fixingCookbook(d: dict):
     for key in reversed_dict:
         reversed_dict[key] -= 2
 
-    return reversed_dict
+    return reversed_dict, list(reversed_dict.keys())
 
 print(fixingCookbook({'bake': 5, 'cook': 4, 'water': 3}))
 
