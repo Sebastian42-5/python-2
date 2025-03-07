@@ -7,96 +7,32 @@
 # Question type and difficulty : Short answer: medium 
 
 
+
 # topic 1
 
 '''
-You and your friend are doing a challenge: you are playing three tic tac toe games combined, put within a dictionary. The X's are 1s and the Os are 2s. 
+You and your friend are doing a challenge: you are playing three tic tac toe games combined, put within a dictionary. The X's are 1s and the Os are 2s.
 
-Also, the keys are strings of the name of the player which won the game (which is a 2d list)
+In this tictactoe, there are no order of turns. You and your friends just random put values in the 3 by 3 board spontaneously 
 
-After you finish 25 games of this double tic tac toe, you need to store the number of vertical, horizontal and diagonal wins for each game
+Also, the keys are strings of the name of the player which won the game and the values are the corresponded board in which that player won (which are 2d lists)
+
+After you finish one game of this double tic tac toe, you need to store the number of vertical, horizontal and diagonal wins
 
 You need to generate three random games a) and afterwards, 
 
-use a histogram to represents the vertical wins, the horizontal wins and the diagonal wins with the data show above (b)
-
-c) what is the time complexity of this program?
+use a bar plot to represents the number of vertical wins, horizontal wins and diagonal wins (b)
 
 You have to use list comprehension in this question!
 
+So in the end, your code should print the dictionary, the dataFrame that you create to create the bar plot and the bar plot itself.
+
+Good luck!
+
 '''
 
-# answer :
+# answer : (refer to the .ipynb file)
 
-import random 
-
-def check_win(board):
-
-    horizontalwins = 0
-    verticalwins = 0
-    diagonalwins = 0
-
-    player = None
-
-    for row in board:
-        if row[0] == row[1] == row[2]: # horizontal win
-            horizontalwins += 1
-            if row[0] == 1:
-                player = 'Player1'
-            else:
-                player = 'Player2'
-    for col in range(3):
-        if board[0][col] == board[1][col] == board[2][col]: # vertical win 
-            verticalwins += 1
-            if board[0][col] == 1:
-                player = 'Player1'
-            else:
-                player = 'Player2'
-    if board[0][0] == board[1][1] == board[2][2]: # front diagonal win
-        diagonalwins += 1
-        if board[0][0] == 1:
-            player = 'Player1'
-        else:
-            player = 'Player2'
-    
-    elif board[0][2] == board[1][1] == board[2][0]: # back diagonal win
-        diagonalwins += 1
-        if board[0][0] == 1:
-            player = 'Player1'
-        else:
-            player = 'Player2'
-
-    return player, horizontalwins, verticalwins, diagonalwins
-
-
-def create_game():
-
-    games = {'Player1': [], 'Player2': []}
-
-    total_horizontal = 0
-    total_vertical = 0
-    total_diagonal = 0
-
-    for _ in range(3):
-        board = [[random.randint(1, 2) for _ in range(3)] for _ in range(3)]
-
-        winner, h, v, d = check_win(board)
-
-        total_horizontal += h
-        total_vertical += v
-        total_diagonal += d
-
-
-        if winner:
-            games[winner].append(board)
-
-    return games, total_horizontal, total_vertical, total_diagonal
-
-
-games = create_game()
-
-
-print(games)
 
 
 # topic 2: Failed cooking book
