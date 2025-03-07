@@ -26,10 +26,29 @@
 # topic 1
 
 '''
+You and your friend are doing a challenge: you are playing three tic tac toe games combined, put within a dictionary. The X's are 1s and the Os are 2s. 
 
+Also, the keys are strings of the name of the player which originally has the most rows to their name and the values are the tic tac toe game (which is a 2d list)
+
+After you finish 25 games of this double tic tac toe, you have this interesting data:
+
+There was 9 vertical wins, 4 horizontal wins and 12 diagonal wins.
+
+In every game, there is already an 1 or a 2 for each row. 
+
+You need to generate three random games a) and afterwards, 
+
+use a histogram to represents the vertical wins, the horizontal wins and the diagonal wins with the data show above (b)
 
 '''
 
+def tictactoe(dict):
+    for value in dict:
+        for row in value:
+
+
+
+game = {'Player1': [[1],[2],[1]], 'Player2': [[2],[2],[1]], 'Player1': [[1],[1],[2]]} 
 
 
 

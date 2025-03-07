@@ -1,6 +1,8 @@
 import random
 import sys 
 
+# Sebastian Soto 2432947
+
 # 1. 
 
 def tileLables(n):

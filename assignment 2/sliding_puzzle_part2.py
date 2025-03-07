@@ -97,6 +97,7 @@ def nextMove(puzzle):
 
 # part 2 of the assignment 2:
 
+# Sebastian Soto 2432947
 
 # 5.
 
