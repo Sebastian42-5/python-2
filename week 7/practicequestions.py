@@ -19,7 +19,7 @@ Also, the keys are strings of the name of the player which won the game and the 
 
 This means that at the end, the dictionary with have 2 keys (Player1, Player2) and two values (each value is a list that contains the boards of the corresponded wins of that player)
 
-After you finish one game of this double tic tac toe, you need to store the number of vertical, horizontal and diagonal wins in a dataFrame
+After you finish one game of these several tic tac toes, you need to store the number of vertical, horizontal and diagonal wins in a dataFrame
 
 Note that since there are no turns, one game could have several wins, so it could have two verticals and a diagonal win for example
 
