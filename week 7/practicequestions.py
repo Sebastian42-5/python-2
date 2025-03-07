@@ -21,9 +21,11 @@ This means that at the end, the dictionary with have 2 keys (Player1, Player2) a
 
 After you finish one game of this double tic tac toe, you need to store the number of vertical, horizontal and diagonal wins in a dataFrame
 
+Note that since there are no turns, one game could have several wins, so it could have two verticals and a diagonal win for example
+
 You need to generate three random boards and create the dictionary accordingly a) and afterwards, 
 
-use a bar plot to represents the number of vertical wins, horizontal wins and diagonal wins (b)
+use a bar plot to represents the number of vertical wins, horizontal wins and diagonal wins b)
 
 You have to use list comprehension in this question!
 
