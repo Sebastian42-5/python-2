@@ -42,7 +42,7 @@ Fix the cookbook (which is actually a dictionary where the keys are the steps an
 
 You also want a list with the steps for better readability. Dictionaires confused you...
 
-Hurry! Your mom us coming soon!
+Hurry! Your mom is coming soon!
 
 '''
 
