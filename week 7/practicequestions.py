@@ -17,9 +17,9 @@ In this tictactoe, there are no order of turns. You and your friends just random
 
 Also, the keys are strings of the name of the player which won the game and the values are the corresponded board in which that player won (which are 2d lists)
 
-This means that at the end, the dictionary with have 2 keys (Player1, Player2) and three values (one key can will have at least more than one value because there are three values)
+This means that at the end, the dictionary with have 2 keys (Player1, Player2) and two values (each value is a list that contains the boards of the corresponded wins of that player)
 
-After you finish one game of this double tic tac toe, you need to store the number of vertical, horizontal and diagonal wins
+After you finish one game of this double tic tac toe, you need to store the number of vertical, horizontal and diagonal wins in a dataFrame
 
 You need to generate three random boards and create the dictionary accordingly a) and afterwards, 
 
@@ -32,7 +32,6 @@ So in the end, your code should print the dictionary, the dataFrame that you cre
 Good luck!
 
 '''
-
 
 
 
