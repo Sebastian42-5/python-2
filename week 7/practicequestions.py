@@ -11,7 +11,7 @@
 # topic 1
 
 '''
-You and your friend are doing a challenge: you are playing three tictactoe games combined, put within a dictionary. The X's are 1s and the Os are 2s.
+You and your friend are doing a challenge: you are playing n tictactoe games combined, put within a dictionary. The X's are 1s and the Os are 2s.
 
 In this tictactoe, there are no order of turns. You and your friends just random put values in the 3 by 3 board spontaneously 
 
@@ -23,9 +23,9 @@ After you finish one game of this double tic tac toe, you need to store the numb
 
 Note that since there are no turns, one game could have several wins, so it could have two verticals and a diagonal win for example
 
-You need to generate three random boards and create the dictionary accordingly a) and afterwards, 
+You need to generate n random boards and create the dictionary accordingly a) and afterwards, 
 
-use a bar plot to represents the number of vertical wins, horizontal wins and diagonal wins b)
+use a bar plot to represents the number of vertical wins, horizontal wins and diagonal wins. The bar plot should adjust according to the n tictactoe games played b)
 
 You have to use list comprehension in this question!
 
