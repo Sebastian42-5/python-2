@@ -94,7 +94,7 @@ print(a, b)
 print()
 print(d)
 
-# you can see that when a changes explicitly vaariables pointing to the same list changes too. 
+# you can see that when a changes explicitly variables pointing to the same list changes too. 
 # therefore, in this case, both variables a and b are changed.
 
 

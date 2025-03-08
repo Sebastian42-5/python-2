@@ -15,8 +15,6 @@ print(new_sighting(butterflies))
 
 
 
-
-
 # kinds = ['Monarch', 'Painted Lady', 'Bronze Copper', 'Orange Sulphur']
 
 # counts = [5, 2, 12, 7]

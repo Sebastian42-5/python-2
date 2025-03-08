@@ -21,7 +21,7 @@ j = 0
 
 while i < len(word) and j < len(sub_block):
     if word[i] == sub_block[j]:   
-        if j != len(sub_block) - 1:    
+        if j != len(sub_block) - 1: # if we are not at the end of the subblock
             j = j + 1               
         else:       
             block_count += 1 
