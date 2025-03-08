@@ -1,7 +1,7 @@
 def combine2(d1, d2):
     '''
     
-    >>> combine2({a: {3: [2], 4: [5. 6]}}, {'b': {3:[8, 12]}})
+    >>> combine2({a: {3: [2], 4: [5, 6]}}, {'b': {3:[8, 12]}})
 
     {3: 22}
 
@@ -10,24 +10,20 @@ def combine2(d1, d2):
     
     '''
 
-    
 
+    new_dict = {}
 
+    for outer_key in d1:
+        if outer_key in d2:
+            for inner_key in d1[outer_key]:
+                if inner_key in d2[outer_key]:
 
-    # new_dict = {}
+                    sumd1 = sum(d1[outer_key][inner_key])
+                    sumd2 = sum(d2[outer_key][inner_key])
 
-    # for dict in d1:
-    #     for key in dict:
-    #         if key in d2:
-    #             lst_d1 = d1[dict][key]
-    #             lst_d2 = d2[dict][key]
-    #             new_dict[key] = sum(lst_d1) + sum(lst_d2)
-    # return new_dict
-
-
-
-
-
+                    new_dict[inner_key] = sumd1 + sumd2
+    return new_dict
+                
 
 d1 = {'a': {3: [2], 4: [5, 6]}, 'b': {7: [2, 7, 9], 4: [5, 6]} }
 
