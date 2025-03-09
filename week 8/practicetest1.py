@@ -1,13 +1,3 @@
-# 1
-
-# 2
-
-# 3
-
-# 4
-
-# 5
-
 # 6
 
 # def countPeaks(matrix):
@@ -18,7 +8,6 @@
 #     for i in range(rows):
 #         for j in range(columns):
 #             if matrix[i][j] > matrix[i - 1][j] and matrix[i][j] > matrix[i + 1][j]
-
 
 
 # 7 
@@ -201,7 +190,7 @@ for i in range(10):
     elif i % 2 == 0: 
         a[-1].append(3) 
  
-print(a[1])
+# print(a[1])
    
 
 # 31
@@ -223,8 +212,288 @@ value with the matching index in lst.
     return temp_dict
 
 
-print(listToDict(lst_of_keys, lst))
+# print(listToDict(lst_of_keys, lst))
  
+
+# 32
+
+d = {'a': 10, 'b': 20, 'c': 30} 
+d['d'] = d.get('e', 40) 
+# print(d)
+
+
+# 33
+
+# bug 1 : for student, grades in students 
+
+# bug 2 : top_student == student shouldn't be a double equal 
+
+# bug 3 : it's looping through the keys which are strings and it's trying to add it to the total
+
+# bug 4 : the total should be an outer variable 
+
+students = { 
+    'Alice': [85, 90, 78], 
+    'Bob': [92, 88, 95], 
+    'Charlie': [70, 80, 65], 
+    'David': [100, 98, 95] 
+} 
  
+highest_avg = 0 
+top_student = "" 
+total = 0
+ 
+for student in students: 
+
+    total = sum(students[student])
+
+    average = total / len(students[student])
+ 
+    if average > highest_avg: 
+        highest_avg = average 
+        top_student = student 
+ 
+
+# print(f"The student with the highest average is {top_student} with an average of {highest_avg}.")
+
+
+# 34 
+
+butterflies = { 'name': 'Monarch',
+  'count': 10,  
+  'Location': ['forest', 'lake'] } 
+ 
+butterflies['count'] = butterflies.get('count') + 1 
+if 'colour' not in butterflies.keys(): 
+  butterflies['colour'] = 'orange' 
+  butterflies.get('Location', []).append('meadow') 
    
+# for key in butterflies: 
+#     print(f'{key}: {butterflies[key]}')  
+
+
+# 37 
+
+matrix = [ [1, 2, 3],  
+     [4, 5, 6],  
+     [7, 8, 9] ] 
+
+
+sorted_lst = [vector[v] for v in range(3) for vector in matrix] 
+
+# print(sorted_lst)
+
+
+#  41 
+
+
+def words(lst): 
+    dict = {} 
+ 
+    for word in lst: 
+        l_counts = {} 
+        for letter in word: 
+            if letter in l_counts: 
+                l_counts[letter] += 1 
+            else: 
+                l_counts[letter] = 1 
+ 
+        m_count = 0 
+        max_l = [] 
+        for letter, count in l_counts.items(): 
+            if count > m_count: 
+                m_count = count 
+                max_l = [letter] 
+            elif count == m_count: 
+                max_l.append(letter) 
+ 
+        chosen = max_l[0] 
+        for letter in max_l: 
+            if letter < chosen: 
+                chosen = letter 
+ 
+        if chosen not in dict: 
+            dict[chosen] = [] 
+        dict[chosen].append(word) 
+ 
+    to_remove = [] 
+    for key in dict: 
+        count = 0 
+        for word in dict[key]: 
+            count += 1 
+        if count <= 1: 
+            to_remove.append(key) 
+ 
+    for key in to_remove: 
+        del dict[key] 
+ 
+    new_keys = [] 
+    for key in dict: 
+        inserted = False 
+        for i in range(len(new_keys)): 
+            if key < new_keys[i]: 
+                new_keys.insert(i, key) 
+                inserted = True 
+                break 
+        if not inserted: 
+            new_keys.append(key) 
+ 
+    new_dict = {} 
+    for key in new_keys: 
+        new_dict[key] = dict[key] 
+ 
+    print(new_dict) 
+ 
+lst = ['big', 'but', 'born', 'alt', 'any', 'little', 'lots', 'bill', 
+'almost', 'giraffe', 'fox'] 
+
+# words(lst)
+
+
+# 42
+
+k = 0 
+for i in range(1, 5): 
+  k += i ** 3
+# print(k)
+
+
+# 45
+
+matrix = [ [1, 2, 3], 
+          [4, 5, 6], 
+          [7, 8, 9] ]  
+
+total = 0
+
+for i in range(len(matrix)):  
+    for j in range(len(matrix[i])):
+        if i == j:  
+            total += matrix[i][j] * 2  
+        else: 
+            total -= matrix[i][j]  
+# print(total)
+
+
+
+# 46 
+
+def modify_tuple(t): 
+    x, y, z = t  # here you are referring to each of the three elements of the tuple. You can access those elements with assigning
+    new_t = (z, x + y, y - z)  
+    return new_t  
+ 
+tuple = ((5, 2, 8), (3, 6, 1), (4, 9, 7))  
+lst =  []  
+for i in tuple:  
+  lst.append(modify_tuple(i))  
+ 
+# print(lst)
+
+# print(lst[1][2] + lst[2][0]) 
+
+
+# 59 
+
+def flightsData(lst_o_dict : list):
+    final_dict = {'total_flights_per_destination': []}
+
+    destination_counts  = {}
+
+    for value in lst_o_dict:
+        destination = value['destination']
+        flight = value['flights']
+        
+        if destination in destination_counts:
+            destination_counts[destination] += flight
+        else:
+            destination_counts[destination] = flight
+    
+    for destination, flight in destination_counts.items():
+        final_dict['total_flights_per_destination'].append({'destination': destination, 'flights': flight})
+
+
+
+    return final_dict 
+
+lst_o_dict = [ {'destination': 'USA', 'flights': 11}, 
+{'destination': 'France', 'flights': 19}, 
+{'destination': 'USA', 'flights': 20}, 
+{'destination': 'France', 'flights': 10}, 
+{'destination': 'Morocco', 'flights': 27}, 
+{'destination': 'China', 'flights': 35}, 
+{'destination': 'Morocco', 'flights': 9} ]
+
+
+# print(flightsData(lst_o_dict))
+
+
+# 66 
+
+def findingWord(matrix, word):
+
+    vertical_join = ''
+
+    for i in range(3):
+        if ''.join(matrix[i]) == word:
+            return True 
+        
+        vertical_join += ''.join(matrix[i][0])
+        if vertical_join == word:
+            return True 
+    return False
+
+grid = [  ['r', 'a', 't'], 
+['a', 'o', 'g'], 
+['c', 'a', 't'] ] 
+word = "rat" 
+
+# print(findingWord(grid, word))
+
+# 67 
+
+matrix = [[-1 for _ in range(5)] for _ in range(5)]
+
+# print(matrix)
+
+# this code has a time complexity of O(1) because the number of rows and the number of columns if fixed O(5) * O(25) = O(1)
+# otherwise, if it was n rows and n columns, this code would have a time complexity of O(n^2)
+
+
+# 69 
+
+def modify_tuple(t): 
+    t[1][0] += 5   # this is modifying both the list in t1 and the list in t2
+    return (t[0] * 2, t[1]) 
+ 
+t1 = (3, [4, 5]) 
+t2 = modify_tuple(t1) 
+ 
+# print(t1) 
+# print(t2)
+
+
+# key takeaway: you can modify a pointer inside of a function and if you call this function, it can still modify both the original 
+# as well as the pointer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
