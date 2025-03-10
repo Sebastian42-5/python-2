@@ -477,6 +477,69 @@ t2 = modify_tuple(t1)
 # as well as the pointer
 
 
+# 77 
+
+
+def mySum4(m): 
+    output = 0 
+    for x in m: 
+        if type(x) == list: 
+            for k in x: 
+                output += k 
+        else: 
+            output += float(x) 
+        return output 
+ 
+m = [1,'2.5',[10],-1] 
+ 
+
+# print(mySum4(m))
+
+# 79
+
+def organize_students(students):
+
+    organized_dict = {}
+
+    for student in students:
+
+        name = student[0]
+        
+        class_name = student[1]
+
+        scores = student[2:]
+
+        score = round(sum(scores) / len(scores), 2)
+
+        if class_name not in organized_dict:
+            organized_dict[class_name] = {}
+        
+        organized_dict[class_name][name] = score
+
+    return organized_dict 
+
+
+students = [["Alice", "Math", 80, 90, 70],  
+["Bob", "Math", 85, 92, 88], 
+["Charlie", "Science", 95,100, 90], 
+["David", "Science", 60, 75, 80]]
+
+print(organize_students(students))
+
+
+
+# 85
+
+lst = [(num, [num**2, num+1]) for num in range(1,3)]  
+num = lst[1][1]  
+num[0] += 7  
+# print(num,lst)
+
+
+ 
+
+   
+
 
 
 
