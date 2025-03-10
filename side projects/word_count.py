@@ -14,7 +14,7 @@ most_common_words = Counter(paragraph)
 
 most_common_word = most_common_words.most_common()[0][0]
 
-print(f'Your paragraph has {number_of_words} words, {number_of_sentences} sentences, and {number_of_characters} characters! The most common word is : {most_common_word}')
+print(f'\nYour paragraph has {number_of_words} words, {number_of_sentences} sentences, and {number_of_characters} characters! The most common word is : {most_common_word}')
 
 
 
