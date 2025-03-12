@@ -100,6 +100,7 @@ print(len(addresses))
 
 
 
+
 # sets
 
 # unordered unique elements 
@@ -109,6 +110,60 @@ print(len(addresses))
 # {12, 33 72, 77}
 
 # it prints {72, 33, 12, 77}
+
+# sets are faster than lists, because they are sorted with hashs
+
+# {11, 33, 72} == {33, 11, 72} -> True
+
+# {11, 11, 33, 72} == {33, 11, 72}
+
+# len({11, 12}) -> 2
+
+# a {} is an empty dict not an empty set 
+
+# set = set({})
+
+# you cannot index through elements of a set 
+
+# {(1, 2), (3, 5)} this is fine
+
+# {(1, 2), (2, 3, [4, 5]), (3, 4)}  this is problematic because it contains a list, a mutable object 
+
+# in a set you do searching in a constant time, in a list you do searching in linear time 
+
+# A set works with hash tables 4, 5, 6 (constant index access) 
+
+# functions
+
+# s.add(2) (it adds it somewhere)
+
+# s.remove(33)
+
+# 5 in s -> false
+
+# s1 = {1, 2, 3, 4}
+# s2 = {5, 6, 7, 8, 9}
+
+# s1.update(s2) s2 doesn't change but s1 is gonna be extended with s2
+
+# s1 becomes {1, 2, 3, 4, 5, 6, 7, 8, 9}
+# s2 is {5, 6, 7, 8, 9}
+
+# dir(set())
+
+# dir('')
+
+# help(set().union())  -> return the union of sets as a copy of the set 
+
+
+
+
+
+
+
+
+
+
 
 
 
