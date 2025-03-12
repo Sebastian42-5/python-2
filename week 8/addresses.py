@@ -85,15 +85,14 @@ def clean(email_address: str):
 
 n = int(input('Enter the number of emails to read: '))
 
-addresses = []
+addresses = {}
 
 for i in range(n):
     email_address = input(f'Enter the email {i + 1}: ')
 
     email_address = clean(email_address)
 
-    if email_address not in addresses:
-        addresses.append(email_address)
+    addresses.add(email_address)
 
 
 print(len(addresses))
