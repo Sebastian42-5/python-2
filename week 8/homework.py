@@ -14,17 +14,81 @@ INPUT SPECIFICATION
 by a space
 
 
---> next N lines conatins a sunglke string si.
+--> next N lines contains a single string si.
 it is guaranteed that all strings will be unique
 
 
---> next M sections contain a single integer Ti, which is fol.owed by Ti lines each containing a single stringr ri .
+--> next M sections contain a single integer Ti, which is followed by Ti lines each containing a single string ri .
 
 
 OUTPUT SPECIFICATION:
 
+output a single integer on a single line, 
+the answer to the problem (i.e the number of assignments Firgus can complete)
+
+Sample input 
+3 4 
+chalk
+cheese
+charger
+1
+cheese
+2
+coins 
+cash
+3
+charger 
+chalk 
+caffeine
+3
+cheese charger 
+chalk 
 
 
+A = {1, 2, 3, 4, 5, 6}
 
+B = {2, 4, 6, 1}
+
+B is a subset of A
+
+Every element of B is in A
 
 '''
+
+def homework(n):
+
+    N_and_M = input('Enter the number of items and assignments: ').split()
+
+    homework_count = 0
+
+    items = set()
+
+    n = N_and_M[0]
+
+    m = N_and_M[1]
+
+
+    for i in range(n):
+        items.add(input(f'Enter item number {i + 1}'))
+    
+    for j in range(m):
+        assignment = set()
+        N_for_hw = int(input('Enter the number of items to complete the hw: '))
+        for k in range(N_for_hw):
+            item_for_hw = input(f'Enter item {k + 1} for assignment {j + 1}: ') 
+            assignment.add(item_for_hw)
+    
+    for element in assignment:
+        if element in items:
+            homework_count += 1
+    
+
+    return homework_count
+
+            
+
+
+
+
+
+    pass
