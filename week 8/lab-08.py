@@ -103,7 +103,14 @@ birthdays
 '''
 
 def mostCovered(birthdays):
+    birthday_count = []
+    for month in birthdays:
+        count = len(birthdays[month]) 
+        birthday_count.append(count)
     
+    return max(birthday_count)
+
+
     pass
 
 
