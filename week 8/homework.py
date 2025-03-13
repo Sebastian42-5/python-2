@@ -55,7 +55,7 @@ Every element of B is in A
 
 '''
 
-def homework(n):
+def homework():
 
     N_and_M = input('Enter the number of items and assignments: ').split()
 
@@ -63,32 +63,24 @@ def homework(n):
 
     items = set()
 
-    n = N_and_M[0]
+    n = int(N_and_M[0])
 
-    m = N_and_M[1]
+    m = int(N_and_M[1])
 
 
     for i in range(n):
-        items.add(input(f'Enter item number {i + 1}'))
+        items.add(input(f'Enter item number {i + 1}: '))
     
     for j in range(m):
         assignment = set()
-        N_for_hw = int(input('Enter the number of items to complete the hw: '))
+        N_for_hw = int(input(f'Enter the number of items to complete the hw {j + 1}: '))
         for k in range(N_for_hw):
-            item_for_hw = input(f'Enter item {k + 1} for assignment {j + 1}: ') 
-            assignment.add(item_for_hw)
-    
-    for element in assignment:
-        if element in items:
+            assignment.add(input(f'Enter item {k + 1} for assignment {j + 1}: ') )
+        if assignment.issubset(items):
             homework_count += 1
-    
 
-    return homework_count
-
-            
+    print(homework_count)
 
 
 
-
-
-    pass
+homework()
