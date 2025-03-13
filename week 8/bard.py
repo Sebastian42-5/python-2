@@ -70,6 +70,8 @@ Sample output -3:
 
 1
 
+only the bard sings 
+
 
 '''
 
