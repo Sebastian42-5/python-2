@@ -1,6 +1,6 @@
 '''
 
-Every evening villahers on a small villahe gather around a big fire and sing sonhs
+Every evening villagers on a small villahe gather around a big fire and sing sonhs
 
 A promminent member of the comm is the bard every enening if the bard is present. he sings
 a band new songs that no villager has heard before and no other song is sung that nught in the event
@@ -76,4 +76,45 @@ only the bard sings
 '''
 
 def bard():
-    pass
+    villagers = int(input('Enter the number of villagers: '))
+    evenings = int(input('Enter the number of evenings: '))
+
+    known_songs = {1: {0}}
+
+    all_songs = set([0])
+
+    for _ in range(evenings):
+        evening = set(map(int, input('Enter the number of villagers followed by the number of each villager in the evening: ').split()))
+
+        the_bard_is_present = 1 in evening
+
+        if the_bard_is_present:
+            new_song = max(all_songs) + 1
+            for villager in evening:
+                known_songs.setdefault(villager, set()).add(new_song)
+        
+        else:
+            shared_songs = set()
+            for villager in evening:
+                if villager in known_songs:
+                    shared_songs.update(known_songs[villager])
+            for villager in evening:
+                known_songs.setdefault(villager, set()).update(shared_songs) 
+            all_songs.update(shared_songs)
+
+    villagers_that_know_all_songs = sorted([villager for villager in known_songs if known_songs[villager] == all_songs]) 
+
+
+    for villager in villagers_that_know_all_songs:
+        print(villager)
+
+
+bard()
+
+
+
+
+
+
+
+    

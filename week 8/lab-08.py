@@ -63,10 +63,6 @@ def birthday_storer():
 
     birthdays = {}
 
-    days_names = {}
-
-    name_lst = []
-
     stop = False
 
     while not stop:
@@ -75,23 +71,24 @@ def birthday_storer():
 
         if birthday == 'stop':
             stop = True
+        else:
+            parts = birthday.split()
 
-        month, day, name = birthday.split()
+            month = parts[0]
+            day = parts[1]
+            name = parts[2]
 
-        if day not in days_names:
-            days_names[day] = name_lst
+            if month not in birthdays:
+                birthdays[month] = {}
 
-        if name not in days_names[day]:
-            name_lst.append(name)
+            if day not in birthdays[month]:
+                birthdays[month][day] = []
 
-        if month not in birthdays:
-            birthdays[month] = days_names
-
+            if name not in birthdays[month][day]:
+                birthdays[month][day].append(name)
 
     return birthdays 
 
-
-birthday_storer()
 
 
 
@@ -103,21 +100,28 @@ birthdays
 '''
 
 def mostCovered(birthdays):
-    birthday_count = []
+
+    max_month_count = 0
+
     for month in birthdays:
         count = len(birthdays[month]) 
-        birthday_count.append(count)
+        if count > max_month_count:
+            max_month_count = count
+            max_month = month
     
-    return max(birthday_count)
+    return max_month
 
 
-    pass
+birthdays = birthday_storer()
 
+# print(mostCovered(birthdays)) 
+
+   
 
 '''
 (c) write a function called invert() that will take
 the birthday month dictionary entered by the user in
-part(a) and return the equivalent brithday dictionary
+part(a) and return the equivalent birthday dictionary
 
 Sample Input is the dictionary returned in part (a)
 
@@ -128,6 +132,18 @@ Sample Output:
 'Lucy': ('May', '8')}
 '''
 
-def invert(d):
-    pass
+def invert(birthdays: dict):
+    new_dict = {}
+
+    for month, days in birthdays.items():
+        for day, names in days.items(): 
+            for name in names:
+                new_dict[name] = (month, day)
+
+    return new_dict
+      
+      
+inverted = invert(birthdays)
+
+print(inverted)
 
