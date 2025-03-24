@@ -132,7 +132,7 @@ Sample Output:
 'Lucy': ('May', '8')}
 '''
 
-def invert(birthdays):
+def invert(birthdays: dict):
     new_dict = {}
 
     for month, days in birthdays.items():
