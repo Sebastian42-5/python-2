@@ -79,19 +79,24 @@ def bard():
     villagers = int(input('Enter the number of villagers: '))
     evenings = int(input('Enter the number of evenings: '))
 
-    known_songs = {1: {0}}
+    known_songs = {1: {1}}
 
-    all_songs = set([0])
+    all_songs = set([1])
 
     for _ in range(evenings):
-        evening = set(map(int, input('Enter the number of villagers followed by the number of each villager in the evening: ').split()))
+        evening = list(map(int, input('Enter the number of villagers followed by the number of each villager in the evening: ').split()))
+
+        evening.pop(0)
 
         the_bard_is_present = 1 in evening
 
         if the_bard_is_present:
             new_song = max(all_songs) + 1
+            all_songs.add(new_song)
             for villager in evening:
-                known_songs.setdefault(villager, set()).add(new_song)
+                if villager not in known_songs:
+                    known_songs[villager] = set()
+                known_songs[villager].add(new_song)
         
         else:
             shared_songs = set()
@@ -99,17 +104,22 @@ def bard():
                 if villager in known_songs:
                     shared_songs.update(known_songs[villager])
             for villager in evening:
-                known_songs.setdefault(villager, set()).update(shared_songs) 
+                if villager not in known_songs:
+                    known_songs[villager] = set()
+                known_songs[villager].update(shared_songs)
             all_songs.update(shared_songs)
 
     villagers_that_know_all_songs = sorted([villager for villager in known_songs if known_songs[villager] == all_songs]) 
-
 
     for villager in villagers_that_know_all_songs:
         print(villager)
 
 
 bard()
+
+
+
+
 
 
 
