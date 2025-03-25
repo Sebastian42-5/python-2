@@ -79,9 +79,9 @@ def bard():
     villagers = int(input('Enter the number of villagers: '))
     evenings = int(input('Enter the number of evenings: '))
 
-    known_songs = {1: {1}}
+    known_songs = {1: {0}}
 
-    all_songs = set([1])
+    all_songs = set([0])
 
     for _ in range(evenings):
         evening = list(map(int, input('Enter the number of villagers followed by the number of each villager in the evening: ').split()))
