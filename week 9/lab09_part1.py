@@ -106,7 +106,7 @@ for key in grade_dict:
 
     exam3_lst.append(grade_dict[key][2])
 
-    print(f' for {' '.join(key)}, the max value is : {max_value}, the min value is: {min_value}, and the average is : {average}')
+    print(f'\nFor {' '.join(key)}, the max value is : {max_value}, the min value is: {min_value}, and the average is : {average}')
 
 
 all_min_max = [min(exam1_lst), max(exam1_lst), min(exam2_lst), max(exam2_lst), min(exam3_lst), max(exam3_lst)]
@@ -115,9 +115,9 @@ all_min_max = [min(exam1_lst), max(exam1_lst), min(exam2_lst), max(exam2_lst), m
 overall_average = sum(average_lst) / len(average_lst)
 
 
-print(f'this are the min and max values for each exam for all students, respectively: {all_min_max}')
+print(f'\nThese are the min and max values for each exam for all students, respectively: {all_min_max}')
 
-print(f' the overall average across all the grades of all the students is : {overall_average}')
+print(f'\nThe overall average across all the grades of all the students is : {overall_average}')
 
 
 
