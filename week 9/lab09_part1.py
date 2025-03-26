@@ -65,11 +65,11 @@ each_line = line.split(',')
 
 for each_line in input_file:
 
-    key = each_line[0] + each_line[1]
+    key = [each_line[0], each_line[1]]
 
     value_lst = each_line[2:]
 
-    value = [int(item) for item in value_lst]
+    value = list(map(int, value_lst))
 
     if key not in grade_dict:
         grade_dict[key] = value 
