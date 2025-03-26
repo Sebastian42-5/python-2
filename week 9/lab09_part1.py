@@ -48,7 +48,9 @@ the inner dictionary is the balance.  Print the final dictionary.
 
 output_file = open('grades.txt', 'w')
 
-for i in range(10):
+n = int(input('Enter the number of students: '))
+
+for i in range(n):
     line = input(f'Enter grade info for student {i + 1}: ')
 
     output_file.write(line + '\n')
@@ -61,18 +63,23 @@ input_file = open('grades.txt', 'r')
 
 grade_dict = {}
 
-each_line = line.split(',')
+each_line = line.split()
 
 for each_line in input_file:
 
-    key = [each_line[0], each_line[1]]
+    each_line = each_line.split()
+
+    key = (each_line[0], each_line[1])
 
     value_lst = each_line[2:]
 
+    # print(value_lst)
+
     value = list(map(int, value_lst))
 
-    if key not in grade_dict:
-        grade_dict[key] = value 
+    grade_dict[key] = value
+
+input_file.close()
 
 
 average_lst = []
@@ -93,16 +100,13 @@ for key in grade_dict:
 
     average_lst.append(average)
 
-    exam1_grade = grade_dict[key][0]
-    exam1_lst.append(exam1_grade)
+    exam1_lst.append(grade_dict[key][0])
 
-    exam2_grade = grade_dict[key][1]
-    exam2_lst.append(exam2_grade)
+    exam2_lst.append(grade_dict[key][1])
 
-    exam3_grade = grade_dict[key][2]
-    exam3_lst.append(exam3_grade)
+    exam3_lst.append(grade_dict[key][2])
 
-    print(max_value, min_value, average)
+    print(f' for {' '.join(key)}, the max value is : {max_value}, the min value is: {min_value}, and the average is : {average}')
 
 
 all_min_max = [min(exam1_lst), max(exam1_lst), min(exam2_lst), max(exam2_lst), min(exam3_lst), max(exam3_lst)]
@@ -111,9 +115,9 @@ all_min_max = [min(exam1_lst), max(exam1_lst), min(exam2_lst), max(exam2_lst), m
 overall_average = sum(average_lst) / len(average_lst)
 
 
-print(all_min_max)
+print(f'this are the min and max values for each exam for all students, respectively: {all_min_max}')
 
-print(overall_average)
+print(f' the overall average across all the grades of all the students is : {overall_average}')
 
 
 
