@@ -56,7 +56,7 @@ input = open('words_updated.txt', 'r')
 
 num_words = len(list(input))
 
-lst_stripped = list(map(str.rstrip, input))
+lst_stripped = list(map(str.strip, input.readlines()))
 
 checking_words = ' '.join(lst_stripped)
 
