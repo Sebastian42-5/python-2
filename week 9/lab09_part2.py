@@ -26,7 +26,56 @@ word in the words.txt file is on a new line.
     your file.  Make sure to close all files that you have opened.  
 '''
 
+# part a)
+
+input_file = open('words.txt', 'r')
+
 output_file = open('words_updated.txt', 'w')
+
+lst = []
+
+for line in input_file:
+    lst.append(line.rstrip())
+
+output_file.write(' '.join(lst))
+
+
+input_file.close()
+
+output_file.close()
+
+# part b)
+
+
+while k < 1 or k > 80:
+    k = int(input('Enter a number between 1 and 80: '))
+
+output = open('result.txt', 'w')
+
+input = open('words_updated.txt', 'r')
+
+num_words = len(list(input))
+
+lst_stripped = list(map(str.rstrip, input))
+
+checking_words = ' '.join(lst_stripped)
+
+
+# for i in range(checking_words):
+#     if checking_words[i] == ' ' and i + 1 < k:
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
