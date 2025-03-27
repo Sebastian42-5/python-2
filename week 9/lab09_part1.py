@@ -98,7 +98,7 @@ for key in grade_dict:
 
     average = sum(grade_dict[key]) / len(grade_dict[key])
 
-    average_lst.append(average)
+    average_lst.append(sum(grade_dict[key]) / len(grade_dict[key]))
 
     exam1_lst.append(grade_dict[key][0])
 
