@@ -46,6 +46,7 @@ output_file.close()
 
 # part b)
 
+
 k = 0
 
 num_words = len(lst) 
@@ -61,7 +62,7 @@ output = open('result.txt', 'w')
 
 input = open('words_updated.txt', 'r')
 
-words = input_file.read().split()
+words = input.read().split()
 
 current_line = ''
 
@@ -70,13 +71,19 @@ for word in words:
     if len(current_line) + len(word) + (1 if current_line else 0) <= k:
         current_line += (' ' if current_line else '') + word
     else:
-        output_file.write(current_line + '\n')
+        output.write(current_line + '\n')
         current_line = word
     
 if current_line:
-    output_file.write(current_line + '\n')
+    output.write(current_line + '\n')
 
 
+result_output = open('result.txt', 'r')
+
+print(result_output.read())
+
+input.close()
+output.close()
 
 
 

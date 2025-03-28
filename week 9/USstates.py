@@ -62,29 +62,38 @@ between any two sample inputs.
 
 '''
 
-def special_pair():
+def special_pair(n):
 
     total_pairs = 0
+    
+    values = []
 
-    n = int(input('Enter the number of cities: '))
-
+    d = {}
 
     for i in range(n):
 
-        city_state = input(f'Enter the city and the state for city {i + 1}: ').split()
+        city, state = input(f'Enter the city and the state for city {i + 1}: ').split()
 
-        city_state[0] = city_state[0][:2]
+        split_city = city[:2]
+
+        d[i] = set([city, state])
+    
+
+    for j in range(len(d)):
+        for k in range(len(d)):
+            if d[j] == d[k]:
+                total_pairs += 1
+    
+    total_pairs //= 2
 
 
     return total_pairs
-
 
 
 for _ in range(5):
     output_file = open('city_states.txt', 'r+')
 
     n = int(input('Enter the number of cities: '))
-
 
     for i in range(n):
 
@@ -94,7 +103,10 @@ for _ in range(5):
 
         output_file.write('\n')
 
-        print(special_pair())
+        print(special_pair(n))
+
+
+output_file.close()
         
 
 
