@@ -46,23 +46,35 @@ output_file.close()
 
 # part b)
 
+k = 0
+
+num_words = len(lst) 
+
 
 while k < 1 or k > 80:
-    k = int(input('Enter a number between 1 and 80: '))
+    try:
+        k = int(input('Enter a number between 1 and 80: '))
+    except ValueError:
+        print('Enter the proper input.')
 
 output = open('result.txt', 'w')
 
 input = open('words_updated.txt', 'r')
 
-num_words = len(list(input))
+words = input_file.read().split()
 
-lst_stripped = list(map(str.strip, input.readlines()))
-
-checking_words = ' '.join(lst_stripped)
+current_line = ''
 
 
-# for i in range(checking_words):
-#     if checking_words[i] == ' ' and i + 1 < k:
+for word in words:
+    if len(current_line) + len(word) + (1 if current_line else 0) <= k:
+        current_line += (' ' if current_line else '') + word
+    else:
+        output_file.write(current_line + '\n')
+        current_line = word
+    
+if current_line:
+    output_file.write(current_line + '\n')
 
 
 
