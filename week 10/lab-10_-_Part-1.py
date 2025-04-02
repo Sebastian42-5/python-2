@@ -4,13 +4,18 @@ Open your story file from class for reading.
 (a) Print the story (only the story) for the user to read
 (b) Count the total number of words in the story
 (c) Count the frequency of each word in the story.  Then sort all the available words
-    in the story according to their frequence from highest to lowest. Display the results.
+    in the story according to their frequency from highest to lowest. Display the results.
 '''
 # from collections import Counter
 
 input_file = open('sharks.txt', 'r', encoding = 'UTF8')
 
 shark_content = input_file.read().rstrip()
+
+print(shark_content)
+
+print('\n')
+
 
 shark_lst = shark_content.split()
 
@@ -19,14 +24,39 @@ word_count = len(shark_lst)
 frequency_dict = {}
 
 for word in shark_lst:
-    frequency_dict[word] = 1
 
-    if word in frequency_dict:
+    if word not in frequency_dict:
+        frequency_dict[word] = 1
+    else:
         frequency_dict[word] += 1
 
 
+# print(frequency_dict)
 
-print(frequency_dict)
+# print('\n')
+
+
+word_frequency = []
+
+for word, count in frequency_dict.items():
+    word_frequency.append((count, word))
+
+
+word_frequency = sorted(word_frequency)[::-1]
+
+sorted_words = []
+
+for count, word in word_frequency:
+    for _ in range(count):
+        sorted_words.append(word)
+
+
+print(' '.join(sorted_words))
+
+
+print('\n')
+
+
 
 
 # output_file.writelines(shark_lst)
@@ -37,15 +67,12 @@ print(frequency_dict)
 
 
 
-
-print(word_count)
+print(f'Your story has: {word_count} words')
 
 
 
 input_file.close()
 # output_file.close()
-
-
 
 
 
@@ -66,6 +93,81 @@ these files and print the contents of each file to the screen.
 
 # This code has already been done 
 
+# dog_names = ['Albert ', 'Cupcake ', 'Winston ']
+
+# cat_names = ['Destructor ', 'Terminator ', 'Ruler ']
+
+
+# dog_file = open('dog.txt', 'w')
+# cat_file = open('cat.txt', 'w')
+
+
+# dog_file.writelines(dog_names)
+# cat_file.writelines(cat_names)
+
+# dog_file.close()
+# cat_file.close()
+
+
+# try:
+
+#     dog_input = open('cats.txt', 'r')
+#     cat_input = open('dog.txt', 'r')
+
+# except FileNotFoundError:
+#     print('One of the files does not exist.')
+
+# else:
+#     for line in dog_input:
+#         print(line.rstrip())
+#     for line in cat_input:
+#         print(line.rstrip())
+
+
+#     dog_input.close()
+#     cat_input.close()
+
+
+
+# 3) 
+
+
+# dog_names = ['Albert ', 'Cupcake ', 'Winston ']
+
+# cat_names = ['Destructor ', 'Terminator ', 'Ruler ']
+
+
+# dog_file = open('dog.txt', 'w')
+# cat_file = open('cat.txt', 'w')
+
+
+# dog_file.writelines(dog_names)
+# cat_file.writelines(cat_names)
+
+# dog_file.close()
+# cat_file.close()
+
+
+# try:
+
+#     dog_input = open('cats.txt', 'r')
+#     cat_input = open('dog.txt', 'r')
+
+# except FileNotFoundError:
+#     pass
+
+# else:
+#     for line in dog_input:
+#         print(line.rstrip())
+#     for line in cat_input:
+#         print(line.rstrip())
+
+
+#     dog_input.close()
+#     cat_input.close()
+
+
+# I would change the print message under the except to a pass for my code to fail silently.
 
 # Question 3
 '''
@@ -78,3 +180,20 @@ numbers and then by entering some text instead of a number.
 '''
 
 # This code has already been done 
+
+
+
+# while True:
+#     try:
+#         num1 = int(input('Enter the first number to be added: '))
+#         num2 = int(input('Enter the second number to be added: '))
+    
+#     except ValueError:
+#         print('One of your numbers is not an integer. Try again!')
+
+#     else:
+#         print(num1 + num2)
+#         break
+
+
+
