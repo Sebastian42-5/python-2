@@ -17,30 +17,10 @@ else:
 
 
 
-
-input_file = open('sharks.txt', 'r', encoding = 'UTF8')
-
-shark_content = input_file.read()
-
-shark_lst = shark_content.split()
-
-word_count = len(shark_lst)
-
-# output_file.writelines(shark_lst)
-
-
-
-print(word_count)
-
-
-
-input_file.close()
-# output_file.close()
-
-
-
 '''
 1) Count the number of words
+
+
 
 
 
@@ -63,6 +43,45 @@ numbers and then by entering some text instead of a number.
 '''
 
 # 1)
+
+# Question 1
+'''
+Open your story file from class for reading.
+(a) Print the story (only the story) for the user to read
+(b) Count the total number of words in the story
+(c) Count the frequency of each word in the story.  Then sort all the available words
+    in the story according to their frequence from highest to lowest. Display the results.
+'''
+
+
+
+
+
+input_file = open('sharks.txt', 'r', encoding = 'UTF8')
+
+shark_content = input_file.read()
+
+shark_lst = shark_content.split()
+
+word_count = len(shark_lst)
+
+# output_file.writelines(shark_lst)
+
+
+
+
+print(word_count)
+
+
+
+input_file.close()
+# output_file.close()
+
+
+
+
+
+
 
 # 2) 
 
