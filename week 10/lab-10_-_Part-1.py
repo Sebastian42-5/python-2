@@ -10,7 +10,7 @@ Open your story file from class for reading.
 
 input_file = open('sharks.txt', 'r', encoding = 'UTF8')
 
-shark_content = input_file.read()
+shark_content = input_file.read().rstrip()
 
 shark_lst = shark_content.split()
 
@@ -23,6 +23,7 @@ for word in shark_lst:
 
     if word in frequency_dict:
         frequency_dict[word] += 1
+
 
 
 print(frequency_dict)
