@@ -1,3 +1,6 @@
+# PART 1
+
+
 # Question 1
 '''
 Open your story file from class for reading.
@@ -30,6 +33,10 @@ not a number, and print a friendly error message.  Test your program by entering
 numbers and then by entering some text instead of a number.  
 '''
 
+
+# PART 2
+
+
 # Question 4
 '''
 Using the json module write student information to the file in JSON format.  
@@ -38,11 +45,29 @@ gradebook_dict = {'students': [student1dictionary, student2dictionary, ...]}.
 
 Each dictionary in the list represents one student and contains the keys:
 'first_name', 'last_name', 'exam1', 'exam2' and 'exam3'.  The keys map to the
-values represengint each student's first name (string), last name (string) and 
+values representing each student's first name (string), last name (string) and 
 three exam scores (integers).  
 
 Output the gradebook_dict in JSON format to the file grades.json.  
 '''
+
+import json 
+
+gradebook_dict = {'students': 
+{{'first_name': 'Loic', 'last_name': 'Nzenang', 'exam1': 100, 'exam2': 90, 'exam3': 98},\
+{'first_name': 'Joey', 'last_name': 'Meyo', 'exam1': 95, 'exam2': 94, 'exam3': 87},\
+{'first_name': 'Loic', 'last_name': 'Nzenang', 'exam1': 89, 'exam2': 95, 'exam3': 76},\
+{'first_name': 'Loic', 'last_name': 'Nzenang', 'exam1': 76, 'exam2': 70, 'exam3': 84},\
+{'first_name': 'Loic', 'last_name': 'Nzenang', 'exam1': 67, 'exam2': 90, 'exam3': 98}
+}}
+
+output = open('grades.json', 'w')
+
+
+json.dump(gradebook_dict, output, indent = 4)
+
+output.close()
+
 
 # Question 5
 '''
@@ -51,6 +76,14 @@ question.  Display the data in tabular format, including an additional
 column showing each student's average to the right of the student's three
 exam grades and an additional row showing the class average on each exam.  
 '''
+
+input = open('grades.json', 'r')
+
+
+
+
+
+
 
 
 
@@ -67,9 +100,18 @@ def readFileURLString(url):
 
     return decoded_html
 
-data_str = readFileURLString()
+url_list = ['https://gutenberg.org/cache/epub/174/pg174.txt', 'https://gutenberg.org/cache/epub/64317/pg64317.txt', \
+            'https://gutenberg.org/cache/epub/2701/pg2701.txt', 'https://gutenberg.org/cache/epub/16389/pg16389.txt', \
+                'https://gutenberg.org/cache/epub/2554/pg2554.txt']
 
-print()
+for url in url_list:
+
+    data_str_url = readFileURLString(url)
+    
+
+
+
+# print()
 
 output_fule = open('alice.txt', 'w', encoding = 'utf-8')
 
