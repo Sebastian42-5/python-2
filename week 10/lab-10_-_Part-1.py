@@ -41,6 +41,7 @@ word_frequency = []
 for word, count in frequency_dict.items():
     word_frequency.append((count, word))
 
+# replace this with a bubble sort or another sorting algorithm
 
 word_frequency = sorted(word_frequency)[::-1]
 
