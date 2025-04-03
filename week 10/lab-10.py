@@ -53,18 +53,19 @@ Output the gradebook_dict in JSON format to the file grades.json.
 
 import json 
 
-gradebook_dict = {'students': 
-{{'first_name': 'Loic', 'last_name': 'Nzenang', 'exam1': 100, 'exam2': 90, 'exam3': 98},\
+gradebook_dict = {'students': \
+[{'first_name': 'Loic', 'last_name': 'Nzenang', 'exam1': 100, 'exam2': 90, 'exam3': 98},\
 {'first_name': 'Joey', 'last_name': 'Meyo', 'exam1': 95, 'exam2': 94, 'exam3': 87},\
 {'first_name': 'Loic', 'last_name': 'Nzenang', 'exam1': 89, 'exam2': 95, 'exam3': 76},\
 {'first_name': 'Loic', 'last_name': 'Nzenang', 'exam1': 76, 'exam2': 70, 'exam3': 84},\
-{'first_name': 'Loic', 'last_name': 'Nzenang', 'exam1': 67, 'exam2': 90, 'exam3': 98}
-}}
+{'first_name': 'Loic', 'last_name': 'Nzenang', 'exam1': 67, 'exam2': 90, 'exam3': 98}\
+]}
+# gradebook_dict = {'firstname': {'year': 1}}
 
 output = open('grades.json', 'w')
 
 
-json.dump(gradebook_dict, output, indent = 4)
+json.dump(gradebook_dict, output)
 
 output.close()
 
@@ -77,7 +78,7 @@ column showing each student's average to the right of the student's three
 exam grades and an additional row showing the class average on each exam.  
 '''
 
-input = open('grades.json', 'r')
+# input = open('grades.json', 'r')
 
 
 
@@ -90,48 +91,48 @@ input = open('grades.json', 'r')
 
 
 
-from urllib.request import urlopen
+# from urllib.request import urlopen
 
-def readFileURLString(url):
-    data = urlopen(url)
-    html_data = data.read()
-    encoding = data.headers.get_content_charset('utf-8')
-    decoded_html = html_data.decode(encoding)
+# def readFileURLString(url):
+#     data = urlopen(url)
+#     html_data = data.read()
+#     encoding = data.headers.get_content_charset('utf-8')
+#     decoded_html = html_data.decode(encoding)
 
-    return decoded_html
+#     return decoded_html
 
-url_list = ['https://gutenberg.org/cache/epub/174/pg174.txt', 'https://gutenberg.org/cache/epub/64317/pg64317.txt', \
-            'https://gutenberg.org/cache/epub/2701/pg2701.txt', 'https://gutenberg.org/cache/epub/16389/pg16389.txt', \
-                'https://gutenberg.org/cache/epub/2554/pg2554.txt']
+# url_list = ['https://gutenberg.org/cache/epub/174/pg174.txt', 'https://gutenberg.org/cache/epub/64317/pg64317.txt', \
+#             'https://gutenberg.org/cache/epub/2701/pg2701.txt', 'https://gutenberg.org/cache/epub/16389/pg16389.txt', \
+#                 'https://gutenberg.org/cache/epub/2554/pg2554.txt']
 
-for url in url_list:
+# for url in url_list:
 
-    data_str_url = readFileURLString(url)
-    
-
+#     data_str_url = readFileURLString(url)
 
 
-# print()
-
-output_fule = open('alice.txt', 'w', encoding = 'utf-8')
 
 
-'''
---> pick 5 books
---> read 4 of the 5 books
---> write each of the 4 books into a separate file, automate this process as much as possible 
---> The fifth book title keep in mind, but don't read/write it
+# # print()
 
-using try-except block to do the following:
-
---> read number of words of the story only
---> find the frequency of each word in the file
---> number of paragraphs
---> number of sentences
---> number of sentences
---> length of smallest and longest word, average length 
---> most common vowel
---> what is the average usage of punctuation marks for every 100 sentences
+# output_fule = open('alice.txt', 'w', encoding = 'utf-8')
 
 
-'''
+# '''
+# --> pick 5 books
+# --> read 4 of the 5 books
+# --> write each of the 4 books into a separate file, automate this process as much as possible 
+# --> The fifth book title keep in mind, but don't read/write it
+
+# using try-except block to do the following:
+
+# --> read number of words of the story only
+# --> find the frequency of each word in the file
+# --> number of paragraphs
+# --> number of sentences
+# --> number of sentences
+# --> length of smallest and longest word, average length 
+# --> most common vowel
+# --> what is the average usage of punctuation marks for every 100 sentences
+
+
+# '''
