@@ -10,74 +10,76 @@ Open your story file from class for reading.
     in the story according to their frequence from highest to lowest. Display the results.
 '''
 
-# # from collections import Counter
+# from collections import Counter
 
-# input_file = open('sharks.txt', 'r', encoding = 'UTF8')
+input_file = open('sharks.txt', 'r', encoding = 'UTF8')
 
-# shark_content = input_file.read().rstrip()
+shark_content = input_file.read().rstrip()
 
-# print(shark_content)
+print(shark_content)
 
-# print('\n')
+print('\n')
 
+def wordcount():
+    pass
 
-# shark_lst = shark_content.split()
+shark_lst = shark_content.split()
 
-# word_count = len(shark_lst)
+word_count = len(shark_lst)
 
-# frequency_dict = {}
+frequency_dict = {}
 
-# for word in shark_lst:
+for word in shark_lst:
 
-#     if word not in frequency_dict:
-#         frequency_dict[word] = 1
-#     else:
-#         frequency_dict[word] += 1
-
-
-# # print(frequency_dict)
-
-# # print('\n')
+    if word not in frequency_dict:
+        frequency_dict[word] = 1
+    else:
+        frequency_dict[word] += 1
 
 
-# word_frequency = []
-
-# for word, count in frequency_dict.items():
-#     word_frequency.append((count, word))
-
-# # replace this with a bubble sort or another sorting algorithm
-
-# word_frequency = sorted(word_frequency)[::-1]
-
-# sorted_words = []
-
-# for count, word in word_frequency:
-#     for _ in range(count):
-#         sorted_words.append(word)
-
-
-# print(' '.join(sorted_words))
-
+# print(frequency_dict)
 
 # print('\n')
 
 
+word_frequency = []
+
+for word, count in frequency_dict.items():
+    word_frequency.append((count, word))
+
+# replace this with a bubble sort or another sorting algorithm
+
+word_frequency = sorted(word_frequency)[::-1]
+
+sorted_words = []
+
+for count, word in word_frequency:
+    for _ in range(count):
+        sorted_words.append(word)
 
 
-# # output_file.writelines(shark_lst)
-
-# # word_frequency = Counter(shark_lst)
-
-# # print(word_frequency)
+print(' '.join(sorted_words))
 
 
-
-# print(f'Your story has: {word_count} words')
+print('\n')
 
 
 
-# input_file.close()
-# # output_file.close()
+
+# output_file.writelines(shark_lst)
+
+# word_frequency = Counter(shark_lst)
+
+# print(word_frequency)
+
+
+
+print(f'Your story has: {word_count} words')
+
+
+
+input_file.close()
+# output_file.close()
 
 
 
@@ -266,10 +268,10 @@ exam1_avg = exam1total / len(gradebook_dict['students'])
 exam2_avg = exam2total / len(gradebook_dict['students'])
 exam3_avg = exam3total / len(gradebook_dict['students'])
 
-for student in grades_dict['students']:
-    print(student['first_name'], student['last_name'], student['exam1'], student['exam2'], student['exam3'], student['average'])
+# for student in grades_dict['students']:
+#     print(student['first_name'], student['last_name'], student['exam1'], student['exam2'], student['exam3'], student['average'])
 
-print(exam1_avg, exam2_avg, exam3_avg)
+# print(exam1_avg, exam2_avg, exam3_avg)
         
 
 
@@ -277,31 +279,6 @@ print(exam1_avg, exam2_avg, exam3_avg)
 
 # extra question:
 
-
-from urllib.request import urlopen
-
-def readFileURLString(url):
-    data = urlopen(url)
-    html_data = data.read()
-    encoding = data.headers.get_content_charset('utf-8')
-    decoded_html = html_data.decode(encoding)
-
-    return decoded_html
-
-url_list = ['https://gutenberg.org/cache/epub/174/pg174.txt', 'https://gutenberg.org/cache/epub/64317/pg64317.txt', \
-            'https://gutenberg.org/cache/epub/2701/pg2701.txt', 'https://gutenberg.org/cache/epub/16389/pg16389.txt', \
-                'https://gutenberg.org/cache/epub/2554/pg2554.txt']
-
-for url in url_list:
-
-    data_str_url = readFileURLString(url)
-
-
-
-
-# print()
-
-# output_fule = open('alice.txt', 'w', encoding = 'utf-8')
 
 
 '''
@@ -323,3 +300,39 @@ using try-except block to do the following:
 
 
 '''
+
+
+
+from urllib.request import urlopen
+
+def readFileURLString(url):
+    data = urlopen(url)
+    html_data = data.read()
+    encoding = data.headers.get_content_charset('utf-8')
+    decoded_html = html_data.decode(encoding)
+
+    return decoded_html
+
+url_list = ['https://gutenberg.org/cache/epub/174/pg174.txt', 'https://gutenberg.org/cache/epub/64317/pg64317.txt', \
+            'https://gutenberg.org/cache/epub/2701/pg2701.txt', 'https://gutenberg.org/cache/epub/16389/pg16389.txt', \
+                'https://gutenberg.org/cache/epub/2554/pg2554.txt']
+
+
+
+for i in range(len(url_list) - 1):
+
+    data_str_url = readFileURLString(url_list[i])
+
+    output_file = open(f'book{i + 1}.txt', 'w', encoding = 'utf-8')
+
+    output_file.writelines(data_str_url)
+
+    output_file.close()
+
+
+
+
+
+# print()
+
+# output_file = open('alice.txt', 'w', encoding = 'utf-8')
