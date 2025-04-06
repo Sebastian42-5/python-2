@@ -295,7 +295,6 @@ using try-except block to do the following:
 --> find the frequency of each word in the file
 --> number of paragraphs
 --> number of sentences
---> number of sentences
 --> length of smallest and longest word, average length 
 --> most common vowel
 --> what is the average usage of punctuation marks for every 100 sentences
@@ -314,6 +313,7 @@ def readFileURLString(url):
     decoded_html = html_data.decode(encoding)
 
     return decoded_html
+
 
 url_list = ['https://gutenberg.org/cache/epub/174/pg174.txt', 'https://gutenberg.org/cache/epub/64317/pg64317.txt', \
             'https://gutenberg.org/cache/epub/2701/pg2701.txt', 'https://gutenberg.org/cache/epub/16389/pg16389.txt', \
@@ -339,9 +339,42 @@ for j in range(len(url_list) - 1):
 
     all_words = input_file.read()
 
-    number_of_words = len(all_words)
+    word_lst = all_words.split()
+
+    number_of_words = len(word_lst)
+
+    print(number_of_words)
 
     print(word_frequency_count(all_words))
+
+    # count the number of paragraphs
+
+    parts = all_words.split('\n\n')
+
+    paragraph_count = 0
+
+    for part in parts:
+        if part.strip():
+            paragraph_count += 1
+    
+    print(paragraph_count)
+
+    # number of sentences
+
+    book_str = ''.join(word_lst)
+
+    print(book_str.count('.'))
+
+    # length of smallest and longest word, average length
+
+
+
+
+
+
+
+
+
 
 
 
