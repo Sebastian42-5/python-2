@@ -79,7 +79,7 @@ for count, word in word_frequency:
 
 
 
-print(f'Your story has: {word_count} words')
+# print(f'Your story has: {word_count} words')
 
 
 
@@ -343,7 +343,7 @@ for j in range(len(url_list) - 1):
 
     number_of_words = len(word_lst)
 
-    print(number_of_words)
+    print(f'book {j + 1} has {number_of_words} words')
 
     print(word_frequency_count(all_words))
 
@@ -357,15 +357,63 @@ for j in range(len(url_list) - 1):
         if part.strip():
             paragraph_count += 1
     
-    print(paragraph_count)
+    print(f'book {j + 1} has {paragraph_count} paragraphs')
 
     # number of sentences
 
     book_str = ''.join(word_lst)
 
-    print(book_str.count('.'))
+    print(f'there are {book_str.count('.')} periods')
 
     # length of smallest and longest word, average length
+
+    word_lengths = [len(word) for word in word_lst]
+
+    print(f'shortest word: {min(word_lengths)}')
+
+    print(f'longest word: {max(word_lengths)}')
+
+    print(f'average word length: {sum(word_lengths) // len(word_lengths)}')
+
+    # most common vowel 
+
+    list_of_letters = book_str.split()
+
+    letter_frequencies = word_frequency_count(list_of_letters)
+
+    max_letter_count = max(letter_frequencies.values())
+
+    max_vowel = [vowel for vowel, count in letter_frequencies.items() if count == max_letter_count]
+
+    print(f'the most common letter of the story is: {max_vowel[0]}')
+
+
+    # average usage of punctuation for every 100 sentences. 
+
+    only_punctuation = [char for char in book_str if char == '.' or char == '!' or char == '?' or char == ',']
+
+    for k in range(len(only_punctuation) - 100):
+        section = only_punctuation[i:i + 100]
+
+        print(f'Section {k + 1} has {section.count('.')} dots')
+        print(f'{section.count(',')} commas')
+        print(f'{section.count('!')} exclamation marks')
+        print(f'and {section.count('?')} interrogation marks')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
