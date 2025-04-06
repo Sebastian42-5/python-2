@@ -16,12 +16,9 @@ input_file = open('sharks.txt', 'r', encoding = 'UTF8')
 
 shark_content = input_file.read().rstrip()
 
-print(shark_content)
+# print(shark_content)
 
-print('\n')
-
-def wordcount():
-    pass
+# print('\n')
 
 shark_lst = shark_content.split()
 
@@ -29,15 +26,23 @@ word_count = len(shark_lst)
 
 frequency_dict = {}
 
-for word in shark_lst:
-
-    if word not in frequency_dict:
-        frequency_dict[word] = 1
-    else:
-        frequency_dict[word] += 1
 
 
-# print(frequency_dict)
+def word_frequency_count(lst):
+
+    frequency_dict = {}
+
+    for word in shark_lst:
+
+        if word not in frequency_dict:
+            frequency_dict[word] = 1
+        else:
+            frequency_dict[word] += 1
+    return frequency_dict
+
+
+
+# print(word_frequency_count(frequency_dict))
 
 # print('\n')
 
@@ -58,10 +63,10 @@ for count, word in word_frequency:
         sorted_words.append(word)
 
 
-print(' '.join(sorted_words))
+# print(' '.join(sorted_words))
 
 
-print('\n')
+# print('\n')
 
 
 
@@ -202,8 +207,6 @@ numbers and then by entering some text instead of a number.
 
 
 
-
-
 # PART 2
 
 
@@ -272,7 +275,6 @@ exam3_avg = exam3total / len(gradebook_dict['students'])
 #     print(student['first_name'], student['last_name'], student['exam1'], student['exam2'], student['exam3'], student['average'])
 
 # print(exam1_avg, exam2_avg, exam3_avg)
-        
 
 
 
@@ -328,6 +330,24 @@ for i in range(len(url_list) - 1):
     output_file.writelines(data_str_url)
 
     output_file.close()
+
+
+
+for j in range(len(url_list) - 1):
+
+    input_file = open(f'book{j + 1}.txt', 'r', encoding = 'utf-8')
+
+    all_words = input_file.read()
+
+    number_of_words = len(all_words)
+
+    print(word_frequency_count(all_words))
+
+
+
+
+
+
 
 
 
