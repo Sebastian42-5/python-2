@@ -390,13 +390,12 @@ for j in range(len(url_list) - 1):
 
     # average usage of punctuation for every 100 sentences. 
 
-    only_punctuation = [char for char in book_str if char == '.' or char == '!' or char == '?' or char == ',']
+    only_punctuation = [char for char in book_str if char == '.' or char == '!' or char == '?']
 
-    for k in range(len(only_punctuation) - 100):
-        section = only_punctuation[i:i + 100]
+    for k in range(len(only_punctuation) - 99):
+        section = only_punctuation[k:k + 100]
 
         print(f'Section {k + 1} has {section.count('.')} dots')
-        print(f'{section.count(',')} commas')
         print(f'{section.count('!')} exclamation marks')
         print(f'and {section.count('?')} interrogation marks')
 
