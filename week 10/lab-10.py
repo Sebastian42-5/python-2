@@ -323,8 +323,8 @@ url_list = ['https://gutenberg.org/cache/epub/174/pg174.txt', 'https://gutenberg
 
 for i in range(len(url_list) - 1):
 
-    data_str_url = readFileURLString(url_list[i])
 
+    data_str_url = readFileURLString(url_list[i])
     output_file = open(f'book{i + 1}.txt', 'w', encoding = 'utf-8')
 
     output_file.writelines(data_str_url)
@@ -332,72 +332,78 @@ for i in range(len(url_list) - 1):
     output_file.close()
 
 
+for j in range(len(url_list)):
 
-for j in range(len(url_list) - 1):
+    try:
 
-    input_file = open(f'book{j + 1}.txt', 'r', encoding = 'utf-8')
-
-    all_words = input_file.read()
-
-    word_lst = all_words.split()
-
-    number_of_words = len(word_lst)
-
-    print(f'book {j + 1} has {number_of_words} words')
-
-    print(word_frequency_count(all_words))
-
-    # count the number of paragraphs
-
-    parts = all_words.split('\n\n')
-
-    paragraph_count = 0
-
-    for part in parts:
-        if part.strip():
-            paragraph_count += 1
+        input_file = open(f'book{j + 1}.txt', 'r', encoding = 'utf-8')
     
-    print(f'book {j + 1} has {paragraph_count} paragraphs')
+    except FileNotFoundError:
+        print('One of the books does not exist.')
+    
+    else:
 
-    # number of sentences
+        all_words = input_file.read()
 
-    book_str = ''.join(word_lst)
+        word_lst = all_words.split()
 
-    print(f'there are {book_str.count('.')} periods')
+        number_of_words = len(word_lst)
 
-    # length of smallest and longest word, average length
+        print(f'book {j + 1} has {number_of_words} words')
 
-    word_lengths = [len(word) for word in word_lst]
+        print(word_frequency_count(all_words))
 
-    print(f'shortest word: {min(word_lengths)}')
+        # count the number of paragraphs
 
-    print(f'longest word: {max(word_lengths)}')
+        parts = all_words.split('\n\n')
 
-    print(f'average word length: {sum(word_lengths) // len(word_lengths)}')
+        paragraph_count = 0
 
-    # most common vowel 
+        for part in parts:
+            if part.strip():
+                paragraph_count += 1
+        
+        print(f'book {j + 1} has {paragraph_count} paragraphs')
 
-    list_of_letters = book_str.split()
+        # number of sentences
 
-    letter_frequencies = word_frequency_count(list_of_letters)
+        book_str = ''.join(word_lst)
 
-    max_letter_count = max(letter_frequencies.values())
+        print(f'there are {book_str.count('.')} periods')
 
-    max_vowel = [vowel for vowel, count in letter_frequencies.items() if count == max_letter_count]
+        # length of smallest and longest word, average length
 
-    print(f'the most common letter of the story is: {max_vowel[0]}')
+        word_lengths = [len(word) for word in word_lst]
+
+        print(f'shortest word: {min(word_lengths)}')
+
+        print(f'longest word: {max(word_lengths)}')
+
+        print(f'average word length: {sum(word_lengths) // len(word_lengths)}')
+
+        # most common vowel 
+
+        list_of_letters = book_str.split()
+
+        letter_frequencies = word_frequency_count(list_of_letters)
+
+        max_letter_count = max(letter_frequencies.values())
+
+        max_vowel = [vowel for vowel, count in letter_frequencies.items() if count == max_letter_count]
+
+        print(f'the most common letter of the story is: {max_vowel[0]}')
 
 
-    # average usage of punctuation for every 100 sentences. 
+        # average usage of punctuation for every 100 sentences. 
 
-    only_punctuation = [char for char in book_str if char == '.' or char == '!' or char == '?']
+        only_punctuation = [char for char in book_str if char == '.' or char == '!' or char == '?']
 
-    for k in range(len(only_punctuation) - 99):
-        section = only_punctuation[k:k + 100]
+        for k in range(len(only_punctuation) - 99):
+            section = only_punctuation[k:k + 100]
 
-        print(f'Section {k + 1} has {section.count('.')} dots')
-        print(f'{section.count('!')} exclamation marks')
-        print(f'and {section.count('?')} interrogation marks')
+            print(f'Section {k + 1} has {section.count('.')} dots')
+            print(f'{section.count('!')} exclamation marks')
+            print(f'and {section.count('?')} interrogation marks')
 
 
 
