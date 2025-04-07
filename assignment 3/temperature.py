@@ -55,6 +55,15 @@ def avgTempMonth(temp_dict, month):
     return avg_for_month
 
 
+def belowFreezing(temp_dict):
+    freezing_temps = []
+    for year in temp_dict:
+        for temp in temp_dict[year]:
+            if temp < 0:
+                freezing_temps.append(round(temp, 2))
+    return freezing_temps
+
+
 
 # Main program
 
@@ -81,27 +90,48 @@ input_file.close()
 
 
 
+# part 2 main program 
+
+output_file = open('data_celsius.txt', 'w')
+
+
+
+
+
+
+
 
 # Some testing:
 
 
 
 
-# year = '1972'
-# temp_avg = avgTempYear(temp_dict, year)
+year = '1972'
+temp_avg = avgTempYear(temp_dict, year)
 
-# print(temp_avg)
-
-
-
-# three_biggest = topThreeYears(temp_dict)
-
-# print(three_biggest)
+print(temp_avg)
 
 
-# month = 'JUL'
 
-# avg_for_month = avgTempMonth(temp_dict, month)
+three_biggest = topThreeYears(temp_dict)
+
+print(three_biggest)
 
 
-# print(avg_for_month)
+month = 'JUL'
+
+avg_for_month = avgTempMonth(temp_dict, month)
+
+
+print(avg_for_month)
+
+
+freezing_temperatures = belowFreezing(temp_dict)
+
+
+print(freezing_temperatures)
+
+
+
+
+
