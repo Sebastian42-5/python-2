@@ -1,9 +1,14 @@
 # Sebastian Soto 2432947
 
+
+# part 1 functions
+
+
 def toCelsius(F):
-    C =  (F - 32) * (5 / 9)
+    C =  round(((F - 32) * (5 / 9)), 2)
     return C
 
+# Here, I forgot to put round when I first submitted part 1 
 
 
 def avgTempYear(temp_dict, year):
@@ -40,6 +45,7 @@ def topThreeYears(temp_dict):
     return three_biggest_lst
 
 
+
 def avgTempMonth(temp_dict, month):
 
     month_dict = {'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAY': 5, 'JUN': 6, \
@@ -53,6 +59,9 @@ def avgTempMonth(temp_dict, month):
     avg_for_month = round((total_temp / len(temp_dict)), 2)
 
     return avg_for_month
+
+
+# part 2 functions (put inside part 1 for testing)
 
 
 def belowFreezing(temp_dict):
@@ -83,19 +92,35 @@ for line in interested_data:
 
     temp_dict[key] = data 
 
-# print(temp_dict)
-
-input_file.close()
 
 
+# part 2 main program (put inside part 1 for testing)
 
-
-# part 2 main program 
 
 output_file = open('data_celsius.txt', 'w')
 
+input_file.seek(0)
+
+starter_info = input_file.readlines()[:4]
 
 
+output_file.writelines(starter_info)
+
+
+for year in temp_dict:
+
+    str_for_year = list(map(str, temp_dict[year]))
+
+    temperatures = '    '.join(str_for_year)
+
+    output_file.write(year + '    ' + temperatures)
+
+    output_file.write('\n')
+
+
+output_file.close()
+
+input_file.close()
 
 
 
@@ -106,30 +131,33 @@ output_file = open('data_celsius.txt', 'w')
 
 
 
-year = '1972'
-temp_avg = avgTempYear(temp_dict, year)
 
-print(temp_avg)
+# year = '1972'
+# temp_avg = avgTempYear(temp_dict, year)
 
-
-
-three_biggest = topThreeYears(temp_dict)
-
-print(three_biggest)
+# print(temp_avg)
 
 
-month = 'JUL'
 
-avg_for_month = avgTempMonth(temp_dict, month)
+# three_biggest = topThreeYears(temp_dict)
 
-
-print(avg_for_month)
+# print(three_biggest)
 
 
-freezing_temperatures = belowFreezing(temp_dict)
+# month = 'JUL'
+
+# avg_for_month = avgTempMonth(temp_dict, month)
 
 
-print(freezing_temperatures)
+# print(avg_for_month)
+
+
+# freezing_temperatures = belowFreezing(temp_dict)
+
+
+# print(freezing_temperatures)
+
+
 
 
 
