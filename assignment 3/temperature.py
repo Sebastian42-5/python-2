@@ -69,7 +69,7 @@ def belowFreezing(temp_dict):
     for year in temp_dict:
         for temp in temp_dict[year]:
             if temp < 0:
-                freezing_temps.append(round(temp, 2))
+                freezing_temps.append(temp)
     return freezing_temps
 
 
@@ -127,7 +127,6 @@ input_file.close()
 
 
 # Some testing:
-
 
 
 
