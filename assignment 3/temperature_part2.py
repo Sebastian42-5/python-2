@@ -1,12 +1,13 @@
 # Sebastian Soto 2432947
 
 
-# functions needed for part2
+# function needed for part 2
 
 
 def toCelsius(F):
     C =  round(((F - 32) * (5 / 9)), 2)
     return C 
+
 
 # I forgot to put round in my function when I first submitted part 1
 
@@ -24,7 +25,7 @@ def belowFreezing(temp_dict):
 
 
 
-# Part 1 of main program
+# Part 1 of main program (necessary for the rest to work)
 
 
 
