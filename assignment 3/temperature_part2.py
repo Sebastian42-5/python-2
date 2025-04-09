@@ -64,9 +64,9 @@ for year in temp_dict:
 
     str_for_year = list(map(str, temp_dict[year]))
 
-    temperatures = '    '.join(str_for_year)
+    temperatures = '\t'.join(str_for_year)
 
-    output_file.write(year + '    ' + temperatures)
+    output_file.write(year + '\t' + temperatures)
 
     output_file.write('\n')
 
