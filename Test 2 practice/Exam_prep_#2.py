@@ -51,7 +51,7 @@ def best_backyard(money_change):
     pass
 
 
-# main program 
+# Main program:
 
 
 
