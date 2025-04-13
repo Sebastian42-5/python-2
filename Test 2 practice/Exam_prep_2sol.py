@@ -46,12 +46,29 @@ def best_backyard(money_change):
 
 # main program 
 
-waiting_list = {'Jessica': {5: 10, 10: 5, 20: 6, 50: 2, 100: 0}, 
- 'Bob': {5: 5, 10: 8, 20: 7, 50: 1, 100: 1}, 
- 'Kevin': {5: 2, 10: 5, 20: 4, 50: 3, 100: 2}, 
- 'Lea': {5: 50, 10: 9, 20: 3, 50: 0, 100: 3} } 
+waiting_list = {}
 
-price = 15
+price = int(input('Set a price for each square meter of the enclosure: '))
+
+number_of_clients = int(input('Select your number of clients: '))
+
+for _ in range(number_of_clients):
+    client = input('Name and amount for each bill: ').split()
+
+    name = client[0]
+
+    waiting_list[name] = {}
+
+    for i in range(1, len(client), 2):
+        waiting_list[name][int(client[i])] = int(client[i + 1])
+
+print(waiting_list)
+
+# waiting_list = {'Jessica': {5: 10, 10: 5, 20: 6, 50: 2, 100: 0}, 
+#  'Bob': {5: 5, 10: 8, 20: 7, 50: 1, 100: 1}, 
+#  'Kevin': {5: 2, 10: 5, 20: 4, 50: 3, 100: 2}, 
+#  'Lea': {5: 50, 10: 9, 20: 3, 50: 0, 100: 3} } 
+
 
 money_change = total_change(waiting_list, price)
 
@@ -84,3 +101,4 @@ for person in dimensions:
 
 
 output_file.close()
+
