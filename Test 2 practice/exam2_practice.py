@@ -394,9 +394,91 @@ output:
     
 # 17 
 
+'''
+17) 
+
+Exam Test #2 – Quest Filter Challenge 
+
+Story: In the Kingdom of Louisa, quests are recorded in the JSON file "quests.json". Each quest is represented as a dictionary with the keys: 
+
+"name": a string 
+
+"difficulty": an integer from 1 to 10 
+
+"participants": a list of strings (names) 
+
+The JSON file holds a list of such quest dictionaries. 
+
+Task: Write a Python program that does the following: 
+
+Attempts to open and read "quests.json". If the file does not exist or contains invalid JSON, print "Error reading file" and exit. 
+
+Define a Quest class with attributes for name, difficulty, and participants. Override relational operators (at minimum lt) so Quest objects compare based on difficulty. 
+
+Prompt the user to enter an integer threshold. 
+
+Filter out quests whose difficulty is less than the threshold. 
+
+Sort the filtered quests by increasing difficulty. 
+
+Print: 
+
+A list of the names of the filtered quests (in order of difficulty). 
+
+A set of all unique participants from these quests. 
+
+Constraints: 
+
+Do not use list comprehensions, filter, map, enumerate, the "with" statement to open files, or global variables. 
+
+Example: Given "quests.json" contains: [ {"name": "Complete Assignment", "difficulty": 8, "participants": ["Leo", "Rowan"]}, {"name": "Write better code than Rowan", "difficulty": 1, "participants": ["Domenico", "Leo"]}, {"name": "Listen in class without going on phone every 9 seconds", "difficulty": 6, "participants": ["Domenico", "Rowan"]} ] And the user enters: 6 
+
+The program should output: Filtered quests: ['Listen in class without going on phone every 9 seconds', 'Complete Assignment'] Unique participants: {'Leo', 'Rowan', 'Domenico'} 
+
+
+
+'''
+
+
+# import json
+
+# all_quests = open('main_quests.json', 'w')
+
+# quest_lst = [ {"name": "Complete Assignment", "difficulty": 8, "participants": ["Leo", "Rowan"]},
+#               {"name": "Write better code than Rowan", "difficulty": 1, "participants": ["Domenico", "Leo"]},
+#                 {"name": "Listen in class without going on phone every 9 seconds", "difficulty": 6, "participants": ["Domenico", "Rowan"]} ] 
+
+# json.dump(quest_lst, all_quests, indent = 4)
+
+# all_quests.seek(0)
+
+# all_quests.close()
+
+
+
+
 
 
 # 19 
+
+# d = {"Alfred Bowman": ["sec 3", "90%", "Passed"], 
+
+#     "Annabeth Black": ["sec 2", "75%", "Passed"], 
+
+#     "Benjamin Howler": ["sec 4", "59%", "Failed"], 
+
+#     "Marianne Buchanan": ["sec3", "56%", "Failed"]} 
+
+
+# output_file = open('student_grades.txt', 'w')
+
+
+# for name, info in d.items():
+#     output_file.write(name + ' '.join(info))
+#     output_file.write('\n')
+
+
+# output_file.close()
 
 
 # 20 
@@ -407,30 +489,49 @@ output:
 # 21
 
 
-def operation():
-    try:
-        numbers = [10, 0, 'a']
+# def operation():
+#     try:
+#         numbers = [10, 0, 'a']
 
-        for i in range(len(numbers)):
-            print(100 // numbers[i])
+#         for i in range(len(numbers)):
+#             print(100 // numbers[i])
 
-    except ZeroDivisionError:
-        print('You cannot divide by zero')
+#     except ZeroDivisionError:
+#         print('You cannot divide by zero')
     
-    except TypeError:
-        print('Invalide type')
+#     except TypeError:
+#         print('Invalide type')
     
-    finally:
-        print('execution completed')
+#     finally:
+#         print('execution completed')
 
 
-operation()
+# operation()
+
+
 
 # it doesn't try for all values in numbers, it tries one by one and if it suceeeds, it will print it. 
 
 
 
+# 23
 
+# def tricky_division():
+#     try:
+#         x = 1 / 0
+#     except ZeroDivisionError:
+#         print('Division by zero')
+#         y = 1 + 1  # the return gets ignored
+#         return 'from except', y
+#     finally:
+#         print('In finally block')
+#         return 'from finally' # there is a priority to the finally block
+
+# result = tricky_division()
+
+# print(f'result: {result}')
+
+# B)
 
 
 

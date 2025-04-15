@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Complete Assignment",
+        "difficulty": 8,
+        "participants": [
+            "Leo",
+            "Rowan"
+        ]
+    },
+    {
+        "name": "Write better code than Rowan",
+        "difficulty": 1,
+        "participants": [
+            "Domenico",
+            "Leo"
+        ]
+    },
+    {
+        "name": "Listen in class without going on phone every 9 seconds",
+        "difficulty": 6,
+        "participants": [
+            "Domenico",
+            "Rowan"
+        ]
+    }
+]
