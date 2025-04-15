@@ -117,8 +117,13 @@ class Fraction:
         return self.numerator / self.denominator
     
 
+    def __truediv__(self, other_fraction: Fraction) -> Fraction:
+        num = self.numerator * other_fraction.denominator
+        denom = self.denominator * other_fraction.numerator
 
-    
+        return Fraction(num, denom)
+
+
     
         
     
@@ -131,11 +136,13 @@ print(f2 - f1)
 print(f1 > f2)
 
 
-print(float(f1))
-lst = []
-for i in range(1, 10):
-    lst.append(Fraction(i, i **2))
+print(f1 / f2)
+
+# print(float(f1))
+# lst = []
+# for i in range(1, 10):
+#     lst.append(Fraction(i, i **2))
 
 
-lst.sort()
-print(lst[::-1])
+# lst.sort()
+# print(lst[::-1])
