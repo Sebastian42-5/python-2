@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 # 2
 
 
@@ -458,6 +461,77 @@ The program should output: Filtered quests: ['Listen in class without going on p
 
 
 
+# 18 
+
+''' 
+
+Fill in the blank so that the code runs with the expected printed statement 
+
+''' 
+
+ 
+
+# from functools import total_ordering
+
+
+ 
+# @total_ordering
+# class Cube: 
+#     def __init__(self, length, width, height):
+#         self.length = length
+
+#         self.width = width
+
+#         self.height = height 
+    
+#     def __repr__(self):
+#         return f'Cube(length = {self.length}, width = {self.width}, height = {self.height})'
+    
+#     def __gt__(self, other_cube: Cube) -> bool:
+
+#         volume = self.length * self.width * self.height
+
+#         other_volume = other_cube.length * other_cube.width * other_cube.height
+
+
+#         return isinstance(other_cube, Cube) and volume > other_volume
+
+ 
+
+# box1 = Cube(12, 45, 10) #Length Width Height 
+
+# box2 = Cube(20, 100, 10) 
+
+# print(f"box1 = {box1}") 
+
+# print(f"box2 = {box2}") 
+
+# print(f"The volume of box 1 is larger than that of box 2: {box1 > box2}") 
+
+# print(f"The volume of box 1 is smaller than that of box 2: {box1 < box2}") 
+
+
+ 
+
+''' 
+
+Expected Output: 
+
+box1 = Cube(length=12, width=45, height=10) 
+
+box2 = Cube(length=20, width=100, height=10) 
+
+The volume of box 1 is larger than that of box 2: False 
+
+The volume of box 1 is smaller than that of box 2: True 
+
+'''
+
+
+
+
+
+
 
 # 19 
 
@@ -510,7 +584,13 @@ The program should output: Filtered quests: ['Listen in class without going on p
 
 
 
+
 # it doesn't try for all values in numbers, it tries one by one and if it suceeeds, it will print it. 
+
+
+
+# 22 is my own question 
+
 
 
 
@@ -533,6 +613,139 @@ The program should output: Filtered quests: ['Listen in class without going on p
 
 # B)
 
+
+# 24
+
+
+""" 
+
+You have a dictionary and the twelve keys are the months and inside is another dictionary with the names of people as keys and their ages as values 
+
+You must return the set of different ages in the dictionary and then remove the highest and minimum age, and then return the intersection of that set with  
+
+the set "s"  
+
+input specs: 
+
+Nested dictionary 
+
+output: 
+
+set of ages(ints) 
+
+input example: 
+
+d={ 
+
+'JAN': {'James': 67, 'Mary': 12, 'Robert': 98, 'John': 34, 'Patricia': 55}, 
+
+'FEB': {'Michael': 23, 'Jennifer': 89, 'William': 41, 'Linda': 76, 'David': 15}, 
+
+'MAR': {'Elizabeth': 50, 'Richard': 6, 'Barbara': 91, 'Joseph': 28, 'Susan': 83}, 
+
+'APR': {'Thomas': 19, 'Jessica': 72, 'Charles': 37, 'Margaret': 60, 'Christopher': 48}, 
+
+'MAY': {'Sarah': 85, 'Daniel': 3, 'Dorothy': 59, 'Matthew': 94, 'Nancy': 21}, 
+
+'JUN': {'Anthony': 43, 'Karen': 68, 'Donald': 11, 'Betty': 79, 'Joshua': 30}, 
+
+'JUL': {'Helen': 9, 'Paul': 56, 'Sandra': 88, 'Mark': 25, 'Donna': 63}, 
+
+'AUG': {'George': 70, 'Carol': 18, 'Steven': 46, 'Ruth': 99, 'Andrew': 39}, 
+
+'SEP': {'Sharon': 32, 'Kenneth': 81, 'Michelle': 14, 'Brian': 53, 'Laura': 75}, 
+
+'OCT': {'Edward': 65, 'Deborah': 27, 'Ronald': 96, 'Kimberly': 4, 'Timothy': 87}, 
+
+'NOV': {'Angela': 20, 'Jason': 78, 'Amy': 35, 'Jeffrey': 62, 'Shirley': 49}, 
+
+'DEC': {'Frank': 82, 'Brenda': 7, 'Kevin': 58, 'Pamela': 92, 'Raymond': 16} 
+
+} 
+
+s={85, 23, 56, 91, 12, 67, 3, 48, 79, 19, 98, 34, 55, 15, 83, 37, 60, 21, 43, 68, 11, 30, 9, 63, 70, 39, 32, 75, 65, 87, 20} 
+
+Output: 
+
+{9, 11, 12, 15, 19, 20, 21, 23, 30, 32, 34, 37, 39, 43, 48, 55, 56, 60, 63, 65, 67, 68, 70, 75, 79, 83, 85, 87, 91, 98} 
+
+""" 
+
+
+# d={ 
+
+# 'JAN': {'James': 67, 'Mary': 12, 'Robert': 98, 'John': 34, 'Patricia': 55}, 
+
+# 'FEB': {'Michael': 23, 'Jennifer': 89, 'William': 41, 'Linda': 76, 'David': 15}, 
+
+# 'MAR': {'Elizabeth': 50, 'Richard': 6, 'Barbara': 91, 'Joseph': 28, 'Susan': 83}, 
+
+# 'APR': {'Thomas': 19, 'Jessica': 72, 'Charles': 37, 'Margaret': 60, 'Christopher': 48}, 
+
+# 'MAY': {'Sarah': 85, 'Daniel': 3, 'Dorothy': 59, 'Matthew': 94, 'Nancy': 21}, 
+
+# 'JUN': {'Anthony': 43, 'Karen': 68, 'Donald': 11, 'Betty': 79, 'Joshua': 30}, 
+
+# 'JUL': {'Helen': 9, 'Paul': 56, 'Sandra': 88, 'Mark': 25, 'Donna': 63}, 
+
+# 'AUG': {'George': 70, 'Carol': 18, 'Steven': 46, 'Ruth': 99, 'Andrew': 39}, 
+
+# 'SEP': {'Sharon': 32, 'Kenneth': 81, 'Michelle': 14, 'Brian': 53, 'Laura': 75}, 
+
+# 'OCT': {'Edward': 65, 'Deborah': 27, 'Ronald': 96, 'Kimberly': 4, 'Timothy': 87}, 
+
+# 'NOV': {'Angela': 20, 'Jason': 78, 'Amy': 35, 'Jeffrey': 62, 'Shirley': 49}, 
+
+# 'DEC': {'Frank': 82, 'Brenda': 7, 'Kevin': 58, 'Pamela': 92, 'Raymond': 16} 
+
+# } 
+
+# s={85, 23, 56, 91, 12, 67, 3, 48, 79, 19, 98, 34, 55, 15, 83, 37, 60, 21, 43, 68, 11, 30, 9, 63, 70, 39, 32, 75, 65, 87, 20} 
+
+# all_ages = set()
+
+# for month in d:
+#     tuple_age = set(d[month].values())
+
+#     all_ages.update(tuple_age)
+
+
+# all_ages.discard(max(all_ages))
+
+# all_ages.discard(min(all_ages))
+
+
+# inter = all_ages.intersection(s)
+
+# print(inter)
+
+
+
+
+
+# 25
+
+# try:
+
+#     dessert_file = open('desserts.txt', 'r') 
+
+# except FileNotFoundError:
+#     print('That file does not exist')
+
+# else: 
+#     line = dessert_file.readline() 
+
+    
+
+#     while line != '': 
+
+#         print("Sweet Treat: " + line.strip()) 
+
+#         line = dessert_file.readline() 
+
+    
+
+#     dessert_file.close() 
 
 
 
