@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 
+
+
 # 2
 
 
@@ -424,6 +426,7 @@ Filter out quests whose difficulty is less than the threshold.
 
 Sort the filtered quests by increasing difficulty. 
 
+
 Print: 
 
 A list of the names of the filtered quests (in order of difficulty). 
@@ -445,6 +448,8 @@ The program should output: Filtered quests: ['Listen in class without going on p
 
 # import json
 
+# from functools import total_ordering
+
 # all_quests = open('main_quests.json', 'w')
 
 # quest_lst = [ {"name": "Complete Assignment", "difficulty": 8, "participants": ["Leo", "Rowan"]},
@@ -456,6 +461,63 @@ The program should output: Filtered quests: ['Listen in class without going on p
 # all_quests.seek(0)
 
 # all_quests.close()
+
+
+# @total_ordering
+# class Quest:
+#     def __init__(self, name, difficulty, participants):
+#         self.name = name
+#         self.difficulty = difficulty 
+#         self.participants = participants
+
+#     def __repr__(self):
+#         return f'Quest name: {self.name}. Difficulty level: {self.difficulty}. Participants: {self.participants}'
+    
+#     def __gt__(self, other_quest: Quest) -> bool:
+#         return isinstance(other_quest, Quest) and self.difficulty > other_quest.difficulty
+    
+#     def threshold(self, quest_lst):
+#         filtered_quests = []
+
+#         num = int(input('Select a difficulty level: '))
+
+#         for quest in quest_lst:
+#             if self.difficulty > num:
+#                 filtered_quests.append(self.name)
+        
+    
+
+
+
+
+
+
+# try:
+#     quests = open('main_quests.json', 'r')
+# except FileNotFoundError:
+#     print('File does not exist')
+
+# else:
+
+#     quest_lst_dict = json.load(quests)
+
+#     quest_lst = []
+
+#     participants_set = set()
+
+#     for quest in quest_lst_dict:
+#         quest_obj = Quest(quest['name'], quest['difficulty'], quest['participants'])
+
+#         quest_lst.append(quest_obj)
+
+
+
+
+# quest_lst.threshold()
+
+
+
+
 
 
 
@@ -750,4 +812,60 @@ Output:
 
 
 
-            
+# 27 
+
+
+# data = { 
+
+#     'group0': {'a','b'}, 
+
+#     'group1': {'b', 'c'}, 
+
+#     'group2': {'b', 'a', 'd'}, 
+
+#     'group3': {'b', 'e', 'a'}, 
+
+#     'group4': {'d', 'c', 'a'} 
+
+# } 
+
+ 
+
+# tmp = [] 
+
+# first_group = data['group0']   # {'a', 'b'}
+
+# group0 = first_group.union(data['group1']) # {'a', 'b', 'c'}
+
+# tmp.append(group0.union(data['group0']).intersection(data['group2']))  # [{'a', 'b'}]
+
+# tmp.append(group0.intersection(data['group4']))  # [{'a', 'b'}, {'a', 'c'}]
+
+# data['group1'] = data['group4'] # 'group1' : {'d', 'c', 'a'}
+
+# tmp.append(data['group2'].intersection(data['group1'])) # [{'a', 'b'}, {'a', 'c'}, {'a', 'd'}] (unordered)
+
+ 
+
+# for i in range(len(tmp)): 
+
+#     tmp[i] = sorted(tmp[i])   # # [['a', 'b'], ['a', 'c'], ['a', 'd']] (ordered)
+
+# tmp.append(data['group3'].intersection(data['group4'])) 
+
+ 
+
+# print(tmp) # # [['a', 'b'], ['a', 'c'], ['a', 'd'], {'a'}]
+
+ 
+
+# tmp2 = tmp[0] + list(tmp[3]) # ['a', 'b'] + ['a']
+
+ 
+
+# print(len(set(tmp2))) # 2
+
+
+
+
+# key takeaway = when you use sorted on a set, it gets changed into a list, because sets don't have a specified order. 
