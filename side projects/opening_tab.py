@@ -1,19 +1,23 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtGui import QIcon
 import sys
 import time
 import webbrowser
+import os
 
 
 class MyWindow(QMainWindow):
 
     def __init__(self):
-        
+
         super(MyWindow, self).__init__()
 
         self.setGeometry(200, 200, 300, 300)
 
         self.setWindowTitle('Tab opener!')
+
+        self.setWindowIcon(QIcon(os.path.abspath('shark-icon-size_24.ico')))
 
         self.initUI()
 
@@ -60,6 +64,9 @@ def window():
 window()
 
 
+# on my terminal, I did pip install pyinstaller and then I did 
+
+# pyinstall --onefile opening_tab.py
 
 
 
