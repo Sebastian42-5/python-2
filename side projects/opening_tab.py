@@ -115,14 +115,9 @@ class MyWindow(QMainWindow):
 
             open_btn.setStyleSheet('padding: 8px; font-size: 14px;')
 
-            if urls[0][0] != 'C':
 
-                open_btn.clicked.connect(partial(self.open_urls, urls))
-            
-            else:
-
-                open_btn.clicked.connect(partial(self.open_programs, urls))
-
+            open_btn.clicked.connect(partial(self.open_url_program, urls))
+        
 
             delete_btn = QPushButton('X')
 
@@ -142,20 +137,19 @@ class MyWindow(QMainWindow):
             self.scroll_layout.addWidget(row_widget)
 
 
-    def open_urls(self, url_list):
+    def open_url_program(self, urls):
 
-        for url in url_list:
-            webbrowser.open_new_tab(url)
+        for path in urls:
 
-            time.sleep(0.5)
-    
-
-    def open_programs(self, path_lst):
-
-        for path in path_lst:
-            os.startfile(path)
-
-            time.sleep(2)
+            if isinstance(path, str):
+                if os.path.exists(path):
+        
+                    os.startfile(path)
+                    time.sleep(2)
+            
+                else:
+                    webbrowser.open_new_tab(path)
+                    time.sleep(0.5)
 
 
     def open_create_dialog(self):

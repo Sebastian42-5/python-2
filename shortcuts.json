@@ -5,5 +5,12 @@
             "C:\\Users\\sebas\\Desktop\\Word.lnk",
             "C:\\Users\\Public\\Desktop\\Adobe Acrobat.lnk"
         ]
+    },
+    {
+        "name": "school",
+        "urls": [
+            "C:\\Users\\sebas\\Desktop\\Word.lnk",
+            "https://www.youtube.com/"
+        ]
     }
 ]
