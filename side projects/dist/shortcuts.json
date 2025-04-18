@@ -17,5 +17,13 @@
             "https://www.youtube.com/",
             "https://www.online-python.com/"
         ]
+    },
+    {
+        "name": "Homework programs ",
+        "urls": [
+            "C:\\Users\\sebas\\Desktop\\Word.lnk",
+            "C:\\Users\\Public\\Desktop\\Adobe Acrobat.lnk",
+            "C:\\Users\\sebas\\Desktop\\Visual Studio Code.lnk"
+        ]
     }
 ]
