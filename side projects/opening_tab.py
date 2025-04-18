@@ -84,21 +84,55 @@ class MyWindow(QMainWindow):
 
         self.layout_display.addWidget(self.create_btn, alignment = Qt.AlignRight)
 
+    
+    def delete_shortcut_by_name(self, name, widget):
+        reply = QtWidgets.QMessageBox.question(self, 'Delete Shortcut', f'Are you sure you want to delete {name} ?', QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
 
+        if reply == QtWidgets.QMessageBox.Yes:
+            self.shortcuts = [s for s in self.shortcuts if s['name'] != name]
+
+            save_shortcuts(self.shortcuts)
+
+            self.refresh_buttons()
+        
 
     def add_shortcut_buttons(self):
 
-        for shortcut in self.shortcuts:
+        for i, shortcut in enumerate(self.shortcuts):
             name = shortcut['name']
             urls = shortcut['urls']
 
-            btn = QPushButton(name)
+            row_widget = QWidget()
 
-            btn.setStyleSheet('padding: 8px; font-size: 14px;')
+            row_layout = QtWidgets.QHBoxLayout()
 
-            btn.clicked.connect(partial(self.open_urls, urls))
+            row_widget.setLayout(row_layout)
 
-            self.scroll_layout.addWidget(btn)
+
+
+            open_btn = QPushButton(name)
+
+            open_btn.setStyleSheet('padding: 8px; font-size: 14px;')
+
+            open_btn.clicked.connect(partial(self.open_urls, urls))
+
+
+            delete_btn = QPushButton('X')
+
+            delete_btn.setStyleSheet('padding: 6px;')
+
+            delete_btn.setMinimumSize(30, 30)
+
+            delete_btn.clicked.connect(partial(self.delete_shortcut_by_name, name, row_widget))
+
+
+            row_layout.addWidget(open_btn)
+            row_layout.addWidget(delete_btn)
+
+            row_layout.setContentsMargins(0, 0, 0, 0)
+
+
+            self.scroll_layout.addWidget(row_widget)
 
 
     def open_urls(self, url_list):
@@ -148,6 +182,20 @@ class MyWindow(QMainWindow):
         urls_text = urls_input.toPlainText()
         self.save_new_shortcut(dialog, name, urls_text)
 
+    
+    def refresh_buttons(self):
+
+        while self.scroll_layout.count():
+
+            item = self.scroll_layout.takeAt(0)
+
+            widget = item.widget()
+
+            if widget is not None:
+                widget.setParent(None)
+        
+        self.add_shortcut_buttons()
+
 
     
     def save_new_shortcut(self, dialog, name, urls_text):
@@ -171,14 +219,10 @@ class MyWindow(QMainWindow):
         save_shortcuts(self.shortcuts)
 
 
-        btn = QPushButton(name)
-
-        btn.clicked.connect(partial(self.open_urls, urls))
-
-        self.scroll_layout.addWidget(btn)
+        self.refresh_buttons()
 
         dialog.accept()
-
+    
 
 
 def window():
