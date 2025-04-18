@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     print(my_car)
 
-    my_car.battery.describeBattery()
+    print(my_car.battery.mileage())
 
     
 

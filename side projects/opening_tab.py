@@ -70,6 +70,10 @@ window()
 
 
 
+# next project: every button will be a different shortcut.
+
+# ask user if they want to change a shortcut. 
+
 
 
     

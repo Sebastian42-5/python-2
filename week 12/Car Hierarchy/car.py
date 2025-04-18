@@ -8,8 +8,7 @@ class Car:
         self.odometer_reading = odometer_reading
     
     def __repr__(self):
-        return f'brand: {self.brand[0]}{self.brand[1:]} model: {self.model[0].upper()}{self.model[1:]}\
-        year: {self.year} odometer: {self.odometer_reading}'
+        return f'Brand: {self.brand[0]}{self.brand[1:]} Model: {self.model[0].upper()}{self.model[1:]} Year: {self.year} Odometer: {self.odometer_reading}'
     
     def readOdometer(self):
         print(f'This car has {self.odometer_reading} miles on it')

@@ -12,4 +12,4 @@ class Battery:
     def mileage(self):
         m = (225 - 150) // (65 - 40)
 
-        print(f'Your mileage is {self.battery * m}')
+        return f'Your mileage is {self.battery * m}'
