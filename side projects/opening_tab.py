@@ -94,6 +94,7 @@ class MyWindow(QMainWindow):
             save_shortcuts(self.shortcuts)
 
             self.refresh_buttons()
+
         
 
     def add_shortcut_buttons(self):
@@ -114,7 +115,13 @@ class MyWindow(QMainWindow):
 
             open_btn.setStyleSheet('padding: 8px; font-size: 14px;')
 
-            open_btn.clicked.connect(partial(self.open_urls, urls))
+            if urls[0][0] != 'C':
+
+                open_btn.clicked.connect(partial(self.open_urls, urls))
+            
+            else:
+
+                open_btn.clicked.connect(partial(self.open_programs, urls))
 
 
             delete_btn = QPushButton('X')
@@ -141,6 +148,14 @@ class MyWindow(QMainWindow):
             webbrowser.open_new_tab(url)
 
             time.sleep(0.5)
+    
+
+    def open_programs(self, path_lst):
+
+        for path in path_lst:
+            os.startfile(path)
+
+            time.sleep(2)
 
 
     def open_create_dialog(self):
@@ -246,9 +261,11 @@ window()
 
 
 
-# next project: every button will be a different shortcut.
+# next project: add a edit feature where you can edit the name and the urls on each shortcut 
 
-# ask user if they want to change a shortcut. 
+# expand the app beyond urls and make it also run programs. 
+
+
 
 
 
