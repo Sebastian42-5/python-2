@@ -85,9 +85,17 @@ class Stack:
 
         RESET = ESC + '[0m'
 
-        print(YELLOW + '|' + str(self.__data[-1]).center(9) + '|' + '\n' + '-' * 11)
+        print()
+        print()
 
-        for i in range(len(self.__data) - 1):
+        if not self.isEmpty():
+
+            print(YELLOW + '|' + str(self.top()).center(9) + '|' + '\n' + '-' * 11 + RESET)
+        
+        else:
+            print(YELLOW + '|' + ' '.center(9) + '|' + '\n' + '-' * 11)
+
+        for i in range(len(self.__data) - 1)[::-1]:
 
             print(BLUE + '|' + str(self.__data[i]).center(9) + '|' + '\n' + '-' * 11 + RESET)
 
@@ -114,7 +122,7 @@ Exception: (Empty), OsError, ArithmeticError, LookupError, NameError, ValueError
 
 OsError: FileNotFoundError, PermissionError
 
-ArithmetcError: ZeroDivisionError
+ArithmeticError: ZeroDivisionError
 
 LookupError: IndexError, KeyError
 
@@ -143,13 +151,46 @@ if __name__ == '__main__':
 
 
     stack = Stack()
-    print(stack)
     time.sleep(2)
 
     stack.push(5)
     stack.push(3)
+    stack.push(2)
+    stack.push(1)
     print(stack)
     time.sleep(2)
+
+    print(len(stack))
+    stack.pop()
+    print(stack)
+    time.sleep(2)
+
+    # print(stack.isEmpty())
+    # stack.pop()
+    # stack.pop()
+    # stack.pop()
+    # print(stack)
+    # time.sleep(2)
+
+    # print(stack.isEmpty())
+    # stack.pop()
+    # print(stack)
+
+    new_stack = Stack()
+
+    new_stack.push(1)
+
+    new_stack.push(8)
+
+    new_stack.push(7)
+
+    new_stack.push(9)
+
+    print(stack < new_stack)
+
+    print(stack == new_stack)
+
+
 
     
 
