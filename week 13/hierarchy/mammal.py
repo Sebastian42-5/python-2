@@ -9,7 +9,7 @@ class Mammal(Animal):
         return super().reproduce() + result
     
     def __repr__(self) -> str:
-        return super.__repr__() + '\n' '\nClass: Mammal'
+        return super().__repr__() + '\n' '\nClass: Mammal'
     
     
         

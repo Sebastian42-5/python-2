@@ -1,6 +1,6 @@
 from heterotroph import Heterotroph
 
-class Herbivove(Heterotroph):
+class Herbivore(Heterotroph):
     
     def eat(self):
         super().eat()
