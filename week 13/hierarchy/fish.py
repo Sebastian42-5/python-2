@@ -1,0 +1,24 @@
+from animal import Animal
+
+class Fish(Animal):
+
+    def __repr__(self):
+        return super().__repr__() + 'Class: Fish'
+    
+    def reproduce(self) -> str:
+        result = '\nFish reproduction varies largely. Some give birth to live young while others lay eggs.'
+        
+        return super().reproduce() + result
+    
+    def move(self):
+
+        print('Fish move by swimming with their fins.')
+
+    def sleep(self):
+
+        print('Fish do not sleep a lot. They have to keep swimming.')
+    
+
+    
+    
+    

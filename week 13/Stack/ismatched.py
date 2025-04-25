@@ -17,3 +17,34 @@ You can only use the stack object, no other data structures.
 
 
 '''
+
+from stack import Stack
+
+def isMatched(exp : str) -> bool:
+
+    stack = Stack()
+
+    for char in exp:
+        if char == '(' or char == '[' or char == '{':
+
+            stack.push(char)
+        
+        if stack.isEmpty():
+            return False
+
+        elif char == ')':
+            if stack.pop() != '(':
+                return False
+        
+        elif char == ']':
+            if stack.pop() != '[':
+                return False
+        
+        elif char == '}':
+            if stack.pop() != '{':
+                return False
+    
+    return stack.isEmpty()
+
+print(isMatched('({[])}'))
+

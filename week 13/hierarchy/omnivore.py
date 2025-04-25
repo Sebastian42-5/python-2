@@ -8,6 +8,6 @@ class Omnivore(Heterotroph):
     def __repr__(self):
         result = 'This organism is an omnivore; it can eat feed on both plants and animals.'
 
-        return super.__repr__() + result
+        return super().__repr__() + result
 
 

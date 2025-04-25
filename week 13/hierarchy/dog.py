@@ -3,7 +3,7 @@ from omnivore import Omnivore
 from mammal import Mammal
 from pet import Pet
 
-class DOg(Mammal, Omnivore, Pet):
+class Dog(Mammal, Omnivore, Pet):
 
     def __init__(self, legs = 4, ears = 2):
 
@@ -39,7 +39,28 @@ class DOg(Mammal, Omnivore, Pet):
         return Mammal.reproduce(self) + '\n' + result
         
 
-    
+if __name__ == '__main__':
+    d = Dog()
+
+
+    print(d)
+
+    print()
+    d.reproduce()
+
+    print()
+    d.sleep()
+
+    print()
+    d.move()
+
+    print()
+    d.eat()
+
+    print()
+    print(d.pet())
+
+
 
 
 
