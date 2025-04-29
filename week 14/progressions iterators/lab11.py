@@ -131,9 +131,9 @@ class Fraction:
 # f1 = Fraction(6,8)
 # f2 = Fraction(2, 8)
 
-# print(f1)
-# print(f2 - f1)
-# print(f1 > f2)
+# # print(f1)
+# # print(f2 - f1)
+# # print(f1 > f2)
 
 
 # print(f1 / f2)
