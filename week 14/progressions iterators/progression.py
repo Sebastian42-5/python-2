@@ -27,10 +27,10 @@ class Progression:
     
     def printProgression(self, n): # n represents the number of values that are printed
         '''print next n values of the progression'''
-        print(' '.join(str(next(self)) for j in range(n)))
+        print('  '.join(str(next(self)) for j in range(n)))
     
     def lstProgression(self, n):
-        lst = [int(next(self)) for _ in range(n)]
+        lst = [next(self) for _ in range(n)]
         return lst
     
 if __name__ == '__main__':

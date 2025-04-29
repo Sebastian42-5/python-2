@@ -13,6 +13,6 @@ if __name__ == '__main__':
 
 
     for value in GeometricProgression(3).lstProgression(10):
-        print(value * 2)
+        print(value)
     
 
