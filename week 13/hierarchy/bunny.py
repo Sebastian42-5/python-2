@@ -20,8 +20,9 @@ class Bunny(Mammal, Herbivore, Pet): # the order of the parents is important
         return result + '\n' + Herbivore.__repr__(self)
     
     def reproduce(self):
-        result = 'Bunnies can produce multiple litters per\
-            year, potentially having 3-8 kits per litter'
+        result = '''
+        Bunnies can produce multiple litters per
+        year, potentially having 3-8 kits per litter'''
         
         return super().reproduce() + '\n' + result
 
@@ -32,16 +33,17 @@ class Bunny(Mammal, Herbivore, Pet): # the order of the parents is important
     
     def sleep(self):
 
-        print('Bunnies as nocturnal animals, typically\
-              sleep around 12 to 14 hours a day in short,\
-              intermittent periods.')
+        print('''
+              Bunnies as nocturnal animals, typically
+              sleep around 12 to 14 hours a day in short,
+              intermittent periods.''')
         
     def eat(self):
         Herbivore.eat(self)
-        print('I mostly eat fresh hay and grass, with\
-              some leafy greens and few pellets. I should only\
-              be given fruit and root vegetables,\
-              ,like carrots, as an occasional treat')
+        print('''
+            I mostly eat fresh hay and grass, with
+            some leafy greens and few pellets. I should only
+            be given fruit and root vegetables like carrots, as an occasional treat''')
         
     
 if __name__ == '__main__':

@@ -7,9 +7,10 @@ class Herbivore(Heterotroph):
         print('I eat plants.')
 
     def __repr__(self):
-        result = 'This organism is herbivore. It feeds on\
-            plant matter and its physiology facilitates\
-                food search'
+        result = '''
+        This organism is herbivore. It feeds on
+        plant matter and its physiology facilitates
+        food search'''
         
         return super().__repr__() + result
     

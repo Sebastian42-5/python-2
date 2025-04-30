@@ -12,8 +12,9 @@ class Heterotroph(object, metaclass = ABCMeta):
 
     
     def __repr__(self):
-        return 'This organism is a heterotroph. It is unable to produce\
-            its own food, so it eats other organisms'
+        return '''
+        This organism is a heterotroph. It is unable to produce
+        its own food, so it eats other organisms'''
     
     
 

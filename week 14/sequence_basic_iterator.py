@@ -35,7 +35,7 @@ if __name__ == '__main__':
     for elem in Sequence(3, 10):  
         print(elem)
 
-# the pointer of the iterator goes to the beginning, kind of like 
+# the pointer of the iterator goes to the beginning
     
 
 

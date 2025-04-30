@@ -96,14 +96,33 @@ def badFibonacci(n):
         return badFibonacci(n - 1) + badFibonacci(n - 2)
 
 
-print(badFibonacci(-3))
+# print(badFibonacci(-3))
 
 
-def goodFibonacci(n):
+
+
+def goodFibonacci(n, seen = {0:0, 1:1}):
     # preferably constant storage
     if n < 0:
         return 'Enter a positive number'
-    pass
+    if n not in seen:
+        seen[n] = goodFibonacci(n - 1, seen) + goodFibonacci(n - 2, seen)
+    
+    return seen[n]
 
+
+'''
+6
+
+0 1 1 2 3 5 8
+
+{0:0, 1:1}
+
+{0:0, 1:1, 2:1, 3:2, 4:3, 5:5, 6:8}
+
+
+'''
+    
+print(goodFibonacci(2))
 
 
