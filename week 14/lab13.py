@@ -256,8 +256,38 @@ write a recursive function that prints all subsets of a given set of elements
 
 '''
 
-def allSubsets(sets):
-    pass
+def allSubsets(current, remaining, index):
+    
+    if index == len(remaining):
+        print(current)
+        return 
+    
+    elem = remaining[index]
+
+    new_set_with_elem = current.copy() 
+
+    new_set_with_elem.add(elem)
+
+    allSubsets(new_set_with_elem, remaining, index + 1)
+
+    allSubsets(current, remaining, index + 1)
 
 
+my_set = {1, 2, 3}
 
+
+allSubsets(set(), list(my_set), 0)
+
+
+'''
+[1, 2, 3]
+
+{1} {}
+
+{1, 2} {2}
+
+{1, 3} {3}
+
+{1, 2, 3} {2, 3}
+
+'''
