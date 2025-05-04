@@ -4,8 +4,7 @@ class Mammal(Animal):
     
     def reproduce(self) -> str:
         result = '''
-        \nMammals give birth to live young, and raise them
-        until they can be independent'''
+        Mammals give birth to live young, and raise them until they can be independent'''
         
         return super().reproduce() + result
     

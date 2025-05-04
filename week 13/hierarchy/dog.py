@@ -12,7 +12,7 @@ class Dog(Mammal, Omnivore, Pet):
 
     
     def __repr__(self):
-        result = 'Species: Dog'
+        result = '\nSpecies: Dog\n'
 
         result = Mammal.__repr__(self) + result
 

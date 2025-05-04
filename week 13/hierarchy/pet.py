@@ -7,8 +7,8 @@ class Pet(object, metaclass = ABCMeta):
 
     
     def pet(self) -> str:
-        return 'You can pet this animal.'
+        return 'You can pet this animal!'
     
     def __repr__(self) -> str:
-        return 'This animal is a pet.'
+        return 'This animal is a pet!'
 

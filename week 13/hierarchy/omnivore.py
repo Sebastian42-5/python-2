@@ -5,8 +5,9 @@ class Omnivore(Heterotroph):
         super().eat()
         print('I eat anything!')
     
-    def __repr__(self):
-        result = 'This organism is an omnivore; it can eat feed on both plants and animals.'
+    def __repr__(self) -> str:
+        result = '''This organism is an omnivore;
+        it can eat feed on both plants and animals.'''
 
         return super().__repr__() + result
 

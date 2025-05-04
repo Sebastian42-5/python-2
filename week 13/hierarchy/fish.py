@@ -2,8 +2,8 @@ from animal import Animal
 
 class Fish(Animal):
 
-    def __repr__(self):
-        return super().__repr__() + 'Class: Fish'
+    def __repr__(self) -> str:
+        return super().__repr__() + '\nClass: Fish'
     
     def reproduce(self) -> str:
         result = '\nFish reproduction varies largely. Some give birth to live young while others lay eggs.'

@@ -49,12 +49,12 @@ class Bunny(Mammal, Herbivore, Pet): # the order of the parents is important
 if __name__ == '__main__':
 
     b1 = Bunny()
-    #print(b1.legs)
-    #print(b1.ears)
+    print(b1.legs)
+    print(b1.ears)
     print(b1)
 
     print()
-    b1.reproduce()
+    print(b1.reproduce())
 
     print()
     b1.sleep()
