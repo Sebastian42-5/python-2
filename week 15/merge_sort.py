@@ -125,6 +125,24 @@ Another function would do the partition for you
 
 concatenate with the greater than the lesser than 
 
+------------------------------------------------
 
+1. Just make it work
+2. inplace: you're limited in space, you change the lst such that the pivot is in the middle
+left half is less than pivot, right half is higher than pivot
+
+n 
+
+n/2 n/2 
+
+n/4 n/4 n/4 n/4
+
+O(lgn)
+
+O(nlgn)
+
+Worst case: n, n-1, n-2 ... O(n^2)
+
+If you randomly chose a good pivot, there is a good distribution
 
 '''
