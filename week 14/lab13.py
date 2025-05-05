@@ -31,11 +31,6 @@ if __name__ == '__main__':
         # print(elem)
 
 
-
-    
-
-
-
 '''
 Implement a custom iterable class for the Fibonacci
 numbers.  This class constructor should take n, 
@@ -126,13 +121,15 @@ minimum element in a given list of integers.
 '''
 
 def minNum(lst):
-    n = len(lst) - 1
-    minimum = lst[0]
+    if len(lst) == 1:
+        return lst[0]
+    
+    sub = minNum(lst[1:])
 
-    if minimum > minNum(lst[:n]):
-        minimum = lst[-1]
+    if lst[0] < sub:
+        return lst[0]
     else:
-        minNum(lst[:n])
+        return sub
 
 # print(minNum([4, 7, 8, 2, 3, 5]))
 
@@ -144,17 +141,13 @@ into its integer counterpart
 '''
 
 def strInt(str):
-    i = 0 
-    char = str[i]
 
     if len(str) == 1:
-        return str 
+        return int(str)
     else:
-        integer = int(char)
-
-        return strInt(str[:i + 1])
+        return strInt(str[:-1]) * 10 + int(str[-1])
     
-print(strInt('1234'))
+# print(strInt('1234'))
 
 
 
@@ -176,7 +169,7 @@ def recurPalindrome(s):
         return recurPalindrome(s[low + 1: high])
     
 
-# print(recurPalindrome('heiufeufidjo'))
+# print(recurPalindrome('bananabo'))
 
 
 '''
@@ -185,11 +178,18 @@ Write a recursive function to count number of vowels in a string
 
 def vowels(s):
 
-    n = len(s)
+    all_vowels = 'aeiouy'
 
-    if n == 1:
-        return 
+    if len(s) == 0:
+        return 0 
+    else:
+        first = s[0]
+        if first in all_vowels:
+            first = 1
+        else:
+            first = 0
 
+    return first + vowels(s[1:])
 
 
 '''
@@ -197,7 +197,28 @@ use recursion to determine if a string has more vowels than consonants.
 '''
 
 def vowelsConsonants(s):
-    pass
+    all_vowels = 'aeiouy'
+
+    if len(s) == 0:
+        return 0 
+    else:
+        first = s[0]
+        if first in all_vowels:
+            first = 2
+        else:
+            first = 1
+
+    return (first + vowels(s[1:])) % 2
+
+
+result = vowelsConsonants('heyyo')
+
+if result == 1:
+    print('False')
+elif result == 0:
+    print('True')
+
+
 
 '''
 Implement an iterator that filters out even values from a range iterable.
@@ -235,8 +256,71 @@ write a recursive function that prints all subsets of a given set of elements
 
 '''
 
-def allSubsets(sets):
-    pass
+def allSubsets(current, remaining, index):
+    
+    if index == len(remaining):
+        print(current)
+        return 
+    
+    elem = remaining[index]
 
+    new_set_with_elem = current.copy() 
+
+    new_set_with_elem.add(elem)
+
+    allSubsets(new_set_with_elem, remaining, index + 1)
+
+    allSubsets(current, remaining, index + 1)
+
+
+my_set = {1, 2, 3}
+
+
+# allSubsets(set(), list(my_set), 0)
+
+
+'''
+[1, 2, 3]
+
+{1} {}
+
+{1, 2} {2}
+
+{1, 3} {3}
+
+{1, 2, 3} {2, 3}
+
+'''
+
+def count_pairs(lst, target):
+
+    if len(lst) < 2:
+        return 0
+    
+    first = lst[0]
+
+    rest = lst[1:]
+
+    count = rest.count(target - first)
+
+    return count + count_pairs(rest, target)
+
+lst = [0, 1, 2, 3, 4, 6, 7, 5]
+
+print(count_pairs(lst, 7))
+
+
+'''
+
+def goodFibonacci(n, seen = {0:0, 1:1}):
+    # preferably constant storage
+    if n < 0:
+        return 'Enter a positive number'
+    if n not in seen:
+        seen[n] = goodFibonacci(n - 1, seen) + goodFibonacci(n - 2, seen)
+    
+    return seen[n]
+
+'''
 
 
