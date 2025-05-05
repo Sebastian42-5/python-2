@@ -2,6 +2,10 @@ from heterotroph import Heterotroph
 
 class Carnivore(Heterotroph):
 
+    def __init__(self, fangs = 4):
+        
+        self.fangs = fangs
+
     def eat(self):
         super().eat()
         

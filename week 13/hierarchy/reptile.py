@@ -2,6 +2,9 @@ from animal import Animal
 
 class Reptile(Animal):
 
+    def __init__(self, shed = True):
+        self.shed = shed
+
     def __repr__(self) -> str:
 
         result = 'Class: Reptile'
