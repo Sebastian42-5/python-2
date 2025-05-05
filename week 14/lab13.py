@@ -276,7 +276,7 @@ def allSubsets(current, remaining, index):
 my_set = {1, 2, 3}
 
 
-allSubsets(set(), list(my_set), 0)
+# allSubsets(set(), list(my_set), 0)
 
 
 '''
@@ -291,3 +291,36 @@ allSubsets(set(), list(my_set), 0)
 {1, 2, 3} {2, 3}
 
 '''
+
+def count_pairs(lst, target):
+
+    if len(lst) < 2:
+        return 0
+    
+    first = lst[0]
+
+    rest = lst[1:]
+
+    count = rest.count(target - first)
+
+    return count + count_pairs(rest, target)
+
+lst = [0, 1, 2, 3, 4, 6, 7, 5]
+
+print(count_pairs(lst, 7))
+
+
+'''
+
+def goodFibonacci(n, seen = {0:0, 1:1}):
+    # preferably constant storage
+    if n < 0:
+        return 'Enter a positive number'
+    if n not in seen:
+        seen[n] = goodFibonacci(n - 1, seen) + goodFibonacci(n - 2, seen)
+    
+    return seen[n]
+
+'''
+
+
