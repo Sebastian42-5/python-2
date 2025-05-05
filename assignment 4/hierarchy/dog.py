@@ -17,7 +17,7 @@ class Dog(Mammal, Omnivore, Pet):
         self.tail_length = tail_length
 
     
-    def __repr__(self):
+    def __repr__(self) -> str:
         result = '\nSpecies: Dog\n'
 
         result = Mammal.__repr__(self) + result
@@ -39,7 +39,7 @@ class Dog(Mammal, Omnivore, Pet):
         Omnivore.eat(self)
         print('I mostly eat dog food and I like chewing on bones.')
 
-    def reproduce(self):
+    def reproduce(self) -> str:
         result = 'Dogs do not reproduce that often'
 
         return Mammal.reproduce(self) + '\n' + result

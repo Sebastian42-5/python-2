@@ -19,7 +19,7 @@ class Bunny(Mammal, Herbivore, Pet): # the order of the parents is important
 
         return result + '\n' + Herbivore.__repr__(self)
     
-    def reproduce(self):
+    def reproduce(self) -> str:
         result = '''
         Bunnies can produce multiple litters per
         year, potentially having 3-8 kits per litter'''
