@@ -211,7 +211,7 @@ def vowelsConsonants(s):
     return (first + vowels(s[1:])) % 2
 
 
-result = vowels('heyyo')
+result = vowelsConsonants('heyyo')
 
 if result == 1:
     print('False')
