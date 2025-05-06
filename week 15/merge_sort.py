@@ -40,7 +40,7 @@ unsorted_lst = [3, 7, 6, -10, -3, 15, 23.5, 55, -13]
 sorted_lst = mergeSort(unsorted_lst)
 
 
-print(f'Sorted List: {sorted_lst}')
+# print(f'Sorted List: {sorted_lst}')
 
 
 
@@ -84,7 +84,7 @@ The pivot can also be chosen randomly
 
 Randomized quick sort: best quick sort 
 
-Let's take 50 as the pivot for a dterministic quick sort
+Let's take 50 as the pivot for a deterministic quick sort
 
 50 is the middle 
 
@@ -146,3 +146,41 @@ Worst case: n, n-1, n-2 ... O(n^2)
 If you randomly chose a good pivot, there is a good distribution
 
 '''
+
+
+def quickSort(lst):
+    if len(lst) <= 1:
+        return lst
+    
+    pivot = lst[-1]
+
+    left = [] 
+
+    right = [] 
+
+    for i in range(len(lst) - 1):
+        if lst[i] < pivot:
+            left.append(lst[i])
+        else:
+            right.append(lst[i])
+
+
+    return quickSort(left) + [pivot] + quickSort(right)
+
+
+print(quickSort([3, 8, 4, 7, 5, 2, 9, 2, 5, 2, 7]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
