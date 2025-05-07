@@ -12,9 +12,7 @@ class Bunny(Mammal, Herbivore, Pet): # the order of the parents is important
 
     def __repr__(self) -> str:
         result = 'Species: Bunny'
-
         result = Mammal.__repr__(self) + result # kingdom, class
-
         result += '\n' + Pet.__repr__(self)
 
         return result + '\n' + Herbivore.__repr__(self)
@@ -27,7 +25,6 @@ class Bunny(Mammal, Herbivore, Pet): # the order of the parents is important
         return super().reproduce() + '\n' + result
 
     def move(self):
-
         print('I move by hopping and I can see behind me...')
 
     
@@ -44,7 +41,9 @@ class Bunny(Mammal, Herbivore, Pet): # the order of the parents is important
             I mostly eat fresh hay and grass, with
             some leafy greens and few pellets. I should only
             be given fruit and root vegetables like carrots, as an occasional treat''')
-        
+
+
+# some testing   
     
 if __name__ == '__main__':
 

@@ -2,9 +2,6 @@ from animal import Animal
 
 class Reptile(Animal):
 
-    def __init__(self, shed = True):
-        self.shed = shed
-
     def __repr__(self) -> str:
 
         result = 'Class: Reptile'
@@ -15,12 +12,4 @@ class Reptile(Animal):
         result = 'Reptiles reproduce by laying eggs, typically on land rather than water.'
         
         return super().reproduce() + result
-    
-    def move(self):
-
-        print('Reptiles normally move on the ground but can also swim.')
-
-    def sleep(self):
-
-        print('Reptiles sleep 4 to 7 hours each night.')
     

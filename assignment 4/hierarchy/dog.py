@@ -7,25 +7,17 @@ from heterotroph import Heterotroph
 class Dog(Mammal, Omnivore, Pet):
 
     def __init__(self, legs = 4, ears = 2, tail_length = 54, fangs = 4):
-
         Pet.__init__(self, legs)
-
         Heterotroph.__init__(self, legs=legs, fangs=fangs)
-
         self.ears = ears
-
         self.tail_length = tail_length
 
     
     def __repr__(self) -> str:
         result = '\nSpecies: Dog\n'
-
         result = Mammal.__repr__(self) + result
-
         result += '\n' + Pet.__repr__(self)
-
         result += '\n' + Omnivore.__repr__(self)
-
         return result
     
     def move(self):
@@ -41,13 +33,14 @@ class Dog(Mammal, Omnivore, Pet):
 
     def reproduce(self) -> str:
         result = 'Dogs do not reproduce that often'
-
         return Mammal.reproduce(self) + '\n' + result
-        
+
+
+# some testing   
 
 if __name__ == '__main__':
-    d = Dog()
 
+    d = Dog()
 
     print(d)
 
