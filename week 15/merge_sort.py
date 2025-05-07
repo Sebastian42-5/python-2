@@ -148,6 +148,7 @@ If you randomly chose a good pivot, there is a good distribution
 '''
 
 
+
 def quickSort(lst):
     if len(lst) <= 1:
         return lst
@@ -169,6 +170,40 @@ def quickSort(lst):
 
 
 print(quickSort([3, 8, 4, 7, 5, 2, 9, 2, 5, 2, 7]))
+
+
+
+
+import random
+
+
+def randomquickSort(lst):
+    if len(lst) <= 1:
+        return lst
+    
+    pivot_index = random.randint(0, len(lst) - 1)
+    
+    pivot = lst[pivot_index]
+
+    left = [] 
+
+    right = [] 
+
+    for i in range(len(lst)):
+        if i == pivot_index:
+            continue
+        if lst[i] < pivot:
+            left.append(lst[i])
+        else:
+            right.append(lst[i])
+
+
+    return randomquickSort(left) + [pivot] + randomquickSort(right)
+
+
+print(randomquickSort([3, 8, 4, 7, 5, 2, 9, 2, 5, 2, 7]))
+
+
 
 
 
