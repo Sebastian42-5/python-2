@@ -2,7 +2,7 @@ from animal import Animal
 
 class Bird(Animal):
 
-    def __init__(self, wings = 2):
+    def __init__(self, wings = 2, legs = 2):
         self.wings = wings
 
     def __repr__(self) -> str:
