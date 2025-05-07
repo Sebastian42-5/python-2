@@ -11,7 +11,6 @@ class Fish(Animal):
     
     def reproduce(self) -> str:
         result = '\nFish reproduction varies largely. Some give birth to live young while others lay eggs.'
-        
         return super().reproduce() + result
     
     def move(self):

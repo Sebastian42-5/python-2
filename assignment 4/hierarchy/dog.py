@@ -11,8 +11,7 @@ class Dog(Mammal, Omnivore, Pet):
         Heterotroph.__init__(self, legs=legs, fangs=fangs)
         self.ears = ears
         self.tail_length = tail_length
-
-    
+  
     def __repr__(self) -> str:
         result = '\nSpecies: Dog\n'
         result = Mammal.__repr__(self) + result
@@ -26,7 +25,6 @@ class Dog(Mammal, Omnivore, Pet):
     def sleep(self):
         print('Dogs sleep 12 to 14 hours every day. They are day creatures.')
         
-
     def eat(self):
         Omnivore.eat(self)
         print('I mostly eat dog food and I like chewing on bones.')

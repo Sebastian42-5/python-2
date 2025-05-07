@@ -4,7 +4,7 @@ from pet import Pet
 
 
 class Parrot(Bird, Omnivore, Pet):
-    def __init__(self, legs = 2, wings = 2):
+    def __init__(self, wings = 2, legs = 2):
         Pet.__init__(self, legs)
         Bird.__init__(self, wings)
 
