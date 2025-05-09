@@ -97,7 +97,7 @@ def numLst(lst):
         elements = [lst[-1]] * lst[-1]
         return elements + numLst(lst[:-1])
     
-print(numLst([9, 5, 3]))
+print(numLst([8, 7, 6, 5, 2]))
 
 
 
@@ -105,7 +105,7 @@ print(numLst([9, 5, 3]))
 '''
 create a ruler
 
-----
+----0
 -
 --
 -
@@ -113,7 +113,7 @@ create a ruler
 -
 --
 -
-----
+----1
 -
 --
 -
@@ -121,15 +121,29 @@ create a ruler
 -
 --
 -
-----
+----2
+-
+--
+-
+---
+-
+--
+-
+----3
 
 '''
 
 
 '''
-4 1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 4
+4 1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 4 1 2 1 3 1 2 1 4
 
 
-3 inch ruler major tick length 3
+
+3 inch ruler major tick length 4
 
 '''
+
+
+def ruler(tick, inches):
+    pass
+

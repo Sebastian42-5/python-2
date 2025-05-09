@@ -24,20 +24,26 @@ Use the concepts of calculus II that we saw on section 8.2
 
 '''
 
+This will be the start code: 
+
+
+
+'''
 # p-series:
 
 
-# from progression import Progression
+from progression import Progression
 
 
 class PseriesTerms:
     pass
 
-class Pseries:
+class Pseries(Progression):
     pass
 
 # g-series:
 
-class Gseries:
+class GeometricSeries(Progression):
     pass
 
+'''
