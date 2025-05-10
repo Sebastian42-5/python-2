@@ -59,7 +59,7 @@ def isOccurence(lst, n):
     return occurence(lst, n) == n
 
 
-print(isOccurence([2, 4, 6, 7, 2], 2))
+# print(isOccurence([2, 4, 6, 7, 2], 2))
 
 
             
@@ -85,7 +85,7 @@ def allSubsets(current, remaining, index):
 my_set = {1, 2, 3}
 
 
-allSubsets(set(), list(my_set), 0)
+# allSubsets(set(), list(my_set), 0)
 
 
 
@@ -97,7 +97,7 @@ def numLst(lst):
         elements = [lst[-1]] * lst[-1]
         return elements + numLst(lst[:-1])
     
-print(numLst([8, 7, 6, 5, 2]))
+# print(numLst([8, 7, 6, 5, 2]))
 
 
 
@@ -144,6 +144,100 @@ create a ruler
 '''
 
 
-def ruler(tick, inches):
-    pass
+def drawLine(tick_length, label = ''):
+    line = '-' * tick_length 
+    if label:
+        line += str(label)
+
+    print(line)
+
+
+def drawInterval(center_length):
+    if center_length > 0:
+        drawInterval(center_length - 1)
+        drawLine(center_length)
+        drawInterval(center_length - 1)
+
+
+def ruler(tick_length, inches):
+    drawLine(tick_length, 0)
+
+    for i in range(1, inches + 1):
+        drawInterval(tick_length - 1)
+        drawLine(tick_length, i)
+
+
+# ruler(4, 4)
+
+
+
+
+
+def listInterval(center_length):
+    if center_length == 0:
+        return []
+    else:
+        return listInterval(center_length - 1) + [center_length] + listInterval(center_length - 1)
+
+def rulerList(inches, length):
+    result = []
+
+    for _ in range(inches):
+        result.append(length)
+
+        result.extend(listInterval(length - 1))
+    
+    result.append(length)
+
+    return result
+
+
+# print(rulerList(6, 6))
+
+
+
+
+
+
+# def coolInterval(num):
+#     if num < 1:
+#         return [num]
+#     else:
+#         [num] + coolInterval(num - 1)
+    
+
+# print(coolInterval(5))
+
+def coolList(num):
+    interval = list(range(1, num))
+
+    reverse = interval[::-1]
+
+    return interval + [num] + reverse
+
+# print(coolList(7))
+
+
+
+
+def range(num):
+    if num < 1:
+        return []
+    else:
+        return range(num - 1) + [num]
+
+
+def reverseRange(start, end):
+    if start == end:
+        return []
+    else:
+        return reverseRange(start + 1, end) + [start]
+
+
+def coolList(num):
+    start = 1
+    return range(num) + reverseRange(start, num)
+
+
+print(coolList(5))
 

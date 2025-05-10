@@ -37,7 +37,7 @@ def recSum(n):
     else:
         return recSum(n - 1) + n  # for one run, it's constant time. I am doing it n times, so n * O(1) it's O(n). 
     
-# print(recSum(5))
+print(recSum(5))
 
 
 # A frame is anything that the function needs is pushed into the stack
