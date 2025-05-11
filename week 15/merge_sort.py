@@ -34,13 +34,13 @@ def merge(left, right):
     new_lst.extend(right[j:])
 
     
-    return new_lst
+    return ''.join(new_lst)
 
-unsorted_lst = [3, 7, 6, -10, -3, 15, 23.5, 55, -13]
+unsorted_lst = 'dheuegakbia'
 sorted_lst = mergeSort(unsorted_lst)
 
 
-# print(f'Sorted List: {sorted_lst}')
+print(f'Sorted List: {sorted_lst}')
 
 
 

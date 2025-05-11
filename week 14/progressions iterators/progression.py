@@ -33,13 +33,21 @@ class Progression:
         lst = [next(self) for _ in range(n)]
         return lst
     
-if __name__ == '__main__':
-    print('Default Progression: ')
-    Progression().printProgression(6)
-    Progression(12).printProgression(11)
+    def sumProgression(self, n):
+        return sum(self.lstProgression(n))
+    
 
-    for value in Progression().lstProgression(10):
-        print(value*2)
+if __name__ == '__main__':
+    # print('Default Progression: ')
+    # Progression().printProgression(6)
+    # Progression(12).printProgression(11)
+
+    # for value in Progression().lstProgression(10):
+    #     print(value*2)
+
+    prog = Progression(5)
+
+    print(prog.sumProgression(6))
     
     # for item in Progression(12):
     #     print(item)  # this is infinite
