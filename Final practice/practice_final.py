@@ -166,3 +166,216 @@ has a relation: using an object in another class
 
 
 # done in the progression class
+
+
+
+# 8 
+
+'''
+# directory JSON:  
+
+{  
+
+    "\\main": {  
+
+        "\\photos": {  
+
+            "\\Summer Trip": {  
+
+                "beach.png" : 2400,  
+
+                "mountain.png" : 1200,  
+
+                "lasagna.png" : 2000  
+
+            },  
+
+            "\\Winter Trip": {  
+
+                "cabin.png" : 2000,  
+
+                "skiing.png" : 1800  
+
+            }  
+
+        },  
+
+        "\\Homework": {  
+
+            "\\Math": {  
+
+                "Algebra.pdf" : 1000,  
+
+                "Statistics.txt" : 1300,  
+
+                "\\Physics" : {  
+
+                    "Mechanics.pdf" : 2000,  
+
+                    "Electromagnetism.txt" : 2200  
+
+                }  
+
+            }  
+
+        }  
+
+    },  
+
+    "\\backup": {  
+
+        "\\photos" : {  
+
+            "\\Summer Trip": {  
+
+                "beach.png" : 2400,  
+
+                "mountain.png" : 1200,  
+
+                "city.mp4" : 5800,  
+
+                "forest.mp4" : 5600,  
+
+                "lasagna.png" : 2000  
+
+            }  
+
+        }  
+
+    }  
+
+}  
+
+  
+
+Write a recursive function to find the total size of the directory, as well as the number of each type of files in it.  
+
+The program should export the results to a JSON file with the following structure:  
+
+{  
+
+    "total_size": <total_size>,  
+
+    "file_count": {  
+
+        "txt": <number_of_txt_files>,  
+
+        "png": <number_of_png_files>,  
+
+        "pdf": <number_of_pdf_files>,  
+
+        ...  
+
+    }  
+
+}  
+
+Lastly, the program should print the contents of the exported JSON file to the console.  
+
+The program should take any arbitrary JSON representation of a directory with the sizes as input. 
+
+
+'''
+
+
+# 9 
+
+
+'''
+
+Task: Create a class hierarchy for a Vehicle system where: 
+
+Vehicle is an abstract class with attributes brand and year. 
+
+Car and Motorcycle are derived classes that inherit from Vehicle. 
+
+Create the class such that Car can be initialized with: 
+
+Default values (unknown, unknown, unknown) 
+
+Brand and year only 
+
+Year, brand, and number of seats 
+
+
+'''
+
+
+
+
+# 10 
+
+'''
+Do the inplace version of the quick sort 
+
+Partitioning should be linear time
+
+->  <- 
+
+pointers that come in both ways 
+
+Pick a pivot and where they stand with respect to the pointers that start 
+on the extremities of the lst 
+
+'''
+
+def inPlaceQuickSort(lst):
+    pass
+
+
+
+
+'''
+1. Data Science Libraries 
+-> pandas, matplotlib, numpy 
+
+1.5 Debugging 
+
+Where to set a break point? 
+This is the result that it's giving, this is what I want
+Short answer questions
+
+
+2. 2D-Lists, nested loops 
+
+referencing, tuples
+tuples are immutable objects that can have mutable objects inside
+
+
+2.5 List comprehensions, map, filter 
+
+Be sure to know how to read code that uses list comprehensions, map, filter 
+
+
+
+3. Dictionaries, nested dictionaries, sets
+sets are also immutable objects 
+you can't put a mutable object inside a set 
+unordered, no repetitions, you can't have a set of sets 
+keys are immutable values are mutable 
+string can be key, floats, tuples with no mutable objects inside, sets
+
+
+
+4. Files (.txt and .json), Exceptions
+Expected to know all the different errors (FileNotFoundError for example) how to open a file, the two different modes 
+Close file. You cannot use with. 
+Load, loads, dump, dumps
+
+
+5. Objects / classes 
+
+-> basic class
+-> Containment (has a)
+-> inheritance (multiple) is a vs has a relationship
+-> polymorphism : the method show himself differently depenidng on the class you call it on 
+
+
+
+
+
+
+
+
+
+'''
