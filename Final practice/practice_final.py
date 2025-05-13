@@ -276,6 +276,139 @@ The program should take any arbitrary JSON representation of a directory with th
 
 
 '''
+import json
+
+def count_size(directory):
+    return recurse(directory)
+
+def recurse(current):
+
+    total = 0
+    counts = {}
+
+
+    for name, content in current.items():
+        if isinstance(content, dict):
+            sub_total, sub_count = count_size(content)
+            total += sub_total
+
+            for ext, count in sub_count.items():
+                counts[ext] = counts.get(ext, 0) + count
+        
+        else:
+            total += content 
+            ext = name.split('.')[-1]
+            counts[ext] = counts.get(ext, 0) + 1
+
+    
+    return total, counts
+
+
+
+def write_json(data, filename):
+
+    output_file = open(filename, 'w')
+
+    json.dump(data, output_file, indent = 4)
+
+
+def load_json(filename):
+
+    input_file = open(filename, 'r')
+
+    data = json.load(input_file)
+
+    print(data)
+
+ 
+my_dir = {  
+
+    "\\main": {  
+
+        "\\photos": {  
+
+            "\\Summer Trip": {  
+
+                "beach.png" : 2400,  
+
+                "mountain.png" : 1200,  
+
+                "lasagna.png" : 2000  
+
+            },  
+
+            "\\Winter Trip": {  
+
+                "cabin.png" : 2000,  
+
+                "skiing.png" : 1800  
+
+            }  
+
+        },  
+
+        "\\Homework": {  
+
+            "\\Math": {  
+
+                "Algebra.pdf" : 1000,  
+
+                "Statistics.txt" : 1300,  
+
+                "\\Physics" : {  
+
+                    "Mechanics.pdf" : 2000,  
+
+                    "Electromagnetism.txt" : 2200  
+
+                }  
+
+            }  
+
+        }  
+
+    },  
+
+    "\\backup": {  
+
+        "\\photos" : {  
+
+            "\\Summer Trip": {  
+
+                "beach.png" : 2400,  
+
+                "mountain.png" : 1200,  
+
+                "city.mp4" : 5800,  
+
+                "forest.mp4" : 5600,  
+
+                "lasagna.png" : 2000  
+
+            }  
+
+        }  
+
+    }  
+
+}  
+
+
+total, count = count_size(my_dir)
+
+
+result = {
+
+    'total_size': total, 
+    'total_count': count
+}
+
+filename = 'directory.json'
+
+write_json(result, filename)
+
+load_json(filename)
+
 
 
 # 9 
@@ -319,63 +452,94 @@ on the extremities of the lst
 
 '''
 
-def inPlaceQuickSort(lst):
-    pass
+def bubblePartition(lst, start, end):
+    pivot_index = end
+    pivot = lst[pivot_index]
+
+    i = pivot_index - 1
+    
+    while i >= start:
+        
+        if lst[i] > pivot:
+            lst[i], lst[pivot_index] = lst[pivot_index], lst[i]
+
+            pivot_index = i
+        
+        else:
+            j = i - 1
+
+            while j >= start and lst[j] > lst[i]:
+
+                lst[j], lst[i] = lst[i], lst[j]
+
+                i = j 
+
+                j -= 1
+        
+        i -= 1
+
+    
+    return pivot_index
 
 
+def customQuickSort(lst, start = 0, end = None):
+
+    if end is None:
+        end = len(lst) - 1
+    
+    if start < end:
+    
+        pivot_i = bubblePartition(lst, start, end)
+
+        customQuickSort(lst, start, pivot_i - 1)
+
+        customQuickSort(lst, pivot_i + 1, end)
 
 
-'''
-1. Data Science Libraries 
--> pandas, matplotlib, numpy 
-
-1.5 Debugging 
-
-Where to set a break point? 
-This is the result that it's giving, this is what I want
-Short answer questions
+    return lst
 
 
-2. 2D-Lists, nested loops 
-
-referencing, tuples
-tuples are immutable objects that can have mutable objects inside
-
-
-2.5 List comprehensions, map, filter 
-
-Be sure to know how to read code that uses list comprehensions, map, filter 
-
-
-
-3. Dictionaries, nested dictionaries, sets
-sets are also immutable objects 
-you can't put a mutable object inside a set 
-unordered, no repetitions, you can't have a set of sets 
-keys are immutable values are mutable 
-string can be key, floats, tuples with no mutable objects inside, sets
-
-
-
-4. Files (.txt and .json), Exceptions
-Expected to know all the different errors (FileNotFoundError for example) how to open a file, the two different modes 
-Close file. You cannot use with. 
-Load, loads, dump, dumps
-
-
-5. Objects / classes 
-
--> basic class
--> Containment (has a)
--> inheritance (multiple) is a vs has a relationship
--> polymorphism : the method show himself differently depenidng on the class you call it on 
-
-
-
+# print(customQuickSort([5, 7, 2, 8, 1, 6, 4, 3]))
 
 
 
 
 
+# 11
 
-'''
+
+
+
+# 12
+
+def recurPalindrome(s):
+    low = 0 
+    high = len(s) - 1
+
+    if len(s) == 0:
+        return False
+
+    if low == high:
+        return s[0] == s[low]
+    else:
+        return recurPalindrome(s[low + 1: high])
+    
+# the space complexity of this algorithm is O(n) 
+
+
+
+
+
+# 20 
+
+
+def mysteryFunc(n): 
+
+    if n <= 1: 
+
+        return n 
+
+    return mysteryFunc(n-1) + mysteryFunc(n-2) 
+
+# time-complexity : O(2^n)
+# space complexity: O(n)
