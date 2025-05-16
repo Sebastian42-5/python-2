@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 # 1
 
 def stringMergeSort(str):
@@ -73,11 +75,11 @@ class B(A):
 
         print("B") 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-    b = B() 
+#     b = B() 
 
-    b.show() 
+#     b.show() 
 
  
 
@@ -405,9 +407,9 @@ result = {
 
 filename = 'directory.json'
 
-write_json(result, filename)
+# write_json(result, filename)
 
-load_json(filename)
+# load_json(filename)
 
 
 
@@ -528,6 +530,9 @@ def recurPalindrome(s):
 
 
 
+# 13
+
+
 
 
 # 20 
@@ -543,3 +548,317 @@ def mysteryFunc(n):
 
 # time-complexity : O(2^n)
 # space complexity: O(n)
+
+
+
+# redoing test 2 :
+
+
+def readFile(file_name: str) -> dict:
+    try:
+        input_file = open(file_name, 'r')
+    
+    except FileNotFoundError:
+        print('This file does not exist')
+        return None
+    
+    else:
+        d = {}
+        for line in input_file:
+            each_line = line.rstrip().split()
+
+            name = each_line[0]
+
+            data = list(map(int, each_line[1:]))
+
+            d[name] = data 
+
+    
+    input_file.close()
+    return d
+
+
+# print(readFile('datas.txt'))
+
+
+
+
+# object question
+
+
+class Person:
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name 
+        self.last_name = last_name 
+
+    def __repr__(self):
+        return f'{self.first_name} {self.last_name}'
+
+
+class BankAccount:
+    def __init__(self, person: Person, account_balance = 0):
+        self.person = person
+        self.account_balance = account_balance
+
+    def __repr__(self) -> str:
+        return (f'{self.person}' + '\n' + f'Balance:  {self.account_balance}')
+    
+    def __lt__(self, other_account: BankAccount) -> bool:
+        return self.person == other_account.person and self.account_balance < other_account.account_balance
+    
+
+# if __name__ == '__main__':
+
+#     p = Person('Sebastian', 'Soto')
+
+#     b = BankAccount(p)
+
+#     print(b)
+
+#     b2 = BankAccount(p, 12)
+
+#     print(b < b2)
+
+
+# 24
+
+
+def dictLst(d):
+    new_lst = []
+
+    for name, rscore in d.items():
+        elem = (name, rscore)
+
+        new_lst.append(elem)
+    
+    return new_lst
+
+
+def rquickSort(d):
+
+    lst = dictLst(d)
+
+    if len(lst) <= 1:
+        return lst
+    
+    pivot = lst[-1]
+
+    left = []
+
+    right = []
+
+    for i in range(len(lst) - 1):
+        if lst[i][-1] < pivot[-1]:
+            left.append(lst[i])
+        else:
+            right.append(lst[i])
+
+    return left + [pivot] + right
+
+students = { 
+
+    "Leo": 49.99, 
+
+    "HHHHH": 12, 
+
+    "bartholomew": 25, 
+
+    "Oliver": 35.46 
+
+} 
+
+# print(rquickSort(students))
+
+
+
+
+# 25 
+
+
+'''
+Find the LCP recursively
+
+lst = ['flower', 'flow', 'flight']
+
+returns: 'fl'
+
+use the startswith
+
+'''
+
+def lcp(lst, index = 1, prefix = None):
+
+    if not lst:
+        return ''
+    
+    if prefix is None:
+        prefix = lst[0]
+    
+    if index == len(lst):
+        return prefix
+    
+    while not lst[index].startswith(prefix):
+        prefix = prefix[:-1]
+        if not prefix:
+            return ''
+        
+    return lcp(lst, index + 1, prefix)
+
+# print(lcp(['flower', 'flow', 'flight']))
+
+
+
+# 26
+
+
+'''
+write a recusive function that returns the flattened version of a nested lst
+
+flatten([1, [2, [3, 4], 5], 6]) -> [1, 2. 3, 4, 5, 6]
+
+'''
+
+def flatten(lst, index = 0):
+
+    if index == len(lst):
+        return []
+    
+    elem = lst[index]
+
+    if isinstance(elem, list):
+        return flatten(elem) + flatten(lst, index + 1)
+    
+    else:
+        return [elem] + flatten(lst, index + 1)
+    
+
+# print(flatten([1, [2, [3, 4], 5], 6]))
+
+
+
+
+
+def sumNest(lst, index = 0):
+    if index == len(lst):
+        return 0
+    
+    elem = lst[index]
+
+    if isinstance(elem, list):
+        return sumNest(elem) + sumNest(elem, index + 1)
+    
+    else:
+        return elem + sumNest(lst, index + 1)
+
+
+# print(sumNest([1, [2, [3, 4], 5], 6]))
+
+
+
+
+
+
+def sumDict(d: dict):
+    if not d:
+        return 0
+    
+    keys = list(d.keys())
+
+    first_key = keys[0]
+
+    first_value = d[first_key]
+
+    remaining = {}
+
+    i = 1
+
+    while i < len(keys):
+
+        k = keys[i]
+
+        remaining[k] = d[k]
+
+        i += 1
+
+    if isinstance(first_value, dict):
+        return sumDict(first_value) + sumDict(remaining)
+    
+    elif isinstance(first_value, int):
+
+        return first_value + sumDict(remaining)
+    
+    else:
+        return sumDict(remaining)
+
+
+# print(sumDict({'a': 2, 'b':{'c': {'a': 6}}, 'd': {'e': 3}, 'f': 2}))
+
+
+
+
+# 27 
+
+'''
+ Create an iterator class factorials, in which you have a method that takes an argument n and 
+ returns all the factorials from 0! to n!. EXTRA: add a method called “switch” to the class that
+ reverses the order of the sequence. Example: 
+
+'''
+
+
+class Factorials:
+    def __init__(self, n = 0):
+        self.n = n
+        self._current = 0
+        self.factorials = self.computeFactorials(n)
+
+        self.reversed = False
+
+    def computeFactorials(self, n):
+        factorials = [1]
+
+        for i in range(1, n + 1):
+            factorials.append(factorials[-1] * i)
+        
+        return factorials
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self._current >= len(self.factorials):
+            raise StopIteration
+        else:
+            if self.reversed:
+                index = len(self.factorials) - 1 - self._current
+            
+            else:
+                index = self._current
+
+            value = self.factorials[index]
+
+            self._current += 1
+
+            return value
+    
+    def switch(self):
+        self.reversed = not self.reversed
+        self._current = 0
+        
+
+if __name__ == '__main__':
+    fact = Factorials(6)
+
+    for elem in fact:
+        print(elem)
+
+    fact.switch()
+
+    print()
+
+    for elem in fact:
+        print(elem)
+   
+
+
+

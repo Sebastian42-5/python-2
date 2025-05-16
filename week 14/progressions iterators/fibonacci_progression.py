@@ -15,9 +15,9 @@ class FibonacciProgression(Progression):
 
 
 if __name__ == '__main__':
-    FibonacciProgression().printProgression(10)
+    # FibonacciProgression().printProgression(10)
 
-    for value in FibonacciProgression(3).lstProgression(10):
+    for value in FibonacciProgression().lstProgression(10):
         print(value)
 
 
