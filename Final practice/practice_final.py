@@ -846,19 +846,92 @@ class Factorials:
         self._current = 0
         
 
-if __name__ == '__main__':
-    fact = Factorials(6)
+# if __name__ == '__main__':
+#     fact = Factorials(6)
 
-    for elem in fact:
-        print(elem)
+#     for elem in fact:
+#         print(elem)
 
-    fact.switch()
+#     fact.switch()
 
-    print()
+#     print()
 
-    for elem in fact:
-        print(elem)
+#     for elem in fact:
+#         print(elem)
    
+
+
+'''
+Implement an iterator that filters out even values from a range iterable.
+
+'''
+
+# for num in EvenFIlter(range(1, 21))
+
+class EvenFilter():
+    def __init__(self, iterable):
+        self.__iterable = list(iterable)
+
+        self._index = 0
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        while self._index < len(self.__iterable):
+            item = self.__iterable[self._index]
+            self._index += 1
+            if item % 2 == 0:
+                return item
+        
+        raise StopIteration
+    
+
+if __name__ == '__main__':
+    for num in EvenFilter(range(1, 21)):
+        print(num)
+
+
+
+'''
+13. Write an iterable PyramidIterable(string) that when iterated returns the 1st letter of the input string,
+then the first 2, then the first 3, all the way until it returns the whole word. You will probably need to
+make some sort of iterator before making your iterable. The default value for string should be 'hello world!'.
+If you need to create any attributes make sure they are protected/private/public as appropriate, and justify your choice.  
+
+Ex: PyramidIterable('cow') should return 'c', 'co', 'cow' then stop iterating.  
+
+Ex: PyramidIterable() should return 'h', 'he', 'hel', 'hell', 'hello', 'hello ', 'hello w', ... 
+
+'''
+
+
+class PyramidIterable:
+    def __init__(self, string = 'hello world!'):
+        self.string = string
+        self._index = 0
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self._index >= len(self.string) + 1:
+            raise StopIteration
+        
+        else:
+            char = self.string[:self._index]
+
+            self._index += 1
+
+            return char 
+        
+if __name__ == '__main__':
+    hey = PyramidIterable('cheese and ketchup')
+
+    for elem in hey:
+        print(elem)
+
+
 
 
 

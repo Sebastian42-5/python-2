@@ -246,9 +246,9 @@ class EvenFilter():
         raise StopIteration
     
 
-# if __name__ == '__main__':
-    # for num in EvenFilter(range(1, 21)):
-        # print(num)
+if __name__ == '__main__':
+    for num in EvenFilter(range(1, 21)):
+        print(num)
 
 
 '''
