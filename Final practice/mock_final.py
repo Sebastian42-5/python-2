@@ -423,24 +423,24 @@ class Folder(File):
         return total
 
 
-if __name__ == '__main__':
-    f1 = SimpleFile('song.mp4', 13)
+# if __name__ == '__main__':
+#     f1 = SimpleFile('song.mp4', 13)
 
-    f2 = SimpleFile('data.txt', 45)
+#     f2 = SimpleFile('data.txt', 45)
 
-    print(f1)
+#     print(f1)
 
-    print(f2)
+#     print(f2)
 
-    print(f1 < f2)
+#     print(f1 < f2)
 
-    my_folder = Folder('My stuff')
+#     my_folder = Folder('My stuff')
 
-    my_folder.add_file(f1)
+#     my_folder.add_file(f1)
 
-    my_folder.add_file(f2)
+#     my_folder.add_file(f2)
 
-    print(my_folder)
+#     print(my_folder)
 
 
 
@@ -467,8 +467,48 @@ After sorting, use the bisect module to find the insertion point for an item wit
 Explain whether ('apple', [5]) is a valid element in a set and why.
 
 '''
+import bisect
+
+def rquickSort(lst):
+
+    if len(lst) <= 1:
+        return lst
+    
+    pivot = lst[-1]
+
+    left = []
+
+    right = []
+
+    for i in range(len(lst) - 1):
+        if lst[i][-1] < pivot[-1]:
+            left.append(lst[i])
+        else:
+            right.append(lst[i])
+
+    return left + [pivot] + right
 
 
+
+items = [('apple', 5), ('banana', 2), ('carrot', 7), ('date', 3)]
+
+sorted_lst = rquickSort(items)
+
+# print(sorted_lst)
+
+# names = [elem[0] for elem in sorted_lst]
+
+# prices = [elem[-1] for elem in sorted_lst]
+
+# print(names)
+
+# print(prices)
+
+# num = 4
+
+# index_required = bisect.bisect(prices, num)
+
+# print(index_required)
 
 
 
@@ -488,8 +528,40 @@ Define a method flatten() that returns a list comprehension that flattens the bo
 Create a subclass GameBoard that inherits from Board and adds a method highlight(val) that replaces every occurrence of val with "*".
 '''
 
+class Board:
+    def __init__(self, board):
+        self.board = board
+
+    def count_occurences(self, val, row_index = 0, col_index = 0):
+        if row_index == len(self.board):
+            return 0 
+        
+        if col_index == len(self.board[0]):
+            return self.count_occurences(val, row_index + 1, 0)
+        
+        if self.board[col_index][row_index] == val:
+            count = 1
+        else:
+            count = 0
+        
+        return count + self.count_occurences(val, row_index, col_index + 1)
+    
+    def flatten(self):
+        return [self.board[i][j] for i in range(len(self.board[0])) for j in range(len(self.board))]
 
 
+if __name__ == '__main__':
+    my_board = Board([[3, 6, 3],
+                      [5, 3, 6], 
+                      [4, 7, 8]])
+    
+    print(my_board.count_occurences(3))
+
+    print(my_board.flatten())
+        
+
+class GameBoard(Board):
+    pass
 
 '''
 Question 5: Errors + JSON + Inheritance + Polymorphism + Sorting
@@ -506,6 +578,9 @@ Implement a method to save a list of animal info into a .json file using json.du
 Sort a list of animals using merge sort, and explain why its complexity is always O(n log n) regardless of the input order.
 
 '''
+
+class Animal:
+    pass
 
 
 
