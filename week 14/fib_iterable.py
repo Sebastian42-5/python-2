@@ -39,5 +39,10 @@ class FibonacciIterator:
 
 
 if __name__ == '__main__':
-    for elem in FibonacciIterable(10):
+    my_fib = FibonacciIterator(10)
+    for elem in my_fib:
         print(elem)
+    for elem in my_fib:
+        print(elem)
+
+    

@@ -170,9 +170,6 @@ def ruler(tick_length, inches):
 # ruler(4, 4)
 
 
-
-
-
 def listInterval(center_length):
     if center_length == 0:
         return []
@@ -193,8 +190,6 @@ def rulerList(inches, length):
 
 
 # print(rulerList(6, 6))
-
-
 
 
 

@@ -550,6 +550,27 @@ class Board:
         return [self.board[i][j] for i in range(len(self.board[0])) for j in range(len(self.board))]
 
 
+
+class GameBoard(Board):
+    def __init__(self, board):
+        super().__init__(board)
+
+    def hightlight(self, val):
+        for i in range(len(self.board[0])):
+            for j in range(len(self.board)):
+                if self.board[i][j] == val:
+                    self.board[i][j] = '*'
+        
+        return self.board
+    
+    def show(self):
+        for row in self.board:
+            str_line = list(map(str, row))
+            line = ' '.join(str_line)
+
+            print(line)
+            
+
 if __name__ == '__main__':
     my_board = Board([[3, 6, 3],
                       [5, 3, 6], 
@@ -558,10 +579,17 @@ if __name__ == '__main__':
     print(my_board.count_occurences(3))
 
     print(my_board.flatten())
-        
 
-class GameBoard(Board):
-    pass
+    
+    my_game = GameBoard([[3, 6, 3],
+                      [5, 3, 6], 
+                      [4, 7, 8]])
+    
+    print(my_game.hightlight(3))
+
+    my_game.show()
+
+
 
 '''
 Question 5: Errors + JSON + Inheritance + Polymorphism + Sorting
@@ -579,65 +607,177 @@ Sort a list of animals using merge sort, and explain why its complexity is alway
 
 '''
 
-class Animal:
+class Animal(ABC):
+    def __init__(self, age):
+        self.age = age
+
+
+    @abstractmethod
+    def make_sound(self):
+        pass
+
+
+class Parrot(Animal):
+    def __init__(self, age = 1):
+        self.age = age
+
+    def make_sound(self):
+        return f'Cacaw!'
+
+class Tiger(Animal):
+    def __init__(self, age = 2):
+        self.age = age
+        
+    def make_sound(self):
+        return f'Grr!'
+
+
+def animalMergeSort(animal_lst):
     pass
-
-
+    
 
 
 
 
 '''
-Question 6: Data Science Libraries + Files + Recursion + Sorting + Classes + Iterators
-You are analyzing sensor data collected over time and stored in a .csv file named "sensor_readings.csv" with the following structure:
+Hard Problem 1: Real-Time Data Processing System
+Topics Covered: Data Science Libraries, Iterators, Recursion, Sorting, Stack, Files (no with), Classes, Complexity
+
+You are designing a real-time data processor for IoT weather sensors.
+
+The raw sensor data comes from multiple .json files containing temperature readings and timestamps for different sensors.
+
+Implement a class SensorReading with attributes sensor_id, timestamp, and temperature. Overload __lt__ to allow sorting by temperature.
+
+Create a SensorStack class (based on the Stack ADT) that stores the last 10 readings for a sensor (LIFO), with proper push, pop, and __len__ methods.
+
+Use merge sort to sort all readings across all files by temperature.
+
+Recursively remove any readings below the mean temperature (use numpy.mean) and return the filtered list.
+
+Make an iterator HighTempIterator that yields all readings above a dynamic threshold (set by the user during iteration).
+
+Explain the time and space complexity of your solution.
+
+'''
+
+import numpy as np
 
 
-timestamp,temperature,humidity
-2024-01-01 00:00,22.4,45
-2024-01-01 01:00,23.1,47
-2024-01-01 02:00,21.7,44
-...
+
+@total_ordering
+class SensorReading:
+    def __init__(self, sensor_id, timestamp, temperature):
+        self.sendor_id = sensor_id
+        self.timestamp = timestamp 
+        self.temperature = temperature
+    
+    def __lt__(self, other_reading: SensorReading):
+        return other_reading.temperature < self.temperature
+    
+class SensorStack:
+    pass
+
+class HighTempIterator:
+    pass
 
 
-Tasks:
-File & Pandas Integration:
 
-Use pandas to read the file and store it in a DataFrame.
+'''
+Hard Problem 2: Custom Pandas GroupBy with OOP Integration
+Topics Covered: pandas, Classes, Inheritance, Files, Iterators, JSON, Sorting, Polymorphism
 
-Write a function that raises a FileNotFoundError if the file does not exist (without using with).
+You are building a mini-data analysis library to work like pandas but using custom classes.
 
-Custom Iterator:
+Implement a base class Column with a method mean(). Derive NumericColumn(Column) and StringColumn(Column).
 
-Create a class TemperatureIterator that:
+Create a class DataTable that reads a .csv file into multiple Column objects (don't use with).
 
-Takes a pandas.Series of temperatures.
+Implement a custom group_by(column_name) method that returns a dictionary of groups using a nested dictionary structure.
 
-Implements the iterator protocol.
+Create a custom iterator that yields groups one by one.
 
-Only yields temperatures greater than the average (use numpy.mean for the average).
+Implement your own selection sort to sort numeric columns in descending order within each group.
 
-Recursion:
+Save each group's summary statistics (mean, max, min) to a .json file with proper exception handling.
 
-Write a recursive function count_above_threshold(data, threshold) that counts how many temperatures exceed a given threshold from a list.
+Explain why using inheritance + polymorphism makes your design more maintainable.
 
-Sorting:
-
-Manually implement a merge sort to sort the humidity readings in descending order.
-
-Explain why merge sort is more stable and consistently faster than quick sort on large data files.
-
-Visualization:
-
-Use matplotlib to plot two lines on the same graph: one for temperature and one for humidity over time.
-
-Label axes and include a legend.
-
-Design Reasoning:
-
-Why is it better to separate the iteration logic from the data parsing logic into separate classes/modules?
-
-Explain how this models polymorphism and separation of concerns in software design.
+'''
 
 
+
+'''
+Hard Problem 3: Recursive AST Evaluator with Visualization
+Topics Covered: Recursion, Classes, Abstract Classes, Inheritance, Stack, matplotlib, JSON
+
+Build an expression evaluator for mathematical expressions using an Abstract Syntax Tree (AST).
+
+Define an abstract class Expression with an abstract method evaluate().
+
+Implement Number, Add, Multiply, and Divide as subclasses.
+
+Parse a JSON-encoded expression like:
+
+
+{ "Add": [ { "Multiply": [3, 4] }, 2 ] }
+into an expression tree of objects.
+4. Recursively evaluate the expression.
+5. Implement a Stack-based evaluator that can handle operator precedence for infix expressions.
+6. Visualize the tree structure using matplotlib (nodes as circles, edges as lines).
+7. Explain how recursion and the stack mirror each other in this design.
+
+'''
+
+
+
+'''
+Hard Problem 5: Polymorphic Simulation of Sorting Algorithms
+Topics Covered: Inheritance, Polymorphism, Abstract Classes, Sorting, Complexity, Data Science (numpy), Visualization
+
+Design a framework to simulate and compare different sorting algorithms.
+
+Create an abstract class Sorter with an abstract method sort(lst: list) -> list.
+
+Implement MergeSorter, QuickSorter, and InsertionSorter as subclasses.
+
+Each subclass must count and return the number of comparisons made.
+
+Generate random data arrays using numpy.random.randint().
+
+Plot a graph using matplotlib comparing time (x-axis) and number of comparisons (y-axis) for each algorithm over array sizes from 10 to 1000.
+
+Save performance stats as .json with keys: algorithm name, input size, comparisons, runtime.
+
+Explain when and why quicksort degrades to O(n^2) and how this appears on your graph.
+
+'''
+
+
+
+
+'''
+Hard Problem 6: Full Simulation of an Inventory + Sales System
+Topics Covered: Files, JSON, Data Science Libraries, Inheritance, Sorting, Recursion, Stack, Iterators, Tuples, List Comprehensions
+
+You're tasked with modeling the backend of a store.
+
+Load inventory from a .json file:
+
+{
+  "apple": {"price": 1.5, "quantity": 50},
+  "banana": {"price": 1.0, "quantity": 30}
+}
+Create a class Product and an Inventory class to manage them.
+
+Implement a recursive method that removes all products with quantity below a threshold.
+
+Add a SalesStack that tracks the last 10 sales using the Stack ADT.
+
+Allow products to be accessed via an iterator sorted by price (implement selection sort).
+
+Use pandas to generate a daily report as a DataFrame and plot total revenue over time using matplotlib.
+
+Include a method to save and reload state in .json, handling all exceptions.
 
 '''
