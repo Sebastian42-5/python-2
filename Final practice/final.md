@@ -1013,14 +1013,7 @@ data = {
     "name": "John",
     "age": 30,
     "city": "New York"
-}
-file = open("data.txt", "w")
-for key, value in data.items():
-    file.write(f"{key}: {value}\n")
-file.close()
-
-# Reading into dictionary
-file = open("data.txt", "r")
+} "r")
 loaded_data = {}
 for line in file:
     key, value = line.strip().split(": ")
@@ -1030,6 +1023,13 @@ print("Loaded data:", loaded_data)
 ```
 
 **Output:**
+file = open("data.txt", "w")
+for key, value in data.items():
+    file.write(f"{key}: {value}\n")
+file.close()
+
+# Reading into dictionary
+file = open("data.txt",
 ```
 Read entire file: Hello, World!
 Read first line: Hello, World!

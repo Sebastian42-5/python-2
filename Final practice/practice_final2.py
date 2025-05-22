@@ -569,3 +569,201 @@ for i in range(len(my_lst)):
 
 print(my_dict)
 
+# SF2 tools:
+
+
+
+
+'''
+
+Final Boss Problems (Tests won't work without actually trying to solve :/ )
+Problem 1: Galactic Explorer's Map
+You are a programmer for a space exploration company. The company wants to map our galaxy with its several 
+planets, each with unique characteristics. You need to design a system to represent the galaxy, planets, and 
+their relationships. Additionally, the exploration team needs a way to navigate through the galaxy using a
+ stack-based pathfinding system.
+
+Here is a list of tasks you'll need to complete:
+1. Star and Planet Classes:
+- Define a base class CelestialBody with attributes name and position (a tuple: (x:int, y:int)).
+- Create subclasses Star and Planet that inherit from CelestialBody. Star should have an attribute 
+temperature, and Planet should have attributes gravity and moons (a list of moon names).
+- Implement a method describe() in each class to return a description of the celestial body:
+ "NAME at position POSITION"
+- Use polymorphism to call describe() on Star instances: "SUPER.DESCRIBE, a star with temperature TEMPK"
+
+- Use polymorphism to call describe() on Planet instances: "SUPER.DESCRIBE, a planet with gravity GRAVITYm/s^2 and 
+moons: MOONS" (or "no moons" if the list is empty).
+2. Galaxy Class:
+- Define a class Galaxy (not a subclass) that contains a name and a list of CelestialBody objects.
+- Implement a method find_planet(name) that searches for a planet by name in the galaxy.
+- Make Galaxy iterable so you can loop through its celestial bodies.
+3. Navigation Stack:
+- Implement a NavigationStack class with methods: push(location), pop(), top(), is_empty(), and len(). pop() and top()
+ should raise IndexError if the stack is empty.
+- Use this stack to simulate a pathfinding journey: start from a star, visit planets, and return to the star.
+
+
+'''
+
+# Only implement the classes and methods. No main code is needed.
+# Only implement the classes and methods. No main code is needed.
+class CelestialBody:
+    def __init__(self, name: str, position: tuple):
+        self.name = name 
+        self.position = position
+    
+    def describe(self):
+        return f'{self.name} at position {self.position}'
+        
+class Star(CelestialBody):
+    def __init__(self, name, position, temperature: int):
+        super().__init__(name, position)
+        self.temperature = temperature
+        
+    def describe(self):
+        return super().describe() + ',' + f' a star with temperature {self.temperature}K'
+        
+
+class Planet(CelestialBody):
+    def __init__(self, name, position, gravity: float, moons: int):
+        super().__init__(name, position)
+        self.gravity = gravity
+        self.moons = moons
+        
+    def describe(self):
+        result =  super().describe() + ',' + f' a planet with gravity {self.gravity}m/s^2 and' 
+        if not self.moons:
+            return result + 'no moons'
+        else:
+            return result + f' moons: {self.moons}'
+
+class GalaxyIterable:
+    def __init__(self, celestial_objects, start = 0, end = 0):
+        self.celestial_objects = celestial_objects 
+        self._start = start
+        self._end = end 
+    
+    def __iter__(self):
+        return Galaxy(self.celestial_objects, self._start, self._end)
+
+
+class Galaxy:
+    def __init__(self, name, celestial_objects, start = 0, end = 0):
+        self.name = name
+        self.celestial_objects = celestial_objects
+        self._index = self.start 
+        self._end = self.end
+        
+    def __iter__(self):
+        return self 
+        
+    def __next__(self):
+        if self._index > self._end:
+            raise StopIteration
+        else:
+            celestial = self.celestial_objects[self._index]
+            
+            self._index += 1
+    
+        return celestial
+        
+    
+    def find_planet(self, high, low, name):
+        
+        celestial_lst = [celestial for celestial in self.celestial_objects]
+        if high >= low:
+            mid = (low + high) // 2
+            
+            if self.celestial_objects[mid] == name:
+                return mid
+                
+            elif self.celestial_objects[mid] > name:
+                return self.find_planet(low, mid - 1, name)
+            else:
+                return self.find_planet(mid + 1, high, name)
+        else:
+            return -1
+            
+                
+class NavigationStack:
+    def __init__(self):
+        self.locations = []
+        
+    def __len__(self):
+        return len(self.locations)
+        
+    def push(self, location):
+        self.locations.append(location)
+        
+    def is_empty(self):
+        return len(self.locations) == 0
+        
+    def pop(self):
+        if self.is_empty():
+            raise IndexError('The current navigation stack is empty')
+        else:
+            return self.locations.pop()
+    
+    def top(self):
+        if self.is_empty():
+            raise IndexError('The current navigation stack is empty')
+        else:
+            return self.locations[-1]
+        
+
+# problem 3
+
+'''
+1. Write a function to find the maximum temperature in the grid, ignoring None values.
+2. Compute the average temperature of the grid, ignoring None.
+3. Use list comprehension to create a new grid where each temperature is increased by 2°C (leave None as None).
+4. Find all local maxima (cells greater than their four neighbors) and return their positions as tuples (row, col).
+ A cell must be non-None, and all its neighbors must also be non-None to be considered.
+5. Use filter to create a list of all temperatures above the average (excluding None).
+6. Use a set to store all unique temperatures in the grid (excluding None).
+
+'''
+
+def max_temperature(grid):
+    max = 0 
+
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] is not None and grid[i][j] > max:
+                max = grid[i][j]
+
+    return max
+
+def average_temperature(grid):
+    total = 0 
+    elements = 0
+
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] is not None:
+                total += grid[i][j]
+                elements += 1
+
+    return round((total / elements), 2)
+
+def increase_temperature(grid):
+    return [grid[i][j] + 2 for i in range(len(grid)) for j in range(len(grid[0])) if grid[i][j] is not None]
+
+def find_local_maxima(grid):
+    pass
+def above_average_temperatures(grid):
+
+    
+    return list(filter(average_temperature))
+def unique_temperatures(grid):
+    pass
+
+
+my_grid = [[1, 2, None], [None, 5, 6], [0, None, None]]
+
+print(max_temperature(my_grid))
+
+print(average_temperature(my_grid))
+
+print(increase_temperature(my_grid))

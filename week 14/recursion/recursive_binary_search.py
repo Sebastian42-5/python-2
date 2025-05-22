@@ -15,6 +15,7 @@ def binarySearch(lst, low, high, target):
         return - 1
     
 
+
 lst = [3, 5, 7, 8, 9, 10, 12, 14, 17, 19]
 
 target = 17
